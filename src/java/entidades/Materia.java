@@ -1,6 +1,10 @@
 package entidades;
 
 public class Materia {
+
     private int id;
-    private int periodo;
+    private Periodo periodo;
+    private String nome;
+    private Professor professor;
+
 }

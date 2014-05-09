@@ -1,7 +1,10 @@
 package entidades;
 
+import java.util.Date;
+
 public class Aluno extends Usuario {
 
-    private int materia;
-    private int curso;
+    private Curso curso;
+    private Materia materia;
+    private Date dataAdmissao;
 }
