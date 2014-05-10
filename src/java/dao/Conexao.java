@@ -22,7 +22,7 @@ public class Conexao {
         
         if (con == null) {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost/metadados", "root", "root");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/sisaluno", "root", "root");
         }
         return con;
     }
