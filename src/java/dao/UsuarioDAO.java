@@ -1,0 +1,86 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package dao;
+
+import entidades.Usuario;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ *
+ * @author claudemir
+ */
+public class UsuarioDAO {
+    
+    private Connection conexao;
+    
+    public UsuarioDAO() throws ClassNotFoundException, SQLException{
+        conexao = Conexao.getConexao();
+    }
+    
+    public void insere(Usuario u) throws SQLException{
+        String sql = "insert into usuario values (null, ?, ?, ?, ?, ?, ?)";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        stmt.setString(1, u.getNome());
+        stmt.setString(2, u.getCpf());
+        stmt.setDate(3, new Date(u.getDataNascimento().getTime()));
+        stmt.setString(4, u.getLogin());
+        stmt.setString(5, u.getSenha());
+        stmt.setString(6, u.getEmail());
+        stmt.execute();
+        stmt.close();
+    }
+    
+    public void atualiza(Usuario u) throws SQLException {
+        String sql = "update usuario set nome = ?, cpf = ?, dataNascimento = ? login = ?, senha = ?, email = ?"
+                + "where idUsuario = ?";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        stmt.setString(1, u.getNome());
+        stmt.setString(2, u.getCpf());
+        stmt.setDate(3, new Date(u.getDataNascimento().getTime()));
+        stmt.setString(4, u.getLogin());
+        stmt.setString(5, u.getSenha());
+        stmt.setString(6, u.getEmail());
+        stmt.setInt(7, u.getId());
+        stmt.execute();
+        stmt.close();
+    }
+    
+    public void exclui(Usuario u) throws SQLException{
+        String sql = "delete from usuario where idUsuario = ?";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        stmt.setInt(1, u.getId());
+        stmt.execute();
+        stmt.close();
+    }
+    
+    public List<Usuario> listar() throws SQLException{
+        List<Usuario> list = new ArrayList<>();
+        Usuario u;
+        String sql = "select * from usuario";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()){
+            u = new Usuario();
+            u.setId(rs.getInt("idUsuario"));
+            u.setNome(rs.getString("nome"));
+            u.setDataNascimento(rs.getDate("dataNascimento"));
+            u.setCpf(rs.getString("cpf"));
+            u.setLogin(rs.getString("login"));
+            u.setSenha(rs.getString("senha"));
+            u.setEmail(rs.getString("email"));
+            list.add(u);
+        }
+        return list;
+    }
+    
+}
