@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package dao;
 
 import entidades.Usuario;
@@ -20,14 +19,14 @@ import java.util.List;
  * @author claudemir
  */
 public class UsuarioDAO {
-    
+
     private Connection conexao;
-    
-    public UsuarioDAO() throws ClassNotFoundException, SQLException{
+
+    public UsuarioDAO() throws ClassNotFoundException, SQLException {
         conexao = Conexao.getConexao();
     }
-    
-    public void insere(Usuario u) throws SQLException{
+
+    public void insere(Usuario u) throws SQLException {
         String sql = "insert into usuario values (null, ?, ?, ?, ?, ?, ?)";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setString(1, u.getNome());
@@ -39,7 +38,7 @@ public class UsuarioDAO {
         stmt.execute();
         stmt.close();
     }
-    
+
     public void atualiza(Usuario u) throws SQLException {
         String sql = "update usuario set nome = ?, cpf = ?, dataNascimento = ? login = ?, senha = ?, email = ?"
                 + "where idUsuario = ?";
@@ -54,22 +53,22 @@ public class UsuarioDAO {
         stmt.execute();
         stmt.close();
     }
-    
-    public void exclui(Usuario u) throws SQLException{
+
+    public void exclui(Usuario u) throws SQLException {
         String sql = "delete from usuario where idUsuario = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, u.getId());
         stmt.execute();
         stmt.close();
     }
-    
-    public List<Usuario> listar() throws SQLException{
+
+    public List<Usuario> listar() throws SQLException {
         List<Usuario> list = new ArrayList<>();
         Usuario u;
         String sql = "select * from usuario";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         ResultSet rs = stmt.executeQuery();
-        while (rs.next()){
+        while (rs.next()) {
             u = new Usuario();
             u.setId(rs.getInt("idUsuario"));
             u.setNome(rs.getString("nome"));
@@ -82,5 +81,5 @@ public class UsuarioDAO {
         }
         return list;
     }
-    
+
 }
