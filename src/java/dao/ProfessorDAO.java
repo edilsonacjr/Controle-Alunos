@@ -9,6 +9,7 @@ import entidades.Professor;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -64,9 +65,23 @@ public class ProfessorDAO {
         stmt.close();
     }
     
-    public List<Professor> listar(){
+    public List<Professor> listar() throws SQLException{
         List<Professor> list = new ArrayList<>();
-        
+        Professor p;
+        String sql = "select * from professor";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        ResultSet rs = stmt.executeQuery();
+        while(rs.next()){
+            p = new Professor();
+            p.setId(rs.getInt("idProfessor"));
+            p.setNome(rs.getString("nome"));
+            p.setCpf(rs.getString("cpf"));
+            p.setDataNascimento(rs.getDate("dataNascimento"));
+            p.setLogin(rs.getString("login"));
+            p.setSenha(rs.getString("senha"));
+            p.setEmail(rs.getString("email"));
+            p.setDataAdmissao(rs.getDate("dataAdmissao"));
+        }
         return list;
     }
 
