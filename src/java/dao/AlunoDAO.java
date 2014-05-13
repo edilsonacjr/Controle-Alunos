@@ -85,7 +85,15 @@ public class AlunoDAO {
             a = new Aluno();
             a.setId(rs.getInt("a.idAluno"));
             a.getCurso().setId(rs.getInt("c.idCurso"));
-            
+            a.getMateria().setId(rs.getInt("m.idMateria"));
+            a.setDataAdmissao(rs.getDate("a.dataAdmissao"));
+            a.setNome(rs.getString("a.nome"));
+            a.setCpf(rs.getString("a.cpf"));
+            a.setDataNascimento(rs.getDate("a.dataNascimento"));
+            a.setLogin(rs.getString("a.login"));
+            a.setSenha(rs.getString("a.senha"));
+            a.setEmail("a.email");
+            list.add(a);
         }
         
         return list;

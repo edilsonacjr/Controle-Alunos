@@ -4,7 +4,7 @@ package entidades;
 public class Curso {
     private int id;
     private String nome;
-    private int nPeriodos;
+    private Periodo periodo;
     private String categoria;
     private Professor cordenador;
 
@@ -24,14 +24,14 @@ public class Curso {
         this.nome = nome;
     }
 
-    public int getnPeriodos() {
-        return nPeriodos;
+    public Periodo getPeriodo() {
+        return periodo;
     }
 
-    public void setnPeriodos(int nPeriodos) {
-        this.nPeriodos = nPeriodos;
+    public void setPeriodo(Periodo periodo) {
+        this.periodo = periodo;
     }
-
+    
     public String getCategoria() {
         return categoria;
     }
