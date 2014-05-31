@@ -8,6 +8,14 @@ public class Curso {
     private String categoria;
     private Professor cordenador;
 
+    public Periodo getPeriodo() {
+        return periodo;
+    }
+
+    public void setPeriodo(Periodo periodo) {
+        this.periodo = periodo;
+    }
+
     public int getId() {
         return id;
     }
