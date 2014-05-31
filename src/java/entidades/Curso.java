@@ -4,6 +4,7 @@ package entidades;
 public class Curso {
     private int id;
     private String nome;
+    private Periodo periodo;
     private String categoria;
     private Professor cordenador;
 
