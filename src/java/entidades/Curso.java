@@ -4,7 +4,6 @@ package entidades;
 public class Curso {
     private int id;
     private String nome;
-    private Periodo periodo;
     private String categoria;
     private Professor cordenador;
 
@@ -22,14 +21,6 @@ public class Curso {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public Periodo getPeriodo() {
-        return periodo;
-    }
-
-    public void setPeriodo(Periodo periodo) {
-        this.periodo = periodo;
     }
     
     public String getCategoria() {

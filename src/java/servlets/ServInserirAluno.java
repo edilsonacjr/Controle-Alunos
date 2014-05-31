@@ -73,7 +73,7 @@ public class ServInserirAluno extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Aluno a = new Aluno();
-        a.setNome(request.getParameter(""));
+        a.setNome(request.getParameter("textinput"));
         processRequest(request, response);
     }
 
