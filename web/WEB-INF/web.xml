@@ -4,9 +4,57 @@
         <servlet-name>ServInserirAluno</servlet-name>
         <servlet-class>servlets.ServInserirAluno</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServInserirCurso</servlet-name>
+        <servlet-class>servlets.ServInserirCurso</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServInserirProfessor</servlet-name>
+        <servlet-class>servlets.ServInserirProfessor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServInserirMateria</servlet-name>
+        <servlet-class>servlets.ServInserirMateria</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServInserirNota</servlet-name>
+        <servlet-class>servlets.ServInserirNota</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServInserirFalta</servlet-name>
+        <servlet-class>servlets.ServInserirFalta</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServInserirPeriodo</servlet-name>
+        <servlet-class>servlets.ServInserirPeriodo</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServInserirAluno</servlet-name>
         <url-pattern>/ServInserirAluno</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServInserirCurso</servlet-name>
+        <url-pattern>/ServInserirCurso</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServInserirProfessor</servlet-name>
+        <url-pattern>/ServInserirProfessor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServInserirMateria</servlet-name>
+        <url-pattern>/ServInserirMateria</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServInserirNota</servlet-name>
+        <url-pattern>/ServInserirNota</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServInserirFalta</servlet-name>
+        <url-pattern>/ServInserirFalta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServInserirPeriodo</servlet-name>
+        <url-pattern>/ServInserirPeriodo</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
