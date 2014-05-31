@@ -102,12 +102,20 @@ public class ServInserirAluno extends HttpServlet {
                     + "\n"
                     + "\n"
                     + "      </div>");
-            out.println("<div class=\"col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main\">\n"
+            out.println("</div>"
+                    + "<div class=\"col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main\">\n"
                     + "        <h1 class=\"page-header\">Aluno Cadastrado com Sucesso!!!! &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;\n"
                     + "          <br>\n"
                     + "        </h1>"
-                    + "        <a href = \"novoAluno.jsp\" Voltar </a>"               
-                    + "</div>");
+                    + "<fieldset>"
+                    + " <form class=\"form-horizontal\">\n"
+                    + "  <div class=\"form-group\">\n"
+                    + "              <label class=\"col-md-4 control-label text-left\" for=\"button1id\"></label>\n"
+                    + "              <div class=\"col-md-5 text-right\">\n"
+                    + "                <button id=\"button1id\" name=\"button1id\" class=\"btn btn-success\" onclick=\"document.forms[0].action = 'novoAluno.jsp'; return true;\">Voltar</button>\n"
+                    + "              </div>\n"
+                    + "</fieldset>"
+                    + "</form>");
             out.println("</body>");
             out.println("</html>");
         }
