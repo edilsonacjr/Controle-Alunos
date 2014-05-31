@@ -6,8 +6,13 @@
 
 package servlets;
 
+import dao.MateriaDAO;
+import entidades.Materia;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -36,10 +41,87 @@ public class ServInserirMateria extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ServInserirMateria</title>");            
+            out.println("<meta charset=\"utf-8\">\n"
+                    + "  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n"
+                    + "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n"
+                    + "  <meta name=\"description\" content=\"\">\n"
+                    + "  <meta name=\"author\" content=\"\">\n"
+                    + "  <link rel=\"shortcut icon\" href=\"assets/img/faviconsss.ico\">\n"
+                    + "  <title>SisAlunos</title>\n"
+                    + "  <link href=\"dist/css/bootstrap.min.css\" rel=\"stylesheet\">\n"
+                    + "  <link href=\"dashboard.css\" rel=\"stylesheet\">");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ServInserirMateria at " + request.getContextPath() + "</h1>");
+            out.println("<div class=\"navbar navbar-inverse navbar-fixed-top\" role=\"navigation\">\n"
+                    + "    <div class=\"container-fluid\">\n"
+                    + "      <div class=\"navbar-header\">\n"
+                    + "        <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-collapse\">\n"
+                    + "          <span class=\"sr-only\">Toggle navigation</span>\n"
+                    + "          <span class=\"icon-bar\"></span>\n"
+                    + "          <span class=\"icon-bar\"></span>\n"
+                    + "          <span class=\"icon-bar\"></span>\n"
+                    + "        </button>\n"
+                    + "        <a class=\"navbar-brand\" href=\"paginaInicial.jsp\">SisAlunos\n"
+                    + "          <br>\n"
+                    + "        </a>\n"
+                    + "      </div>\n"
+                    + "      <div class=\"navbar-collapse collapse\">\n"
+                    + "        <ul class=\"nav navbar-nav navbar-right\">\n"
+                    + "          <li>\n"
+                    + "            <a href=\"logoff.jsp\">Sair\n"
+                    + "              <br>\n"
+                    + "            </a>\n"
+                    + "          </li>\n"
+                    + "        </ul>\n"
+                    + "\n"
+                    + "      </div>\n"
+                    + "    </div>\n"
+                    + "  </div>");
+            out.println("<div class=\"container-fluid\">\n"
+                    + "    <div class=\"row\">\n"
+                    + "      <div class=\"col-sm-3 col-md-2 sidebar\">\n"
+                    + "        <ul class=\"nav nav-sidebar\">\n"
+                    + "          <li>\n"
+                    + "            <a href=\"#\">Página Principal</a>\n"
+                    + "          </li>\n"
+                    + "          <li>\n"
+                    + "            <a href=\"#\">Professores</a>\n"
+                    + "          </li>\n"                    
+                    + "            <a href=\"#\">Alunos</a>\n"
+                    + "          </li>\n"
+                    + "          <li>\n"
+                    + "            <a href=\"#\">Faltas</a>\n"
+                    + "          </li>\n"
+                    + "          <li class=\"active\">\n"
+                    + "            <a href=\"#\">Materia</a>\n"
+                    + "          </li>\n"
+                    + "          <li>\n"
+                    + "            <a href=\"#\">Nota</a>\n"
+                    + "          </li>\n"
+                    + "          <li>\n"
+                    + "            <a href=\"#\">Cursos</a>\n"
+                    + "          </li>\n"
+                    + "          <li>\n"
+                    + "            <a href=\"#\">Usuários</a>\n"
+                    + "          </li>\n"
+                    + "        </ul>\n"
+                    + "\n"
+                    + "\n"
+                    + "      </div>");
+            out.println("</div>"
+                    + "<div class=\"col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main\">\n"
+                    + "        <h1 class=\"page-header\">Materia Cadastrada com Sucesso!!!! &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;\n"
+                    + "          <br>\n"
+                    + "        </h1>"
+                    + "<fieldset>"
+                    + " <form class=\"form-horizontal\">\n"
+                    + "  <div class=\"form-group\">\n"
+                    + "              <label class=\"col-md-4 control-label text-left\" for=\"button1id\"></label>\n"
+                    + "              <div class=\"col-md-5 text-right\">\n"
+                    + "                <button id=\"button1id\" name=\"button1id\" class=\"btn btn-success\" onclick=\"document.forms[0].action = 'novoMateria.jsp'; return true;\">Voltar</button>\n"
+                    + "              </div>\n"
+                    + "</fieldset>"
+                    + "</form>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -71,6 +153,17 @@ public class ServInserirMateria extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        Materia m = new Materia();
+        m.getPeriodo().setId(Integer.parseInt(request.getParameter("periodo")));
+        m.setNome(request.getParameter("nome"));
+        m.getProfessor().setId(Integer.parseInt(request.getParameter("professor")));
+        MateriaDAO materiadao;
+        try {
+            materiadao = new MateriaDAO();
+            materiadao.insere(m);
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(ServInserirMateria.class.getName()).log(Level.SEVERE, null, ex);
+        }        
         processRequest(request, response);
     }
 
