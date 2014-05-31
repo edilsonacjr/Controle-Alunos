@@ -85,7 +85,7 @@ public class ServInserirCurso extends HttpServlet {
                     + "          </li>\n"
                     + "          <li>\n"
                     + "            <a href=\"#\">Professores</a>\n"
-                    + "          </li>\n"  
+                    + "          </li>\n"
                     + "          <li>\n"
                     + "            <a href=\"#\">Alunos</a>\n"
                     + "          </li>\n"
@@ -106,12 +106,28 @@ public class ServInserirCurso extends HttpServlet {
                     + "          <br>\n"
                     + "        </h1>"
                     + "<fieldset>"
+                    + "<table class=\"table table-striped\">\n"
+                    + " <thead>\n"
+                    + "        <tr>\n"
+                    + "            <th>Nome</th>\n"
+                    + "            <th>Categoria</th>\n"
+                    + "            <th>Codigo Professor</th>\n"
+                    + "        </tr>\n"
+                    + "    </thead>\n"
+                    + "    <tbody>\n"
+                    + "        <tr>\n"
+                    + "            <td>"+request.getParameter("nome")+"</td>\n"
+                    + "            <td>"+request.getParameter("categoria")+"</td>\n"
+                    + "            <td>"+request.getParameter("professor")+"</td>\n"
+                    + "        </tr>\n"
+                    + "    </tbody>"
+                    + "</table>"
                     + " <form class=\"form-horizontal\">\n"
                     + "  <div class=\"form-group\">\n"
                     + "              <label class=\"col-md-4 control-label text-left\" for=\"button1id\"></label>\n"
                     + "              <div class=\"col-md-5 text-right\">\n"
                     + "                <button id=\"button1id\" name=\"button1id\" class=\"btn btn-success\" onclick=\"document.forms[0].action = 'novoCurso.jsp'; return true;\">Voltar</button>\n"
-                    + "              </div>\n"
+                    + "              </div>\n"                   
                     + "</fieldset>"
                     + "</form>");
             out.println("</body>");
@@ -155,7 +171,7 @@ public class ServInserirCurso extends HttpServlet {
             cursodao.insere(c);
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ServInserirCurso.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        }
         processRequest(request, response);
     }
 
