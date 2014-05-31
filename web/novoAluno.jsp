@@ -144,7 +144,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label text-left" for="button1id"></label>
               <div class="col-md-5 text-right">
-                <button id="button1id" name="button1id" class="btn btn-success">Cadastrar</button>
+                <button id="button1id" name="button1id" class="btn btn-success" onclick="document.forms[0].action = 'ServInserirAluno'; return true;">Cadastrar</button>
                 <button id="button2id" name="button2id" class="btn btn-danger">Cancelar</button>
               </div>
             </div>
