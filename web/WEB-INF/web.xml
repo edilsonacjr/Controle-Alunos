@@ -28,6 +28,10 @@
         <servlet-name>ServInserirPeriodo</servlet-name>
         <servlet-class>servlets.ServInserirPeriodo</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServAlunoMateria</servlet-name>
+        <servlet-class>servlets.ServInserirAlunoMateria</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServInserirAluno</servlet-name>
         <url-pattern>/ServInserirAluno</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>ServInserirPeriodo</servlet-name>
         <url-pattern>/ServInserirPeriodo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServAlunoMateria</servlet-name>
+        <url-pattern>/ServAlunoMateria</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
