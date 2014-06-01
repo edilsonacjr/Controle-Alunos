@@ -5,16 +5,24 @@ import java.util.Date;
 public class Falta {
 
     private int id;
-    private AlunoMateria alunoMateria;
+    private Aluno aluno;
+    private Materia materia;
 
-    public AlunoMateria getAlunoMateria() {
-        return alunoMateria;
+    public Aluno getAluno() {
+        return aluno;
     }
 
-    public void setAlunoMateria(AlunoMateria alunoMateria) {
-        this.alunoMateria = alunoMateria;
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
     }
-    
+
+    public Materia getMateria() {
+        return materia;
+    }
+
+    public void setMateria(Materia materia) {
+        this.materia = materia;
+    }
     private Date data;
 
     public int getId() {
