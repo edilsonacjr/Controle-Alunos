@@ -37,6 +37,7 @@ public class ServInserirAluno extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        doPost(request, response);
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -188,14 +189,14 @@ public class ServInserirAluno extends HttpServlet {
         a.getCurso().setId(Integer.parseInt(request.getParameter("curso")));
         Date dataadmissao = new Date(System.currentTimeMillis());
         dateFormat.format(dataadmissao);
-        a.setDataAdmissao(dataadmissao);
+        //a.setDataAdmissao(dataadmissao);
         try {
             AlunoDAO alunodao = new AlunoDAO();
             alunodao.insere(a);
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ServInserirAluno.class.getName()).log(Level.SEVERE, null, ex);
         }
-        processRequest(request, response);
+        //processRequest(request, response);
     }
 
     /**
