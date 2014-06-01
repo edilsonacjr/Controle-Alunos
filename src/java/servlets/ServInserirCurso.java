@@ -164,7 +164,6 @@ public class ServInserirCurso extends HttpServlet {
         Curso c = new Curso();
         c.setNome(request.getParameter("nomecurso"));
         c.getCordenador().setId(Integer.parseInt(request.getParameter("coordenador")));
-        c.getPeriodo().setId(Integer.parseInt(request.getParameter("periodo")));
         c.setCategoria(request.getParameter("categoria"));
         try {
             CursoDAO cursodao = new CursoDAO();

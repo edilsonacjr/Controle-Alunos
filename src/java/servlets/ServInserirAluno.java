@@ -189,7 +189,6 @@ public class ServInserirAluno extends HttpServlet {
         Date dataadmissao = new Date(System.currentTimeMillis());
         dateFormat.format(dataadmissao);
         a.setDataAdmissao(dataadmissao);
-        a.setMateria(null);
         try {
             AlunoDAO alunodao = new AlunoDAO();
             alunodao.insere(a);
