@@ -119,7 +119,7 @@ public class ServInserirCurso extends HttpServlet {
                     + "        <tr>\n"
                     + "            <td>"+request.getParameter("nome")+"</td>\n"
                     + "            <td>"+request.getParameter("categoria")+"</td>\n"
-                    + "            <td>"+request.getParameter("professor")+"</td>\n"
+                    + "            <td>"+request.getParameter("coordenador")+"</td>\n"
                     + "        </tr>\n"
                     + "    </tbody>"
                     + "</table>"
