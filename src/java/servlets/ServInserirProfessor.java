@@ -177,6 +177,8 @@ public class ServInserirProfessor extends HttpServlet {
         dateFormat.format(dataadmissao);
         p.setDataNascimento(Date.valueOf(date));
         p.setDataAdmissao(dataadmissao);
+        p.setLogin(request.getParameter("email"));
+        p.setSenha(request.getParameter("senha"));
         processRequest(request, response);
     }
 
