@@ -22,7 +22,7 @@ public class Conexao {
         //Caso a conexão não exista deve se instanciar uma conexão com o banco
         if (con == null) {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost/sisaluno", "root", "123");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/sisaluno", "root", "root");
         }
         //retorna a conexao
         return con;

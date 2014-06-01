@@ -111,7 +111,7 @@ public class ServInserirFalta extends HttpServlet {
                     + "      </div>");
             out.println("</div>"
                     + "<div class=\"col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main\">\n"
-                    + "        <h1 class=\"page-header\">Falta Atualizada com Sucesso!!!! &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;\n"
+                    + "        <h1 class=\"page-header\">Falta Cadastrada com Sucesso!!!! &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;\n"
                     + "          <br>\n"
                     + "        </h1>"
                     + "<fieldset>"
