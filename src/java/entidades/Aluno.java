@@ -6,6 +6,11 @@ public class Aluno extends Usuario {
 
     private Curso curso;
     private Date dataAdmissao;
+    
+    public Aluno() {
+            this.curso = new Curso();
+            this.dataAdmissao = new Date();
+    }
 
     public Curso getCurso() {
         return curso;
