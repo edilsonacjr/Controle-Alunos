@@ -155,8 +155,7 @@ public class ServInserirNota extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Nota n = new Nota();
-        n.getAluno().setId(Integer.parseInt(request.getParameter("aluno")));
-        n.getMateria().setId(Integer.parseInt(request.getParameter("materia")));
+        n.getAlunoMateria().setId(Integer.parseInt(request.getParameter("alunomateria")));
         n.setN1(Double.parseDouble(request.getParameter("nota1")));
         n.setN2(Double.parseDouble(request.getParameter("nota2")));
         n.setN3(Double.parseDouble(request.getParameter("nota3")));
