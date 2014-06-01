@@ -26,27 +26,25 @@ public class NotaDAO {
     }
 
     public void insere(Nota n) throws SQLException {
-        String sql = "insert into nota values (null, ?, ?, ?, ?, ?)";
+        String sql = "insert into nota values (null, ?, ?, ?, ?)";
         PreparedStatement stmt = conexao.prepareStatement(sql);
-        stmt.setInt(1, n.getAluno().getId());
-        stmt.setInt(2, n.getMateria().getId());
-        stmt.setDouble(3, n.getN1());
-        stmt.setDouble(4, n.getN2());
-        stmt.setDouble(5, n.getN3());
+        stmt.setInt(1, n.getAlunoMateria().getId());
+        stmt.setDouble(2, n.getN1());
+        stmt.setDouble(3, n.getN2());
+        stmt.setDouble(4, n.getN3());
         stmt.execute();
         stmt.close();
     }
 
     public void atualiza(Nota n) throws SQLException {
-        String sql = "update nota set idAluno = ?, idMateria = ?, n1 = ?"
+        String sql = "update nota set idAlunoMateria = ? n1 = ?"
                 + ", n2 = ?, n3 = ? where idNota = ? ";
         PreparedStatement stmt = conexao.prepareStatement(sql);
-        stmt.setInt(1, n.getAluno().getId());
-        stmt.setInt(2, n.getMateria().getId());
-        stmt.setDouble(3, n.getN1());
-        stmt.setDouble(4, n.getN2());
-        stmt.setDouble(5, n.getN3());
-        stmt.setInt(6, n.getId());
+        stmt.setInt(1, n.getAlunoMateria().getId());
+        stmt.setDouble(2, n.getN1());
+        stmt.setDouble(3, n.getN2());
+        stmt.setDouble(4, n.getN3());
+        stmt.setInt(5, n.getId());
         stmt.execute();
         stmt.close();
     }
@@ -68,8 +66,7 @@ public class NotaDAO {
         while (rs.next()) {
             n = new Nota();
             n.setId(rs.getInt("idNota"));
-            n.getAluno().setId(rs.getInt("idAluno"));
-            n.getMateria().setId(rs.getInt("idMateria"));
+            n.getAlunoMateria().setId(rs.getInt("idAlunoMateria"));
             n.setN1(rs.getDouble("n1"));
             n.setN2(rs.getDouble("n2"));
             n.setN3(rs.getDouble("n3"));

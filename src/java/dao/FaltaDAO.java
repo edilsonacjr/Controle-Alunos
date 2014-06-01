@@ -28,23 +28,21 @@ public class FaltaDAO {
     }
     
     public void insere(Falta f) throws SQLException {
-        String sql = "insert into falta values (null, ?, ?, ?)";
+        String sql = "insert into falta values (null, ?, ?)";
         PreparedStatement stmt = conexao.prepareStatement(sql);
-        stmt.setInt(1, f.getAluno().getId());
-        stmt.setInt(2, f.getMateria().getId());
-        stmt.setDate(3, new Date(f.getData().getTime()));
+        stmt.setInt(1, f.getAlunoMateria().getId());
+        stmt.setDate(2, new Date(f.getData().getTime()));
         stmt.execute();
         stmt.close();
     }
     
     public void atualiza(Falta f) throws SQLException {
-        String sql = "update falta set idAluno = ?, idMateria = ?, data ?"
+        String sql = "update falta set idAlunoMateria = ?, data ?"
                 + "where idFalta = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
-        stmt.setInt(1, f.getAluno().getId());
-        stmt.setInt(2, f.getMateria().getId());
-        stmt.setDate(3, new Date(f.getData().getTime()));
-        stmt.setInt(4, f.getId());
+        stmt.setInt(1, f.getAlunoMateria().getId());
+        stmt.setDate(2, new Date(f.getData().getTime()));
+        stmt.setInt(3, f.getId());
         stmt.execute();
         stmt.close();
     }
@@ -66,8 +64,7 @@ public class FaltaDAO {
         while (rs.next()){
             f = new Falta();
             f.setId(rs.getInt("idFalta"));
-            f.getAluno().setId(rs.getInt("idAluno"));
-            f.getMateria().setId(rs.getInt("idMateria"));
+            f.getAlunoMateria().setId(rs.getInt("idAlunoMateria"));
             f.setData(rs.getDate("data"));
             list.add(f);
         }
