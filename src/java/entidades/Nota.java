@@ -2,8 +2,7 @@ package entidades;
 
 public class Nota {
     private int id;
-    private Aluno aluno;
-    private Materia materia;
+    private AlunoMateria alunoMateria;
     private double n1;
     private double n2;
     private double n3;
@@ -16,20 +15,12 @@ public class Nota {
         this.id = id;
     }
 
-    public Aluno getAluno() {
-        return aluno;
+    public AlunoMateria getAlunoMateria() {
+        return alunoMateria;
     }
 
-    public void setAluno(Aluno aluno) {
-        this.aluno = aluno;
-    }
-
-    public Materia getMateria() {
-        return materia;
-    }
-
-    public void setMateria(Materia materia) {
-        this.materia = materia;
+    public void setAlunoMateria(AlunoMateria alunoMateria) {
+        this.alunoMateria = alunoMateria;
     }
 
     public double getN1() {

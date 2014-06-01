@@ -27,25 +27,23 @@ public class CursoDAO {
     }
     
     public void insere(Curso c) throws SQLException{
-        String sql = "insert into curso values (null, ?, ?, ?, ?)";
+        String sql = "insert into curso values (null, ?, ?, ?)";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setString(1, c.getNome());
-        stmt.setInt(2, c.getPeriodo().getId());
-        stmt.setString(3, c.getCategoria());
-        stmt.setInt(4, c.getCordenador().getId());
+        stmt.setString(2, c.getCategoria());
+        stmt.setInt(3, c.getCordenador().getId());
         stmt.execute();
         stmt.close();
     }
     
     public void atualiza(Curso c) throws SQLException {
-        String sql = "update curso set nome = ?, idPeriodo = ?, categoria = ?"
+        String sql = "update curso set nome = ?, categoria = ?"
                 + "idProfessor = ? where idCurso = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setString(1, c.getNome());
-        stmt.setInt(2, c.getPeriodo().getId());
-        stmt.setString(3, c.getCategoria());
-        stmt.setInt(4, c.getCordenador().getId());
-        stmt.setInt(5, c.getId());
+        stmt.setString(2, c.getCategoria());
+        stmt.setInt(3, c.getCordenador().getId());
+        stmt.setInt(4, c.getId());
         stmt.execute();
         stmt.close();
     }
@@ -67,7 +65,6 @@ public class CursoDAO {
         while (rs.next()){
             c = new Curso();
             c.setId(rs.getInt("idCurso"));
-            c.getPeriodo().setId(rs.getInt("idPeriodo"));
             c.setCategoria(rs.getString("categoria"));
             c.getCordenador().setId(rs.getInt("idProfessor"));
             list.add(c);
