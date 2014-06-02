@@ -165,7 +165,7 @@ public class ServInserirProfessor extends HttpServlet {
         p.setCpf(request.getParameter("cpf"));
         String date = request.getParameter("datanasc");
         String dateAdm = request.getParameter("dataadm");
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         java.util.Date parsedDate;
         try {
             parsedDate = dateFormat.parse(date);

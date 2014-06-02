@@ -156,7 +156,7 @@ public class ServInserirFalta extends HttpServlet {
             throws ServletException, IOException {
         Falta f = new Falta();
         f.getAlunoMateria().setId(Integer.parseInt(request.getParameter("alunomateria")));
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         String date = request.getParameter("data");
         java.util.Date parsedDate;
         try {

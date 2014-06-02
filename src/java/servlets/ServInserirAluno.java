@@ -174,7 +174,7 @@ public class ServInserirAluno extends HttpServlet {
         a.setNome(request.getParameter("nome"));
         a.setCpf(request.getParameter("cpf"));
         String date = request.getParameter("data");
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         java.util.Date parsedDate;
         try {
             parsedDate = dateFormat.parse(date);
