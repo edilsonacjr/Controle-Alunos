@@ -172,7 +172,7 @@ public class ServInserirCurso extends HttpServlet {
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ServInserirCurso.class.getName()).log(Level.SEVERE, null, ex);
         }
-        processRequest(request, response);
+        //processRequest(request, response);
     }
 
     /**
