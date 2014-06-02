@@ -7,6 +7,10 @@ public class Falta {
     private int id;
     private AlunoMateria alunoMateria;
     private Date data;
+    
+    public Falta(){
+        this.alunoMateria = new AlunoMateria();
+    }
 
     public AlunoMateria getAlunoMateria() {
         return alunoMateria;

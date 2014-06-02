@@ -7,6 +7,10 @@ public class Periodo {
     private String nome;
     private int ano;
     private int semestre;
+    
+    public Periodo(){
+        this.curso = new Curso();
+    }
 
     public int getId() {
         return id;

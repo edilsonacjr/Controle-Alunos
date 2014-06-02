@@ -7,6 +7,11 @@ public class Materia {
     private String nome;
     private Professor professor;
 
+    public Materia(){
+        this.periodo = new Periodo();
+        this.professor = new Professor();
+    }
+    
     public int getId() {
         return id;
     }

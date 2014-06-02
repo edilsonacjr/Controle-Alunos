@@ -6,6 +6,10 @@ public class Nota {
     private double n1;
     private double n2;
     private double n3;
+    
+    public Nota(){
+        this.alunoMateria = new AlunoMateria();
+    }
 
     public int getId() {
         return id;
