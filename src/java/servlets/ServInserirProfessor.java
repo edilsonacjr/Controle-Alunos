@@ -35,6 +35,7 @@ public class ServInserirProfessor extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        doPost(request, response);
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -121,6 +122,28 @@ public class ServInserirProfessor extends HttpServlet {
                     + "          <br>\n"
                     + "        </h1>"
                     + "<fieldset>"
+                    + "<table class=\"table table-striped\">\n"
+                    + " <thead>\n"
+                    + "        <tr>\n"
+                    + "            <th>Nome</th>\n"
+                    + "            <th>CPF</th>\n"
+                    + "            <th>Data de Nasc.</th>\n"
+                    + "            <th>Login</th>\n"
+                    + "            <th>E-mail</th>\n"
+                    + "            <th>Data de Admissão</th>\n"
+                    + "        </tr>\n"
+                    + "    </thead>\n"
+                    + "    <tbody>\n"
+                    + "        <tr>\n"
+                    + "            <td>"+request.getParameter("nome")+"</td>\n"
+                    + "            <td>"+request.getParameter("cpf")+"</td>\n"
+                    + "            <td>"+request.getParameter("datanasc")+"</td>\n"
+                    + "            <td>"+request.getParameter("login")+"</td>\n"
+                    + "            <td>"+request.getParameter("email")+"</td>\n"
+                    + "            <td>"+request.getParameter("dataadm")+"</td>\n"
+                    + "        </tr>\n"
+                    + "    </tbody>"
+                    + "</table>"
                     + " <form class=\"form-horizontal\">\n"
                     + "  <div class=\"form-group\">\n"
                     + "              <label class=\"col-md-4 control-label text-left\" for=\"button1id\"></label>\n"
@@ -163,6 +186,9 @@ public class ServInserirProfessor extends HttpServlet {
         Professor p = new Professor();
         p.setNome(request.getParameter("nome"));
         p.setCpf(request.getParameter("cpf"));
+        p.setLogin(request.getParameter("login"));
+        p.setSenha(request.getParameter("senha"));
+        p.setEmail(request.getParameter("email"));
         String date = request.getParameter("datanasc");
         String dateAdm = request.getParameter("dataadm");
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -177,7 +203,7 @@ public class ServInserirProfessor extends HttpServlet {
         dateFormat.format(dataadmissao);
         p.setDataNascimento(Date.valueOf(date));
         p.setDataAdmissao(dataadmissao);
-        processRequest(request, response);
+        //processRequest(request, response);
     }
 
     /**
