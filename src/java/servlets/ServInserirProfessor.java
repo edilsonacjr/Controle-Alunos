@@ -190,7 +190,7 @@ public class ServInserirProfessor extends HttpServlet {
         p.setSenha(request.getParameter("senha"));
         p.setEmail(request.getParameter("email"));
         String date = request.getParameter("datanasc");
-        String dateAdm = request.getParameter("dataadm");
+        //String dateAdm = request.getParameter("dataadm");
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         java.util.Date parsedDate;
         try {
@@ -199,10 +199,10 @@ public class ServInserirProfessor extends HttpServlet {
         } catch (ParseException ex) {
             Logger.getLogger(ServInserirProfessor.class.getName()).log(Level.SEVERE, null, ex);
         }   
-        Date dataadmissao = new Date(System.currentTimeMillis());
-        dateFormat.format(dataadmissao);
+        //Date dataadmissao = new Date(System.currentTimeMillis());
+        //dateFormat.format(dataadmissao);
         p.setDataNascimento(Date.valueOf(date));
-        p.setDataAdmissao(dataadmissao);
+        //p.setDataAdmissao(dataadmissao);
         //processRequest(request, response);
     }
 
