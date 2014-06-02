@@ -7,6 +7,10 @@ public class Curso {
     private String categoria;
     private Professor cordenador;
 
+    public Curso(){
+        this.cordenador= new Professor();
+    }
+    
     public int getId() {
         return id;
     }
