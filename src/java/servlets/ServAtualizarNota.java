@@ -158,8 +158,8 @@ public class ServAtualizarNota extends HttpServlet {
             throws ServletException, IOException {
          Nota n = new Nota();
          n.setId(Integer.parseInt(request.getParameter("id")));
-        n.getAluno().setId(Integer.parseInt(request.getParameter("aluno")));
-        n.getMateria().setId(Integer.parseInt(request.getParameter("materia")));
+        //n.getAluno().setId(Integer.parseInt(request.getParameter("aluno")));
+        //n.getMateria().setId(Integer.parseInt(request.getParameter("materia")));
         n.setN1(Double.parseDouble(request.getParameter("nota1")));
         n.setN2(Double.parseDouble(request.getParameter("nota2")));
         n.setN3(Double.parseDouble(request.getParameter("nota3")));

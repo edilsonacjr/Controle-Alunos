@@ -157,8 +157,8 @@ public class ServAtualizarFalta extends HttpServlet {
             throws ServletException, IOException {
         Falta f = new Falta();
         f.setId(Integer.parseInt(request.getParameter("id")));
-        f.getAluno().setId(Integer.parseInt(request.getParameter("aluno")));
-        f.getMateria().setId(Integer.parseInt(request.getParameter("materia")));
+        //f.getAluno().setId(Integer.parseInt(request.getParameter("aluno")));
+       // f.getMateria().setId(Integer.parseInt(request.getParameter("materia")));
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String date = request.getParameter("data");
         java.util.Date parsedDate;
