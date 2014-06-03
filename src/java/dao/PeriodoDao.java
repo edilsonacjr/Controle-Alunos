@@ -75,4 +75,20 @@ public class PeriodoDao {
         }
         return list;
     }
+    
+    public Periodo getPeriodo(Periodo p) throws SQLException {
+        String sql = "select * from periodo where idperiodo = ?";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            p.setId(rs.getInt("idperiodo"));
+            p.getCurso().setId(rs.getInt("idcurso"));
+            p.setNome(rs.getString("nome"));
+            p.setAno(rs.getInt("ano"));
+            p.setSemestre(rs.getInt("semestre"));
+        }
+        stmt.close();
+        rs.close();
+        return p;
+    }
 }

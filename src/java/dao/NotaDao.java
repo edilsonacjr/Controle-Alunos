@@ -72,7 +72,26 @@ public class NotaDao {
             n.setN3(rs.getDouble("n3"));
             list.add(n);
         }
+        stmt.close();
+        rs.close();
         return list;
+    }
+    
+    public Nota getNota(Nota n) throws SQLException {
+        String sql = "select * from nota where idnota = ?";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        stmt.setInt(1, n.getId());
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            n.setId(rs.getInt("idnota"));
+            n.getAlunoMateria().setId(rs.getInt("idalunomateria"));
+            n.setN1(rs.getDouble("n1"));
+            n.setN2(rs.getDouble("n2"));
+            n.setN3(rs.getDouble("n3"));
+        }
+        stmt.close();
+        rs.close();
+        return n;
     }
 
 }

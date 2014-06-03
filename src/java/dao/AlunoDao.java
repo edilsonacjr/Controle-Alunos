@@ -94,4 +94,23 @@ public class AlunoDao {
         return list;
     }
     
+    public Aluno getAluno(Aluno a) throws SQLException {
+        String sql = "select * from aluno where idaluno = ?";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        stmt.setInt(1, a.getId());
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            a.setId(rs.getInt("a.idaluno"));
+            a.getCurso().setId(rs.getInt("c.idcurso"));
+            a.setDataAdmissao(rs.getDate("a.dataadmissao"));
+            a.setNome(rs.getString("a.nome"));
+            a.setCpf(rs.getString("a.cpf"));
+            a.setDataNascimento(rs.getDate("a.datanascimento"));
+            a.setLogin(rs.getString("a.login"));
+            a.setSenha(rs.getString("a.senha"));
+            a.setEmail("a.email");
+        }
+        return a;
+    }
+    
 }

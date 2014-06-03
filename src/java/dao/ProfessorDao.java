@@ -19,13 +19,13 @@ import java.util.List;
  * @author claudemir
  */
 public class ProfessorDao {
-
+    
     private Connection conexao;
-
+    
     public ProfessorDao() throws ClassNotFoundException, SQLException {
         conexao = Conexao.getConexao();
     }
-
+    
     public void inserir(Professor p) throws SQLException {
         String sql = "insert into professor values (null, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement stmt = conexao.prepareStatement(sql);
@@ -39,7 +39,7 @@ public class ProfessorDao {
         stmt.execute();
         stmt.close();
     }
-
+    
     public void atualizar(Professor p) throws SQLException {
         String sql = "update professor set nome = ?, cpf = ?, datanascimento = ?"
                 + "login = ?, senha = ?, email = ?, dataadmissao = ? where "
@@ -57,7 +57,7 @@ public class ProfessorDao {
         stmt.close();
     }
     
-    public void exclui(Professor p) throws SQLException{
+    public void exclui(Professor p) throws SQLException {
         String sql = "delete from professor where idprofessor = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, p.getId());
@@ -65,13 +65,13 @@ public class ProfessorDao {
         stmt.close();
     }
     
-    public List<Professor> listar() throws SQLException{
+    public List<Professor> listar() throws SQLException {
         List<Professor> list = new ArrayList<>();
         Professor p;
         String sql = "select * from professor";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         ResultSet rs = stmt.executeQuery();
-        while(rs.next()){
+        while (rs.next()) {
             p = new Professor();
             p.setId(rs.getInt("idprofessor"));
             p.setNome(rs.getString("nome"));
@@ -81,8 +81,28 @@ public class ProfessorDao {
             p.setSenha(rs.getString("senha"));
             p.setEmail(rs.getString("email"));
             p.setDataAdmissao(rs.getDate("dataadmissao"));
+            list.add(p);
         }
         return list;
     }
-
+    
+    public Professor getProfessor(Professor p) throws SQLException {
+        String sql = "select * from professor where idprofessor = ?";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        stmt.setInt(1, p.getId());
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            p.setId(rs.getInt("idprofessor"));
+            p.setNome(rs.getString("nome"));
+            p.setCpf(rs.getString("cpf"));
+            p.setDataNascimento(rs.getDate("datanascimento"));
+            p.setLogin(rs.getString("login"));
+            p.setSenha(rs.getString("senha"));
+            p.setEmail(rs.getString("email"));
+            p.setDataAdmissao(rs.getDate("dataadmissao"));
+        }
+        stmt.close();
+        rs.close();
+        return p;
+    }
 }

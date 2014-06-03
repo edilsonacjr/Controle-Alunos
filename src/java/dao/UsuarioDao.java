@@ -81,4 +81,24 @@ public class UsuarioDao {
         }
         return list;
     }
+    
+    public Usuario getUsuario(Usuario u) throws SQLException{
+        String sql = "select * from usuario where idusuario = ?";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        stmt.setInt(1, u.getId());
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            u = new Usuario();
+            u.setId(rs.getInt("idusuario"));
+            u.setNome(rs.getString("nome"));
+            u.setDataNascimento(rs.getDate("datanascimento"));
+            u.setCpf(rs.getString("cpf"));
+            u.setLogin(rs.getString("login"));
+            u.setSenha(rs.getString("senha"));
+            u.setEmail(rs.getString("email"));
+        }
+        stmt.close();
+        rs.close();
+        return u;
+    }
 }

@@ -69,6 +69,22 @@ public class CursoDao {
             c.getCordenador().setId(rs.getInt("idprofessor"));
             list.add(c);
         }
+        stmt.close();
+        rs.close();
         return list;
+    }
+    
+    public Curso getCurso(Curso c) throws SQLException {
+        String sql = "select * from curso where idcurso = ?";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()){
+            c.setId(rs.getInt("idcurso"));
+            c.setCategoria(rs.getString("categoria"));
+            c.getCordenador().setId(rs.getInt("idprofessor"));
+        }
+        stmt.close();
+        rs.close();
+        return c;
     }
 }

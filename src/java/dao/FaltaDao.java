@@ -68,6 +68,23 @@ public class FaltaDao {
             f.setData(rs.getDate("data"));
             list.add(f);
         }
+        stmt.close();
+        rs.close();
         return list;
+    }
+    
+    public Falta getFalta(Falta f) throws SQLException {
+        String sql = "select * from falta where idfalta = ?";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        stmt.setInt(1, f.getId());
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()){
+            f.setId(rs.getInt("idfalta"));
+            f.getAlunoMateria().setId(rs.getInt("idalunomateria"));
+            f.setData(rs.getDate("data"));
+        }
+        stmt.close();
+        rs.close();
+        return f;
     }
 }

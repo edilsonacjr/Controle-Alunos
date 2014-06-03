@@ -70,6 +70,24 @@ public class MateriaDao {
             m.getProfessor().setId(rs.getInt("idprofessor"));
             list.add(m);
         }
+        stmt.close();
+        rs.close();
         return list;
+    }
+    
+    public Materia getMateria(Materia m) throws SQLException {
+        String sql = "select * from materia where idmateria = ?";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        stmt.setInt(1, m.getId());
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()){
+            m.setId(rs.getInt("idmateria"));
+            m.getPeriodo().setId(rs.getInt("idperiodo"));
+            m.setNome(rs.getString("nome"));
+            m.getProfessor().setId(rs.getInt("idprofessor"));
+        }
+        stmt.close();
+        rs.close();
+        return m;
     }
 }
