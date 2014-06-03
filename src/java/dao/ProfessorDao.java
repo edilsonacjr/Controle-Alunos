@@ -41,9 +41,9 @@ public class ProfessorDao {
     }
 
     public void atualizar(Professor p) throws SQLException {
-        String sql = "update professor set nome = ?, cpf = ?, dataNascimento = ?"
-                + "login = ?, senha = ?, email = ?, dataAdmissao = ? where "
-                + "idProfessor = ?";
+        String sql = "update professor set nome = ?, cpf = ?, datanascimento = ?"
+                + "login = ?, senha = ?, email = ?, dataadmissao = ? where "
+                + "idprofessor = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setString(1, p.getNome());
         stmt.setString(2, p.getCpf());
@@ -58,7 +58,7 @@ public class ProfessorDao {
     }
     
     public void exclui(Professor p) throws SQLException{
-        String sql = "delete from professor where idProfessor = ?";
+        String sql = "delete from professor where idprofessor = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, p.getId());
         stmt.execute();
@@ -73,14 +73,14 @@ public class ProfessorDao {
         ResultSet rs = stmt.executeQuery();
         while(rs.next()){
             p = new Professor();
-            p.setId(rs.getInt("idProfessor"));
+            p.setId(rs.getInt("idprofessor"));
             p.setNome(rs.getString("nome"));
             p.setCpf(rs.getString("cpf"));
-            p.setDataNascimento(rs.getDate("dataNascimento"));
+            p.setDataNascimento(rs.getDate("datanascimento"));
             p.setLogin(rs.getString("login"));
             p.setSenha(rs.getString("senha"));
             p.setEmail(rs.getString("email"));
-            p.setDataAdmissao(rs.getDate("dataAdmissao"));
+            p.setDataAdmissao(rs.getDate("dataadmissao"));
         }
         return list;
     }

@@ -37,8 +37,8 @@ public class MateriaDao {
     }
     
     public void atualiza(Materia m) throws SQLException {
-        String sql = "update materia set idPeriodo = ?, nome = ?, idProfessor = ?"
-                + "where idMateria = ?";
+        String sql = "update materia set idperiodo = ?, nome = ?, idprofessor = ?"
+                + "where idmateria = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, m.getPeriodo().getId());
         stmt.setString(2, m.getNome());
@@ -49,7 +49,7 @@ public class MateriaDao {
     }
     
     public void exclui(Materia m) throws SQLException {
-        String sql = "delete from materia where idMateria = ?";
+        String sql = "delete from materia where idmateria = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, m.getId());
         stmt.execute();
@@ -64,10 +64,10 @@ public class MateriaDao {
         ResultSet rs = stmt.executeQuery();
         while (rs.next()){
             m = new Materia();
-            m.setId(rs.getInt("idMateria"));
-            m.getPeriodo().setId(rs.getInt("idPeriodo"));
+            m.setId(rs.getInt("idmateria"));
+            m.getPeriodo().setId(rs.getInt("idperiodo"));
             m.setNome(rs.getString("nome"));
-            m.getProfessor().setId(rs.getInt("idProfessor"));
+            m.getProfessor().setId(rs.getInt("idprofessor"));
             list.add(m);
         }
         return list;

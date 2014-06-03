@@ -38,8 +38,8 @@ public class PeriodoDao {
     }
     
     public void atualiza(Periodo p) throws SQLException {
-        String sql = "update periodo set idCurso = ?, nome = ?, ano = ?, semestre = ?"
-                + "where idPeriodo = ?";
+        String sql = "update periodo set idcurso = ?, nome = ?, ano = ?, semestre = ?"
+                + "where idperiodo = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, p.getCurso().getId());
         stmt.setString(2, p.getNome());
@@ -51,7 +51,7 @@ public class PeriodoDao {
     }
     
     public void exclui(Periodo p) throws SQLException {
-        String sql = "delete from periodo where idPeriodo = ?";
+        String sql = "delete from periodo where idperiodo = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, p.getId());
         stmt.execute();
@@ -66,8 +66,8 @@ public class PeriodoDao {
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
             p = new Periodo();
-            p.setId(rs.getInt("idPeriodo"));
-            p.getCurso().setId(rs.getInt("idCurso"));
+            p.setId(rs.getInt("idperiodo"));
+            p.getCurso().setId(rs.getInt("idcurso"));
             p.setNome(rs.getString("nome"));
             p.setAno(rs.getInt("ano"));
             p.setSemestre(rs.getInt("semestre"));
