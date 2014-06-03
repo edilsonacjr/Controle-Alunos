@@ -6,7 +6,7 @@
 
 package servlets;
 
-import dao.MateriaDAO;
+import dao.MateriaDao;
 import entidades.Materia;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -161,9 +161,9 @@ public class ServAtualizarMateria extends HttpServlet {
         m.getPeriodo().setId(Integer.parseInt(request.getParameter("periodo")));
         m.setNome(request.getParameter("nome"));
         m.getProfessor().setId(Integer.parseInt(request.getParameter("professor")));
-        MateriaDAO materiadao;
+        MateriaDao materiadao;
         try {
-            materiadao = new MateriaDAO();
+            materiadao = new MateriaDao();
             materiadao.atualiza(m);
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ServAtualizarMateria.class.getName()).log(Level.SEVERE, null, ex);

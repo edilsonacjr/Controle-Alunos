@@ -5,7 +5,7 @@
  */
 package servlets;
 
-import dao.NotaDAO;
+import dao.NotaDao;
 import entidades.Nota;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -147,10 +147,10 @@ public class ServRemoverNota extends HttpServlet {
             throws ServletException, IOException {
         Nota n = new Nota();
         n.setId(Integer.parseInt(request.getParameter("id")));
-        NotaDAO notadao;
+        NotaDao notadao;
 
         try {
-            notadao = new NotaDAO();
+            notadao = new NotaDao();
             notadao.exclui(n);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ServRemoverNota.class.getName()).log(Level.SEVERE, null, ex);

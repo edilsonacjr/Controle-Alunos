@@ -6,7 +6,7 @@
 
 package servlets;
 
-import dao.AlunoDAO;
+import dao.AlunoDao;
 import entidades.Aluno;
 import java.io.IOException;
 import java.io.PrintWriter;

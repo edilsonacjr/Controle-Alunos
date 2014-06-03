@@ -5,7 +5,7 @@
  */
 package servlets;
 
-import dao.AlunoDAO;
+import dao.AlunoDao;
 import entidades.Aluno;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -89,7 +89,7 @@ public class ServInserirAluno extends HttpServlet {
         //dateFormat.format(dataadmissao);
         //a.setDataAdmissao(dataadmissao);
         try {
-            AlunoDAO alunodao = new AlunoDAO();
+            AlunoDao alunodao = new AlunoDao();
             alunodao.insere(a);
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ServInserirAluno.class.getName()).log(Level.SEVERE, null, ex);

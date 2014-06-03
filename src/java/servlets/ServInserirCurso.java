@@ -5,7 +5,7 @@
  */
 package servlets;
 
-import dao.CursoDAO;
+import dao.CursoDao;
 import entidades.Curso;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -71,7 +71,7 @@ public class ServInserirCurso extends HttpServlet {
         c.getCordenador().setId(Integer.parseInt(request.getParameter("coordenador")));
         c.setCategoria(request.getParameter("categoria"));
         try {
-            CursoDAO cursodao = new CursoDAO();
+            CursoDao cursodao = new CursoDao();
             cursodao.insere(c);
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ServInserirCurso.class.getName()).log(Level.SEVERE, null, ex);

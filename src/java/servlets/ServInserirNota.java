@@ -6,7 +6,7 @@
 
 package servlets;
 
-import dao.NotaDAO;
+import dao.NotaDao;
 import entidades.Nota;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -159,9 +159,9 @@ public class ServInserirNota extends HttpServlet {
         n.setN1(Double.parseDouble(request.getParameter("nota1")));
         n.setN2(Double.parseDouble(request.getParameter("nota2")));
         n.setN3(Double.parseDouble(request.getParameter("nota3")));
-        NotaDAO notadao;
+        NotaDao notadao;
         try {
-            notadao = new NotaDAO();
+            notadao = new NotaDao();
             notadao.insere(n);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ServInserirNota.class.getName()).log(Level.SEVERE, null, ex);

@@ -6,7 +6,7 @@
 
 package servlets;
 
-import dao.PeriodoDAO;
+import dao.PeriodoDao;
 import entidades.Periodo;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -164,9 +164,9 @@ public class ServAtualizarPeriodo extends HttpServlet {
         p.setNome(request.getParameter("nome"));
         p.setSemestre(Integer.parseInt(request.getParameter("semestre")));
         p.setAno(Integer.parseInt(request.getParameter("ano")));
-        PeriodoDAO periododao;
+        PeriodoDao periododao;
         try {
-            periododao = new PeriodoDAO();
+            periododao = new PeriodoDao();
             periododao.atualiza(p);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ServAtualizarPeriodo.class.getName()).log(Level.SEVERE, null, ex);

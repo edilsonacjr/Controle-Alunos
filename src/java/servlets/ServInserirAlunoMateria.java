@@ -6,7 +6,7 @@
 
 package servlets;
 
-import dao.AlunoMateriaDAO;
+import dao.AlunoMateriaDao;
 import entidades.AlunoMateria;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -160,9 +160,9 @@ public class ServInserirAlunoMateria extends HttpServlet {
         AlunoMateria am = new AlunoMateria();
         am.getAluno().setId(Integer.parseInt(request.getParameter("aluno")));
         am.getMateria().setId(Integer.parseInt(request.getParameter("materia")));
-        AlunoMateriaDAO alunomateriadao;
+        AlunoMateriaDao alunomateriadao;
         try {
-            alunomateriadao = new AlunoMateriaDAO();
+            alunomateriadao = new AlunoMateriaDao();
             alunomateriadao.insere(am);
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ServInserirAlunoMateria.class.getName()).log(Level.SEVERE, null, ex);

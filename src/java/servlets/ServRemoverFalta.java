@@ -6,7 +6,7 @@
 
 package servlets;
 
-import dao.FaltaDAO;
+import dao.FaltaDao;
 import entidades.Falta;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -148,9 +148,9 @@ public class ServRemoverFalta extends HttpServlet {
             throws ServletException, IOException {
         Falta f = new Falta();
         f.setId(Integer.parseInt(request.getParameter("id")));
-        FaltaDAO faltadao;
+        FaltaDao faltadao;
         try {
-            faltadao = new FaltaDAO();
+            faltadao = new FaltaDao();
             faltadao.exclui(f);
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ServRemoverFalta.class.getName()).log(Level.SEVERE, null, ex);
