@@ -28,10 +28,10 @@ public class NotaDao {
     public void insere(Nota n) throws SQLException {
         String sql = "insert into nota values (null, ?, ?, ?, ?)";
         PreparedStatement stmt = conexao.prepareStatement(sql);
-        stmt.setInt(1, n.getAlunoMateria().getId());
-        stmt.setDouble(2, n.getN1());
-        stmt.setDouble(3, n.getN2());
-        stmt.setDouble(4, n.getN3());
+        stmt.setDouble(1, n.getN1());
+        stmt.setDouble(2, n.getN2());
+        stmt.setDouble(3, n.getN3());
+        stmt.setInt(4, n.getAlunoMateria().getId());
         stmt.execute();
         stmt.close();
     }

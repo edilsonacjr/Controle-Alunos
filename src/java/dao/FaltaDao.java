@@ -30,8 +30,8 @@ public class FaltaDao {
     public void insere(Falta f) throws SQLException {
         String sql = "insert into falta values (null, ?, ?)";
         PreparedStatement stmt = conexao.prepareStatement(sql);
-        stmt.setInt(1, f.getAlunoMateria().getId());
-        stmt.setDate(2, new Date(f.getData().getTime()));
+        stmt.setDate(1, new Date(f.getData().getTime()));
+        stmt.setInt(2, f.getAlunoMateria().getId());
         stmt.execute();
         stmt.close();
     }
