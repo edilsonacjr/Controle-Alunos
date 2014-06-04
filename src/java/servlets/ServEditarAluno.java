@@ -43,19 +43,13 @@ public class ServEditarAluno extends HttpServlet {
         AlunoDao dao = new AlunoDao();
         List<Aluno> alunos = dao.listar();
         int id = Integer.parseInt(request.getParameter("edita"));
-        System.out.println("TESTE"+id);
         Aluno aluno = new Aluno();
-        aluno.setId(39);
-        for(Aluno a : alunos){
-            if(a.getId() == id){
-                aluno = a;
-            }
-        }
+        aluno.setId(id);
+        aluno = dao.getAluno(aluno);
+        
         request.setAttribute("aluno", aluno);
         RequestDispatcher view = request.getRequestDispatcher("EditarAluno.jsp");
-        view.forward(request, response);
-        //response.sendRedirect("EditarAluno.jsp");
-        
+        view.forward(request, response);        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

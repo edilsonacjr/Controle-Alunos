@@ -94,20 +94,20 @@ public class AlunoDao {
     }
     
     public Aluno getAluno(Aluno a) throws SQLException {
-        String sql = "select * from aluno where idaluno = ?";
+        String sql = "select * from aluno a where idaluno = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, a.getId());
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
             a.setId(rs.getInt("a.idaluno"));
-            a.getCurso().setId(rs.getInt("c.idcurso"));
-            a.setDataAdmissao(rs.getDate("a.dataadmissao"));
+            a.getCurso().setId(rs.getInt("a.idcurso"));
+            //a.setDataAdmissao(rs.getDate("a.dataadmissao"));
             a.setNome(rs.getString("a.nome"));
             a.setCpf(rs.getString("a.cpf"));
-            a.setDataNascimento(rs.getDate("a.datanascimento"));
+            //a.setDataNascimento(rs.getDate("a.datanascimento"));
             a.setLogin(rs.getString("a.login"));
             a.setSenha(rs.getString("a.senha"));
-            a.setEmail("a.email");
+            a.setEmail(rs.getString("a.email"));
         }
         return a;
     }
