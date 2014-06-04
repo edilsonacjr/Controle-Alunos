@@ -63,7 +63,7 @@
                         </li>
                         <li class="active">
                             <a href="Usuarios.jsp">Usuários</a>
-                        </li
+                        </li>
                         <li>
                             <a href="Periodos.jsp">Períodos</a>
                         </li>
