@@ -52,7 +52,7 @@
                         <li>
                             <a href="paginaInicial.jsp">Página Principal</a>
                         </li>
-                        <li class="active">
+                        <li>
                             <a href="Professores.jsp">Professores</a>
                         </li>
                         <li >
@@ -61,7 +61,7 @@
                         <li >
                             <a href="Cursos.jsp">Cursos</a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="Usuarios.jsp">Usuários</a>
                         </li>
                     </ul>
@@ -69,7 +69,7 @@
 
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Novo Professor &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <h1 class="page-header">Novo Usuario &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         <br>
                     </h1>
 
@@ -135,9 +135,9 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label text-left" for="button1id"></label>
                                 <div class="col-md-5 text-right">
-                                    <button id="button1id" name="button1id" class="btn btn-success" onclick="document.forms[0].action = 'ServInserirProfessor';
+                                    <button id="button1id" name="button1id" class="btn btn-success" onclick="document.forms[0].action = 'ServInserirUsuario';
                                             return true;">Cadastrar</button>
-                                    <button id="button2id" name="button2id" class="btn btn-danger" onclick="document.forms[0].action = 'Professores.jsp';
+                                    <button id="button2id" name="button2id" class="btn btn-danger" onclick="document.forms[0].action = 'Usuarios.jsp';
                                             return true;">Cancelar</button>
                                 </div>
                             </div>
