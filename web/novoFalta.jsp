@@ -4,7 +4,12 @@
     Author     : Dênis
 --%>
 
+<%@page import="entidades.AlunoMateria"%>
+<%@page import="dao.AlunoMateriaDao"%>
+<%@page import="java.util.List"%>
+<%@page import="dao.ProfessorDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,6 +23,12 @@
         <link href="dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="dashboard.css" rel="stylesheet">
     </head>
+    <%
+        AlunoMateriaDao alunomateriadao = new AlunoMateriaDao();
+        List<AlunoMateria> alunosmaterias = alunomateriadao.listar();
+        pageContext.setAttribute("alunosmaterias", alunosmaterias);
+
+    %>
     <body>
         <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container-fluid">
@@ -93,9 +104,9 @@
                                 <label class="col-md-4 control-label" for="selectbasic">Aluno - Materia</label>
                                 <div class="col-md-5">
                                     <select id="selectbasic" name="alunomateria" class="form-control">
-                                        <option value="1">Option one</option>
-                                        <option value="2">Option two</option>
-                                        <option value="3">Option three</option>
+                                        <c:forEach items="${alunosmaterias}" var="alunosmateria">                                            
+                                            <option value="${alunosmateria.id}" selected>${alunosmateria.id}</option>                                                                                     
+                                        </c:forEach>
                                     </select>
                                 </div>
                             </div>
