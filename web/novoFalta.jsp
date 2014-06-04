@@ -70,8 +70,11 @@
                         <li>
                             <a href="Materias.jsp">Matérias</a>
                         </li>
-                        <li class="active">
+                        <li>
                             <a href="AlunosMaterias.jsp">Aluno Matérias</a>
+                        </li>
+                        <li class="active">
+                            <a href="Faltas.jsp">Faltas</a>
                         </li>
                     </ul>
 

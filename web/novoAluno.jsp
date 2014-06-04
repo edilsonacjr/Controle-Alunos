@@ -61,6 +61,21 @@
                         <li>
                             <a href="#">Usuários</a>
                         </li>
+                        <li>
+                            <a href="Periodos.jsp">Períodos</a>
+                        </li>
+                        <li>
+                            <a href="Materias.jsp">Matérias</a>
+                        </li>
+                        <li>
+                            <a href="AlunosMaterias.jsp">Aluno Matérias</a>
+                        </li>
+                        <li>
+                            <a href="Faltas.jsp">Faltas</a>
+                        </li>
+                        <li>
+                            <a href="Notas.jsp">Notas</a>
+                        </li>
                     </ul>
 
 

@@ -54,7 +54,7 @@
       <div class="col-sm-3 col-md-2 sidebar">
         <ul class="nav nav-sidebar">
           <li class="active">
-            <a href="#">PÃ¡gina Principal</a>
+            <a href="#">Página Principal</a>
           </li>
           <li>
             <a href="Alunos.html">Alunos</a>
