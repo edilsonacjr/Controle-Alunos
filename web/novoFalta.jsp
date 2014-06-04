@@ -1,6 +1,6 @@
 <%-- 
-    Document   : novoPeriodo
-    Created on : 03/06/2014, 23:11:21
+    Document   : novoFalta
+    Created on : 03/06/2014, 23:46:17
     Author     : Dênis
 --%>
 
@@ -64,18 +64,21 @@
                         <li>
                             <a href="Usuarios.jsp">Usuários</a>
                         </li>
-                        <li class="active">
+                        <li>
                             <a href="Periodos.jsp">Períodos</a>
                         </li>
                         <li>
                             <a href="Materias.jsp">Matérias</a>
+                        </li>
+                        <li class="active">
+                            <a href="AlunosMaterias.jsp">Aluno Matérias</a>
                         </li>
                     </ul>
 
 
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Novo Período &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <h1 class="page-header">Nova Falta &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         <br>
                     </h1>
 
@@ -84,65 +87,36 @@
 
                             <!-- Select Basic -->
                             <div class="form-group">
-                                <label class="col-md-4 control-label" for="selectbasic">Curso</label>
+                                <label class="col-md-4 control-label" for="selectbasic">Aluno - Materia</label>
                                 <div class="col-md-5">
-                                    <select id="selectbasic" name="curso" class="form-control">
+                                    <select id="selectbasic" name="alunomateria" class="form-control">
                                         <option value="1">Option one</option>
                                         <option value="2">Option two</option>
                                     </select>
                                 </div>
                             </div>
-
                             <!-- Text input-->
                             <div class="form-group">
-                                <label class="col-md-4 control-label" for="textinput">Nome</label>
+                                <label class="col-md-4 control-label" for="textinput">Data</label>
                                 <div class="col-md-5">
-                                    <input id="textinput" name="nome" placeholder="Nome" class="form-control input-md" type="text">
+                                    <input id="textinput" name="data" placeholder="data" class="form-control input-md" type="text">
 
                                 </div>
                             </div>
-
-                            <!-- Text input-->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="textinput">Ano</label>
-                                <div class="col-md-5">
-                                    <input id="textinput" name="ano" placeholder="Ano" class="form-control input-md" type="text">
-
-                                </div>
-                            </div>
-
-                            <!-- Select Basic -->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="selectbasic">Semestre</label>
-                                <div class="col-md-5">
-                                    <select id="selectbasic" name="semestre" class="form-control">
-                                        <option value="1">1° Semestre</option>
-                                        <option value="2">2° Semestre</option>
-                                    </select>
-                                </div>
-                            </div>                                                    
 
                             <!-- Button (Double) -->
                             <div class="form-group">
                                 <label class="col-md-4 control-label text-left" for="button1id"></label>
                                 <div class="col-md-5 text-right">
-                                    <button id="button1id" name="button1id" class="btn btn-success" onclick="document.forms[0].action = 'ServInserirPeriodo';
+                                    <button id="button1id" name="button1id" class="btn btn-success" onclick="document.forms[0].action = 'ServInserirFalta';
                                             return true;">Cadastrar</button>
-                                    <button id="button2id" name="button2id" class="btn btn-danger" onclick="document.forms[0].action = 'Periodos.jsp';
+                                    <button id="button2id" name="button2id" class="btn btn-danger" onclick="document.forms[0].action = 'Faltas.jsp';
                                             return true;">Cancelar</button>
                                 </div>
                             </div>
 
                         </fieldset>
                     </form>
-
-
-
-
-
-
-
-
                     <div class="table-responsive">
 
                     </div>
@@ -158,3 +132,4 @@
         <script src="assets/js/docs.min.js"></script>
     </body>
 </html>
+
