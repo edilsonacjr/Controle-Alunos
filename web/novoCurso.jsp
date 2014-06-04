@@ -4,7 +4,12 @@
     Author     : Dênis
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="entidades.Professor"%>
+<%@page import="entidades.Professor"%>
+<%@page import="dao.ProfessorDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,6 +23,12 @@
         <link href="dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="dashboard.css" rel="stylesheet">
     </head>
+    <%
+        ProfessorDao professordao = new ProfessorDao();
+        List<Professor> professores = professordao.listar();
+        pageContext.setAttribute("professores", professores);
+
+    %>
     <body>
         <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container-fluid">
@@ -116,8 +127,9 @@
                                 <label class="col-md-4 control-label" for="selectbasic">Coordenador</label>
                                 <div class="col-md-5">
                                     <select id="selectbasic" name="coordenador" class="form-control">
-                                        <option value="1">Option one</option>
-                                        <option value="2">Option two</option>
+                                        <c:forEach items="${professores}" var="professor">                                            
+                                            <option value="${professor.id}" selected>${professor.nome}</option>                                                                                     
+                                        </c:forEach>
                                     </select>
                                 </div>
                             </div>
