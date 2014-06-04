@@ -14,6 +14,11 @@ public class AlunoMateria {
     private int id;
     private Aluno aluno;
     private Materia materia;
+            
+    public AlunoMateria(){
+        this.aluno = new Aluno();
+        this.materia = new Materia();
+    }
 
     public int getId() {
         return id;
