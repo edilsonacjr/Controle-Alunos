@@ -22,6 +22,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -44,6 +45,9 @@ public class ServLogin extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String login = request.getParameter("login");
         String senha = request.getParameter("senha");
+        
+        HttpSession sessao = request.getSession(true);
+        
 
         Aluno a = new Aluno();
         AlunoDao daoa = new AlunoDao();
@@ -51,6 +55,7 @@ public class ServLogin extends HttpServlet {
         a.setSenha(senha);
         a = daoa.validaAluno(a);
         if (a != null) {
+            sessao.setAttribute("usr", "Alun-"+login);
             response.sendRedirect("principalAlunos.jsp");
         }
 
@@ -60,6 +65,7 @@ public class ServLogin extends HttpServlet {
         p.setSenha(senha);
         p = daop.validaProfessor(p);
         if (p != null) {
+            sessao.setAttribute("usr", "Prof-"+login);
             response.sendRedirect("principalAlunos.jsp");
         }
 
@@ -69,6 +75,7 @@ public class ServLogin extends HttpServlet {
         u.setSenha(senha);
         u = daou.validaUsuario(u);
         if (u != null) {
+            sessao.setAttribute("usr", "Admin-"+login);
             response.sendRedirect("principalAdmin.jsp");
         }
         String erro = "<div class=\"alert alert-danger\" >\n" +

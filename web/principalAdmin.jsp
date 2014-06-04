@@ -34,7 +34,7 @@
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <a href="logoff.jsp">Sair
+            <a href="ServLogoff">Sair
               <br>
             </a>
           </li>
@@ -68,17 +68,6 @@
 
       </div>
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-
-
-
-
-
-
-
-
-
-
-
 
         <div class="table-responsive">
           <c:foreach items="${alunos}" var="aluno">
