@@ -108,8 +108,8 @@ public class UsuarioDao {
                 + "and senha = ?";
         Usuario u = null;
         PreparedStatement stmt = conexao.prepareStatement(sql);
-        stmt.setString(1, u.getLogin());
-        stmt.setString(2, u.getSenha());
+        stmt.setString(1, usuario.getLogin());
+        stmt.setString(2, usuario.getSenha());
         try {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
