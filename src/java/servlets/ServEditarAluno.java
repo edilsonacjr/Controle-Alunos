@@ -40,7 +40,7 @@ public class ServEditarAluno extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-        AlunoDAO dao = new AlunoDAO();
+        AlunoDao dao = new AlunoDao();
         List<Aluno> alunos = dao.listar();
         int id = Integer.parseInt(request.getParameter("edita"));
         System.out.println("TESTE"+id);
