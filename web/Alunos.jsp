@@ -1,3 +1,7 @@
+<%@page import="dao.CursoDao"%>
+<%@page import="entidades.Aluno"%>
+<%@page import="java.util.List"%>
+<%@page import="dao.AlunoDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="entidades.Curso" %>
@@ -15,7 +19,15 @@
         <link href="dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="dashboard.css" rel="stylesheet">
     </head>
-
+    <%
+        AlunoDao dao = new AlunoDao();
+        List<Aluno> alunos = dao.listar();
+        pageContext.setAttribute("alunos", alunos);
+        
+        CursoDao daoC = new CursoDao();
+        List<Curso> cursos = daoC.listar();
+        pageContext.setAttribute("cursos", cursos);
+    %>
     <body>
 
         <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -95,8 +107,10 @@
                                 <label class="col-md-4 control-label" for="selectbasic">Curso</label>
                                 <div class="col-md-5">
                                     <select id="selectbasic" name="selectbasic" class="form-control">
-                                        <option value="1">Option one</option>
-                                        <option value="2">Option two</option>
+                                        <c:forEach items="${cursos}" var="curso">                                            
+                                            <option value="${curso.id}" selected>${curso.nome}</option>                                                                                     
+                                        </c:forEach>
+                                        
                                     </select>
                                 </div>
                             </div>
@@ -117,7 +131,7 @@
                                 <label class="col-md-4 control-label" for="selectbasic">Materia</label>
                                 <div class="col-md-5">
                                     <select id="selectbasic" name="selectbasic" class="form-control">
-                                        
+
                                         <option value="1">Option one</option>
                                         <option value="2">Option two</option>
                                     </select>
@@ -152,42 +166,27 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1,001</td>
-                                    <td>Lorem</td>
-                                    <td>ipsum</td>
-                                    <td>dolor</td>
-                                    <td>sit</td>
-                                    <td>
-                                        <form method="post">
-                                            <div class="form-group">
-                                                <label class="col-md-0 control-label" for="button1id"></label>
-                                                <div class="col-md-6 text-right">
-                                                    <button id="button1id" name="button1id" class="btn btn-success" onclick="form.action = 'error.html';">Editar</button>
-                                                    <button id="button2id" name="button2id" class="btn btn-danger" onclick="form.action = 'index.html';">Excluir</button>
+                                <c:forEach items="${alunos}" var="aluno">
+                                    <tr>
+                                        <td>${aluno.id}</td>
+                                        <td>${aluno.nome}</td>
+                                        <td>${aluno.curso.nome}</td>
+                                        <td>${aluno.cpf}</td>
+                                        <td>${aluno.email}</td>
+                                        <td>
+                                            <form method="post">
+                                                <div class="form-group">
+                                                    <label class="col-md-0 control-label" for="button1id"></label>
+                                                    <div class="col-md-6 text-right">
+                                                        <button id="button1id" name="edita" class="btn btn-success" onclick="form.action = 'ServEditarAluno';" value="${aluno.id}">Editar</button>
+                                                        <button id="button2id" name="exclui" class="btn btn-danger" onclick="form.action = 'index.html';" value="${aluno.id}">Excluir</button>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>1,001</td>
-                                    <td>Lorem</td>
-                                    <td>ipsum</td>
-                                    <td>dolor</td>
-                                    <td>sit</td>
-                                    <td>
-                                        <form method="post">
-                                            <div class="form-group">
-                                                <label class="col-md-0 control-label" for="button1id"></label>
-                                                <div class="col-md-6 text-right">
-                                                    <button id="button1id" name="edita" class="btn btn-success" onclick="form.action = 'ServEditarAluno';" value="1">Editar</button>
-                                                    <button id="button2id" name="exclui" class="btn btn-danger" onclick="form.action = 'index.html';">Excluir</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </td>
-                                </tr>
+                                            </form>
+                                        </td>
+                                    </tr>
+
+                                </c:forEach>                                
                             </tbody>
                         </table>
                     </div>

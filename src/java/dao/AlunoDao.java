@@ -87,7 +87,7 @@ public class AlunoDao {
             //a.setDataNascimento(rs.getDate("a.datanascimento"));
             a.setLogin(rs.getString("a.login"));
             a.setSenha(rs.getString("a.senha"));
-            a.setEmail("a.email");
+            a.setEmail(rs.getString("a.email"));
             list.add(a);
         }
         return list;
