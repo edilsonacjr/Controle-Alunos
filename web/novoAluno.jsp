@@ -121,7 +121,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="textinput">Data de Nascimento</label>
                                 <div class="col-md-5">
-                                    <input id="textinput" name="data" placeholder="data" class="form-control input-md" type="text">
+                                    <input id="textinput" name="data" placeholder="Data de Nascimento" class="form-control input-md" type="text">
 
                                 </div>
                             </div>

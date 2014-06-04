@@ -4,7 +4,11 @@
     Author     : Dênis
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="entidades.Curso"%>
+<%@page import="dao.CursoDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,6 +22,12 @@
         <link href="dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="dashboard.css" rel="stylesheet">
     </head>
+    <%
+        CursoDao daoC = new CursoDao();
+        List<Curso> cursos = daoC.listar();
+        pageContext.setAttribute("cursos", cursos);
+
+    %>
     <body>
         <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container-fluid">
@@ -96,8 +106,9 @@
                                 <label class="col-md-4 control-label" for="selectbasic">Curso</label>
                                 <div class="col-md-5">
                                     <select id="selectbasic" name="curso" class="form-control">
-                                        <option value="1">Option one</option>
-                                        <option value="2">Option two</option>
+                                        <c:forEach items="${cursos}" var="curso">                                            
+                                            <option value="${curso.id}" selected>${curso.nome}</option>                                                                                     
+                                        </c:forEach>
                                     </select>
                                 </div>
                             </div>
