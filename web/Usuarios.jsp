@@ -1,5 +1,5 @@
-<%@page import="entidades.Professor"%>
-<%@page import="dao.ProfessorDao"%>
+<%@page import="entidades.Usuario"%>
+<%@page import="dao.UsuarioDao"%>
 <%@page import="entidades.Materia"%>
 <%@page import="dao.MateriaDao"%>
 <%@page import="entidades.Periodo"%>
@@ -26,9 +26,9 @@
         <link href="dashboard.css" rel="stylesheet">
     </head>
     <%
-        ProfessorDao dao = new ProfessorDao();
-        List<Professor> professores = dao.listar();
-        pageContext.setAttribute("professores", professores);
+        UsuarioDao dao = new UsuarioDao();
+        List<Usuario> usuarios = dao.listar();
+        pageContext.setAttribute("usuarios", usuarios);
 
         CursoDao daoC = new CursoDao();
         List<Curso> cursos = daoC.listar();
@@ -79,7 +79,7 @@
                         <li>
                             <a href="#">Página Principal</a>
                         </li>
-                        <li class="active">
+                        <li>
                             <a href="#">Professores</a>
                         </li>
                         <li>
@@ -88,7 +88,7 @@
                         <li>
                             <a href="#">Cursos</a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="#">Usuários</a>
                         </li>
                     </ul>
@@ -96,11 +96,11 @@
 
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Professores
+                    <h1 class="page-header">Usuários
                         <br>
                     </h1>
 
-                    <a class="btn btn-primary" href="novoProfessor.jsp">Novo Professor</a>
+                    <a class="btn btn-primary" href="novoUsuario.jsp">Novo Usuário</a>
 
 
                     <form class="form-horizontal" action="index.html" method="post">
@@ -170,7 +170,7 @@
 
 
 
-                    <h2 class="sub-header">Lista de Professores</h2>
+                    <h2 class="sub-header">Lista de Usuários</h2>
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead>
@@ -182,12 +182,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <c:forEach items="${professores}" var="professor">
+                                <c:forEach items="${usuarios}" var="usuario">
                                     <tr>
-                                        <td>${professor.id}</td>
-                                        <td>${professor.nome}</td>
-                                        <td>${professor.cpf}</td>
-                                        <td>${professor.email}</td>
+                                        <td>${usuario.id}</td>
+                                        <td>${usuario.nome}</td>
+                                        <td>${usuario.cpf}</td>
+                                        <td>${usuario.email}</td>
                                         <td>
                                             <form method="post">
                                                 <div class="form-group">
