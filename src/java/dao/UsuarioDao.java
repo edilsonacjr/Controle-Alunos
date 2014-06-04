@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.NoResultException;
 
 /**
  *
@@ -81,8 +82,8 @@ public class UsuarioDao {
         }
         return list;
     }
-    
-    public Usuario getUsuario(Usuario u) throws SQLException{
+
+    public Usuario getUsuario(Usuario u) throws SQLException {
         String sql = "select * from usuario where idusuario = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, u.getId());
@@ -99,6 +100,32 @@ public class UsuarioDao {
         }
         stmt.close();
         rs.close();
+        return u;
+    }
+
+    public Usuario validaUsuario(Usuario usuario) throws SQLException {
+        String sql = "select * from usuario where login = ? "
+                + "and senha = ?";
+        Usuario u = null;
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        stmt.setString(1, u.getLogin());
+        stmt.setString(2, u.getSenha());
+        try {
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                u.setId(rs.getInt("idusuario"));
+                u.setNome(rs.getString("nome"));
+                u.setDataNascimento(rs.getDate("datanascimento"));
+                u.setCpf(rs.getString("cpf"));
+                u.setLogin(rs.getString("login"));
+                u.setSenha(rs.getString("senha"));
+                u.setEmail(rs.getString("email"));
+            }
+        } catch (NoResultException e) {
+            u = null;
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        }
         return u;
     }
 }
