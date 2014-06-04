@@ -4,7 +4,14 @@
     Author     : Dênis
 --%>
 
+<%@page import="entidades.Periodo"%>
+<%@page import="dao.PeriodoDao"%>
+<%@page import="java.util.List"%>
+<%@page import="entidades.Professor"%>
+<%@page import="entidades.Professor"%>
+<%@page import="dao.ProfessorDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,6 +25,16 @@
         <link href="dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="dashboard.css" rel="stylesheet">
     </head>
+    <%
+        ProfessorDao professordao = new ProfessorDao();
+        List<Professor> professores = professordao.listar();
+        pageContext.setAttribute("professores", professores);
+        
+        PeriodoDao periododao = new PeriodoDao();
+        List<Periodo> periodos = periododao.listar();
+        pageContext.setAttribute("periodos", periodos);
+        
+    %>
     <body>
         <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container-fluid">
@@ -96,8 +113,9 @@
                                 <label class="col-md-4 control-label" for="selectbasic">Período</label>
                                 <div class="col-md-5">
                                     <select id="selectbasic" name="periodo" class="form-control">
-                                        <option value="1">Option one</option>
-                                        <option value="2">Option two</option>
+                                        <c:forEach items="${periodos}" var="periodo">                                            
+                                            <option value="${periodo.id}" selected>${periodo.nome}</option>                                                                                     
+                                        </c:forEach>
                                     </select>
                                 </div>
                             </div>
@@ -116,8 +134,9 @@
                                 <label class="col-md-4 control-label" for="selectbasic">Professor</label>
                                 <div class="col-md-5">
                                     <select id="selectbasic" name="professor" class="form-control">
-                                        <option value="1">Option one</option>
-                                        <option value="2">Option two</option>
+                                        <c:forEach items="${professores}" var="professor">                                            
+                                            <option value="${professor.id}" selected>${professor.nome}</option>                                                                                     
+                                        </c:forEach>
                                     </select>
                                 </div>
                             </div>                                                    
