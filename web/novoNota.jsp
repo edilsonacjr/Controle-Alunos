@@ -125,6 +125,7 @@
                                     <select id="selectbasic" name="alunomateria" class="form-control">
                                         <option value="1">Option one</option>
                                         <option value="2">Option two</option>
+                                        <option value="3">Option three</option>
                                     </select>
                                 </div>
                             </div>

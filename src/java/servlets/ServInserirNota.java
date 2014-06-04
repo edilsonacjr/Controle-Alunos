@@ -76,9 +76,7 @@ public class ServInserirNota extends HttpServlet {
         try {
             notadao = new NotaDao();
             notadao.insere(n);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ServInserirNota.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ServInserirNota.class.getName()).log(Level.SEVERE, null, ex);
         }       
         //processRequest(request, response);
