@@ -4,7 +4,13 @@
     Author     : Dênis
 --%>
 
+<%@page import="entidades.Materia"%>
+<%@page import="dao.MateriaDao"%>
+<%@page import="java.util.List"%>
+<%@page import="entidades.Aluno"%>
+<%@page import="dao.AlunoDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,6 +24,19 @@
         <link href="dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="dashboard.css" rel="stylesheet">
     </head>
+    <%
+        AlunoDao alunodao = new AlunoDao();
+        List<Aluno> alunos = alunodao.listar();
+        pageContext.setAttribute("alunos", alunos);
+        
+        
+        MateriaDao materiadao = new MateriaDao();
+        List<Materia> materias = materiadao.listar();
+        pageContext.setAttribute("materias", materias);
+
+    %>
+
+    %>
     <body>
         <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container-fluid">
@@ -96,8 +115,9 @@
                                 <label class="col-md-4 control-label" for="selectbasic">Aluno</label>
                                 <div class="col-md-5">
                                     <select id="selectbasic" name="aluno" class="form-control">
-                                        <option value="1">Option one</option>
-                                        <option value="2">Option two</option>
+                                        <c:forEach items="${alunos}" var="aluno">                                            
+                                            <option value="${aluno.id}" selected>${aluno.nome}</option>                                                                                     
+                                        </c:forEach>
                                     </select>
                                 </div>
                             </div>
@@ -107,8 +127,9 @@
                                 <label class="col-md-4 control-label" for="selectbasic">Matéria</label>
                                 <div class="col-md-5">
                                     <select id="selectbasic" name="materia" class="form-control">
-                                        <option value="1">Option one</option>
-                                        <option value="2">Option two</option>
+                                        <c:forEach items="${materias}" var="materia">                                            
+                                            <option value="${materia.id}" selected>${materia.nome}</option>                                                                                     
+                                        </c:forEach>
                                     </select>
                                 </div>
                             </div>                                                    
