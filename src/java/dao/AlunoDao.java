@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package dao;
 
 import entidades.Aluno;
@@ -14,20 +13,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.NoResultException;
 
 /**
  *
  * @author User
  */
 public class AlunoDao {
-    
+
     private Connection conexao;
-    
-    public AlunoDao() throws ClassNotFoundException, SQLException{
+
+    public AlunoDao() throws ClassNotFoundException, SQLException {
         conexao = Conexao.getConexao();
     }
-    
-    public void insere(Aluno a) throws SQLException{
+
+    public void insere(Aluno a) throws SQLException {
         String sql = "insert into aluno values (null, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, a.getCurso().getId());
@@ -41,8 +41,8 @@ public class AlunoDao {
         stmt.execute();
         stmt.close();
     }
-    
-    public void atualiza(Aluno a) throws SQLException{
+
+    public void atualiza(Aluno a) throws SQLException {
         String sql = "update aluno set idcurso = ?, dataadminssao = ?"
                 + ", nome = ?, cpf = ?, datanascimento = ?, login = ?, senha = ?, email = ?"
                 + "where idaluno = ?";
@@ -60,16 +60,16 @@ public class AlunoDao {
         stmt.execute();
         stmt.close();
     }
-    
-    public void exclui(Aluno a) throws SQLException{
+
+    public void exclui(Aluno a) throws SQLException {
         String sql = "delete from aluno where idaluno = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, a.getId());
         stmt.execute();
         stmt.close();
     }
-    
-    public List<Aluno> listar() throws SQLException{
+
+    public List<Aluno> listar() throws SQLException {
         List<Aluno> list = new ArrayList<>();
         Aluno a;
         String sql = "select * from "
@@ -92,7 +92,7 @@ public class AlunoDao {
         }
         return list;
     }
-    
+
     public Aluno getAluno(Aluno a) throws SQLException {
         String sql = "select * from aluno a where idaluno = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
@@ -111,5 +111,34 @@ public class AlunoDao {
         }
         return a;
     }
-    
+
+    public Aluno validaAluno(Aluno aluno) throws SQLException {
+        String sql = "select * from aluno a"
+                + "left join curso c on (a.idcurso = c.idcurso) "
+                + "where login = ? and senha = ?";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        stmt.setString(1, aluno.getLogin());
+        stmt.setString(2, aluno.getSenha());
+        Aluno a = null;
+        try {
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                a.setId(rs.getInt("a.idaluno"));
+                a.getCurso().setId(rs.getInt("a.idcurso"));
+                //a.setDataAdmissao(rs.getDate("a.dataadmissao"));
+                a.setNome(rs.getString("a.nome"));
+                a.setCpf(rs.getString("a.cpf"));
+                //a.setDataNascimento(rs.getDate("a.datanascimento"));
+                a.setLogin(rs.getString("a.login"));
+                a.setSenha(rs.getString("a.senha"));
+                a.setEmail(rs.getString("a.email"));
+            }
+        } catch (NoResultException e) {
+            a = null;
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        }
+        return a;
+    }
+
 }
