@@ -10,6 +10,8 @@ import entidades.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -72,6 +74,15 @@ public class ServInserirUsuario extends HttpServlet {
         u.setLogin(request.getParameter("login"));
         u.setSenha(request.getParameter("senha"));
         u.setEmail(request.getParameter("email"));
+        String date = request.getParameter("datanasc");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        java.util.Date parsedDate = null;
+        try {
+            parsedDate = dateFormat.parse(date);
+        } catch (ParseException ex) {
+            Logger.getLogger(ServInserirUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        u.setDataNascimento(parsedDate);
         UsuarioDao usuariodao;
         try {
             usuariodao = new UsuarioDao();
