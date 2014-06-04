@@ -72,20 +72,19 @@ public class AlunoDao {
     public List<Aluno> listar() throws SQLException{
         List<Aluno> list = new ArrayList<>();
         Aluno a;
-        String sql = "select * "
-                + "from aluno a"
-                + "inner join curso c on (a.idcurso = c.idcurso)"
-                + "inner join materia m on (a.idmateria = m.idmateria) ";
+        String sql = "select * from "
+                + "aluno a "
+                + "inner join curso c on (a.idcurso = c.idcurso)";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
             a = new Aluno();
             a.setId(rs.getInt("a.idaluno"));
             a.getCurso().setId(rs.getInt("c.idcurso"));
-            a.setDataAdmissao(rs.getDate("a.dataadmissao"));
+            //a.setDataAdmissao(rs.getDate("a.dataadmissao"));
             a.setNome(rs.getString("a.nome"));
             a.setCpf(rs.getString("a.cpf"));
-            a.setDataNascimento(rs.getDate("a.datanascimento"));
+            //a.setDataNascimento(rs.getDate("a.datanascimento"));
             a.setLogin(rs.getString("a.login"));
             a.setSenha(rs.getString("a.senha"));
             a.setEmail("a.email");
