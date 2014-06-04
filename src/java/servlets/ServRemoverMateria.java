@@ -6,7 +6,7 @@
 
 package servlets;
 
-import dao.MateriaDAO;
+import dao.MateriaDao;
 import entidades.Materia;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -148,9 +148,9 @@ public class ServRemoverMateria extends HttpServlet {
             throws ServletException, IOException {
         Materia m = new Materia();
         m.setId(Integer.parseInt(request.getParameter("id")));
-        MateriaDAO materiadao;
+        MateriaDao materiadao;
         try {
-            materiadao = new MateriaDAO();
+            materiadao = new MateriaDao();
             materiadao.insere(m);
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ServRemoverMateria.class.getName()).log(Level.SEVERE, null, ex);

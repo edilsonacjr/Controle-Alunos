@@ -19,11 +19,11 @@ import java.util.List;
  *
  * @author claudemir
  */
-public class FaltaDAO {
+public class FaltaDao {
     
     private Connection conexao;
     
-    public FaltaDAO() throws ClassNotFoundException, SQLException {
+    public FaltaDao() throws ClassNotFoundException, SQLException {
         conexao = Conexao.getConexao();
     }
     
@@ -37,8 +37,8 @@ public class FaltaDAO {
     }
     
     public void atualiza(Falta f) throws SQLException {
-        String sql = "update falta set idAlunoMateria = ?, data ?"
-                + "where idFalta = ?";
+        String sql = "update falta set idalunomateria = ?, data ?"
+                + "where idfalta = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, f.getAlunoMateria().getId());
         stmt.setDate(2, new Date(f.getData().getTime()));
@@ -48,7 +48,7 @@ public class FaltaDAO {
     }
     
     public void exclui(Falta f) throws SQLException {
-        String sql = "delete from falta where idFalta = ?";
+        String sql = "delete from falta where idfalta = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, f.getId());
         stmt.execute();
@@ -63,13 +63,28 @@ public class FaltaDAO {
         ResultSet rs = stmt.executeQuery();
         while (rs.next()){
             f = new Falta();
-            f.setId(rs.getInt("idFalta"));
-            f.getAlunoMateria().setId(rs.getInt("idAlunoMateria"));
+            f.setId(rs.getInt("idfalta"));
+            f.getAlunoMateria().setId(rs.getInt("idalunomateria"));
             f.setData(rs.getDate("data"));
             list.add(f);
         }
-        
+        stmt.close();
+        rs.close();
         return list;
     }
     
+    public Falta getFalta(Falta f) throws SQLException {
+        String sql = "select * from falta where idfalta = ?";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        stmt.setInt(1, f.getId());
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()){
+            f.setId(rs.getInt("idfalta"));
+            f.getAlunoMateria().setId(rs.getInt("idalunomateria"));
+            f.setData(rs.getDate("data"));
+        }
+        stmt.close();
+        rs.close();
+        return f;
+    }
 }

@@ -6,7 +6,7 @@
 
 package servlets;
 
-import dao.AlunoDAO;
+import dao.AlunoDao;
 import entidades.Aluno;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -148,9 +148,9 @@ public class ServRemoverAluno extends HttpServlet {
             throws ServletException, IOException {
         Aluno a = new Aluno();
         a.setId(Integer.parseInt(request.getParameter("id")));       
-        AlunoDAO alunodao;
+        AlunoDao alunodao;
         try {
-            alunodao = new AlunoDAO();
+            alunodao = new AlunoDao();
             alunodao.exclui(a);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ServRemoverAluno.class.getName()).log(Level.SEVERE, null, ex);

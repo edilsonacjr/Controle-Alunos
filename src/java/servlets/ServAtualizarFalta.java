@@ -5,7 +5,7 @@
  */
 package servlets;
 
-import dao.FaltaDAO;
+import dao.FaltaDao;
 import entidades.Falta;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -169,9 +169,9 @@ public class ServAtualizarFalta extends HttpServlet {
             Logger.getLogger(ServAtualizarFalta.class.getName()).log(Level.SEVERE, null, ex);
         }
         f.setData(Date.valueOf(date));
-        FaltaDAO faltadao;
+        FaltaDao faltadao;
         try {
-            faltadao = new FaltaDAO();
+            faltadao = new FaltaDao();
             faltadao.atualiza(f);
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ServAtualizarFalta.class.getName()).log(Level.SEVERE, null, ex);

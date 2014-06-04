@@ -17,11 +17,11 @@ import java.util.List;
  *
  * @author claudemir
  */
-public class NotaDAO {
+public class NotaDao {
 
     Connection conexao;
 
-    public NotaDAO() throws ClassNotFoundException, SQLException {
+    public NotaDao() throws ClassNotFoundException, SQLException {
         conexao = Conexao.getConexao();
     }
 
@@ -37,8 +37,8 @@ public class NotaDAO {
     }
 
     public void atualiza(Nota n) throws SQLException {
-        String sql = "update nota set idAlunoMateria = ? n1 = ?"
-                + ", n2 = ?, n3 = ? where idNota = ? ";
+        String sql = "update nota set idalunomateria = ? n1 = ?"
+                + ", n2 = ?, n3 = ? where idnota = ? ";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, n.getAlunoMateria().getId());
         stmt.setDouble(2, n.getN1());
@@ -50,7 +50,7 @@ public class NotaDAO {
     }
 
     public void exclui(Nota n) throws SQLException {
-        String sql = "delete from nota where idNota = ?";
+        String sql = "delete from nota where idnota = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, n.getId());
         stmt.execute();
@@ -65,14 +65,33 @@ public class NotaDAO {
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
             n = new Nota();
-            n.setId(rs.getInt("idNota"));
-            n.getAlunoMateria().setId(rs.getInt("idAlunoMateria"));
+            n.setId(rs.getInt("idnota"));
+            n.getAlunoMateria().setId(rs.getInt("idalunomateria"));
             n.setN1(rs.getDouble("n1"));
             n.setN2(rs.getDouble("n2"));
             n.setN3(rs.getDouble("n3"));
             list.add(n);
         }
+        stmt.close();
+        rs.close();
         return list;
+    }
+    
+    public Nota getNota(Nota n) throws SQLException {
+        String sql = "select * from nota where idnota = ?";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        stmt.setInt(1, n.getId());
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            n.setId(rs.getInt("idnota"));
+            n.getAlunoMateria().setId(rs.getInt("idalunomateria"));
+            n.setN1(rs.getDouble("n1"));
+            n.setN2(rs.getDouble("n2"));
+            n.setN3(rs.getDouble("n3"));
+        }
+        stmt.close();
+        rs.close();
+        return n;
     }
 
 }

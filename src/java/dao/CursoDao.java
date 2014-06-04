@@ -18,11 +18,11 @@ import java.util.List;
  *
  * @author User
  */
-public class CursoDAO {
+public class CursoDao {
     
     private Connection conexao;
     
-    public CursoDAO() throws ClassNotFoundException, SQLException{
+    public CursoDao() throws ClassNotFoundException, SQLException{
         conexao = Conexao.getConexao();
     }
     
@@ -38,7 +38,7 @@ public class CursoDAO {
     
     public void atualiza(Curso c) throws SQLException {
         String sql = "update curso set nome = ?, categoria = ?"
-                + "idProfessor = ? where idCurso = ?";
+                + "idprofessor = ? where idcurso = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setString(1, c.getNome());
         stmt.setString(2, c.getCategoria());
@@ -49,7 +49,7 @@ public class CursoDAO {
     }
     
     public void exclui(Curso c) throws SQLException {
-        String sql = "delete from curso where idCurso = ?";
+        String sql = "delete from curso where idcurso = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, c.getId());
         stmt.execute();
@@ -64,11 +64,27 @@ public class CursoDAO {
         ResultSet rs = stmt.executeQuery();
         while (rs.next()){
             c = new Curso();
-            c.setId(rs.getInt("idCurso"));
+            c.setId(rs.getInt("idcurso"));
             c.setCategoria(rs.getString("categoria"));
-            c.getCordenador().setId(rs.getInt("idProfessor"));
+            c.getCordenador().setId(rs.getInt("idprofessor"));
             list.add(c);
         }
+        stmt.close();
+        rs.close();
         return list;
+    }
+    
+    public Curso getCurso(Curso c) throws SQLException {
+        String sql = "select * from curso where idcurso = ?";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()){
+            c.setId(rs.getInt("idcurso"));
+            c.setCategoria(rs.getString("categoria"));
+            c.getCordenador().setId(rs.getInt("idprofessor"));
+        }
+        stmt.close();
+        rs.close();
+        return c;
     }
 }

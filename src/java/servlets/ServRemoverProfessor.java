@@ -5,8 +5,8 @@
  */
 package servlets;
 
-import dao.AlunoDAO;
-import dao.ProfessorDAO;
+import dao.AlunoDao;
+import dao.ProfessorDao;
 import entidades.Professor;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -148,9 +148,9 @@ public class ServRemoverProfessor extends HttpServlet {
             throws ServletException, IOException {
         Professor p = new Professor();
         p.setId(Integer.parseInt(request.getParameter("id")));
-        ProfessorDAO professordao;
+        ProfessorDao professordao;
         try {
-            professordao = new ProfessorDAO();
+            professordao = new ProfessorDao();
             professordao.exclui(p);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ServRemoverProfessor.class.getName()).log(Level.SEVERE, null, ex);

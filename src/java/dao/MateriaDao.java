@@ -18,11 +18,11 @@ import java.util.List;
  *
  * @author claudemir
  */
-public class MateriaDAO {
+public class MateriaDao {
     
     private Connection conexao;
     
-    public MateriaDAO() throws ClassNotFoundException, SQLException{
+    public MateriaDao() throws ClassNotFoundException, SQLException{
         conexao = Conexao.getConexao();
     }
     
@@ -37,8 +37,8 @@ public class MateriaDAO {
     }
     
     public void atualiza(Materia m) throws SQLException {
-        String sql = "update materia set idPeriodo = ?, nome = ?, idProfessor = ?"
-                + "where idMateria = ?";
+        String sql = "update materia set idperiodo = ?, nome = ?, idprofessor = ?"
+                + "where idmateria = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, m.getPeriodo().getId());
         stmt.setString(2, m.getNome());
@@ -49,7 +49,7 @@ public class MateriaDAO {
     }
     
     public void exclui(Materia m) throws SQLException {
-        String sql = "delete from materia where idMateria = ?";
+        String sql = "delete from materia where idmateria = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, m.getId());
         stmt.execute();
@@ -64,12 +64,30 @@ public class MateriaDAO {
         ResultSet rs = stmt.executeQuery();
         while (rs.next()){
             m = new Materia();
-            m.setId(rs.getInt("idMateria"));
-            m.getPeriodo().setId(rs.getInt("idPeriodo"));
+            m.setId(rs.getInt("idmateria"));
+            m.getPeriodo().setId(rs.getInt("idperiodo"));
             m.setNome(rs.getString("nome"));
-            m.getProfessor().setId(rs.getInt("idProfessor"));
+            m.getProfessor().setId(rs.getInt("idprofessor"));
             list.add(m);
         }
+        stmt.close();
+        rs.close();
         return list;
+    }
+    
+    public Materia getMateria(Materia m) throws SQLException {
+        String sql = "select * from materia where idmateria = ?";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        stmt.setInt(1, m.getId());
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()){
+            m.setId(rs.getInt("idmateria"));
+            m.getPeriodo().setId(rs.getInt("idperiodo"));
+            m.setNome(rs.getString("nome"));
+            m.getProfessor().setId(rs.getInt("idprofessor"));
+        }
+        stmt.close();
+        rs.close();
+        return m;
     }
 }

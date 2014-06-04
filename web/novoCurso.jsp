@@ -1,7 +1,12 @@
+<%-- 
+    Document   : novoCurso
+    Created on : 03/06/2014, 14:46:02
+    Author     : Dênis
+--%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,9 +18,7 @@
         <link href="dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="dashboard.css" rel="stylesheet">
     </head>
-
     <body>
-
         <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -47,19 +50,19 @@
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
                         <li>
-                            <a href="#">Página Principal</a>
+                            <a href="paginaInicial.jsp">Página Principal</a>
                         </li>
                         <li>
-                            <a href="#">Professores</a>
+                            <a href="Professores.jsp">Professores</a>
+                        </li>
+                        <li >
+                            <a href="Alunos.jsp">Alunos</a>
                         </li>
                         <li class="active">
-                            <a href="#">Alunos</a>
+                            <a href="Cursos.jsp">Cursos</a>
                         </li>
                         <li>
-                            <a href="#">Cursos</a>
-                        </li>
-                        <li>
-                            <a href="#">Usuários</a>
+                            <a href="Usuarios.jsp">Usuários</a>
                         </li>
                         <li>
                             <a href="Periodos.jsp">Períodos</a>
@@ -81,7 +84,7 @@
 
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Novo Aluno &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <h1 class="page-header">Novo Curso &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         <br>
                     </h1>
 
@@ -92,63 +95,27 @@
 
                             <!-- Text input-->
                             <div class="form-group">
-                                <label class="col-md-4 control-label" for="textinput">Nome</label>
+                                <label class="col-md-4 control-label" for="textinput">Nome do Curso</label>
                                 <div class="col-md-5">
-                                    <input id="textinput" name="nome" placeholder="Nome" class="form-control input-md" type="text">
+                                    <input id="textinput" name="nomecurso" placeholder="Nome" class="form-control input-md" type="text">
 
                                 </div>
                             </div>
 
                             <!-- Text input-->
                             <div class="form-group">
-                                <label class="col-md-4 control-label" for="textinput">CPF</label>
+                                <label class="col-md-4 control-label" for="textinput">Categoria</label>
                                 <div class="col-md-5">
-                                    <input id="textinput" name="cpf" placeholder="CPF" class="form-control input-md" type="text">
+                                    <input id="textinput" name="categoria" placeholder="Categoria" class="form-control input-md" type="text">
 
                                 </div>
-                            </div>
-
-                            <!-- Text input-->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="textinput">Data de Nascimento</label>
-                                <div class="col-md-5">
-                                    <input id="textinput" name="data" placeholder="data" class="form-control input-md" type="text">
-
-                                </div>
-                            </div>
-
-                            <!-- Text input-->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="textinput">E-mail</label>
-                                <div class="col-md-5">
-                                    <input id="textinput" name="email" placeholder="E-mail" class="form-control input-md" type="text">
-
-                                </div>
-                            </div>
-
-                            <!-- Text input-->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="textinput">Login</label>
-                                <div class="col-md-5">
-                                    <input id="textinput" name="login" placeholder="Login" class="form-control input-md" type="text">
-
-                                </div>
-                            </div>
-
-                            <!-- Password input-->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="passwordinput">Senha</label>
-                                <div class="col-md-5">
-                                    <input id="passwordinput" name="senha" placeholder="Senha" class="form-control input-md" type="password">
-
-                                </div>
-                            </div>
+                            </div>                          
 
                             <!-- Select Basic -->
                             <div class="form-group">
-                                <label class="col-md-4 control-label" for="selectbasic">Curso</label>
+                                <label class="col-md-4 control-label" for="selectbasic">Coordenador</label>
                                 <div class="col-md-5">
-                                    <select id="selectbasic" name="curso" class="form-control">
+                                    <select id="selectbasic" name="coordenador" class="form-control">
                                         <option value="1">Option one</option>
                                         <option value="2">Option two</option>
                                     </select>
@@ -159,15 +126,23 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label text-left" for="button1id"></label>
                                 <div class="col-md-5 text-right">
-                                    <button id="button1id" name="button1id" class="btn btn-success" onclick="document.forms[0].action = 'ServInserirAluno';
-                        return true;">Cadastrar</button>
-                                    <button id="button2id" name="button2id" class="btn btn-danger" onclick="document.forms[0].action = 'Alunos.jsp';
-                        return true;">Cancelar</button>
+                                    <button id="button1id" name="button1id" class="btn btn-success" onclick="document.forms[0].action = 'ServInserirCurso';
+                                            return true;">Cadastrar</button>
+                                    <button id="button2id" name="button2id" class="btn btn-danger" onclick="document.forms[0].action = 'Cursos.jsp';
+                                            return true;">Cancelar</button>
                                 </div>
                             </div>
 
                         </fieldset>
                     </form>
+
+
+
+
+
+
+
+
                     <div class="table-responsive">
 
                     </div>

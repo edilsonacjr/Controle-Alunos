@@ -19,11 +19,11 @@ import java.util.List;
  *
  * @author User
  */
-public class AlunoDAO {
+public class AlunoDao {
     
     private Connection conexao;
     
-    public AlunoDAO() throws ClassNotFoundException, SQLException{
+    public AlunoDao() throws ClassNotFoundException, SQLException{
         conexao = Conexao.getConexao();
     }
     
@@ -43,9 +43,9 @@ public class AlunoDAO {
     }
     
     public void atualiza(Aluno a) throws SQLException{
-        String sql = "update aluno set idCurso = ?, dataAdminssao = ?"
-                + ", nome = ?, cpf = ?, dataNascimento = ?, login = ?, senha = ?, email = ?"
-                + "where idAluno = ?";
+        String sql = "update aluno set idcurso = ?, dataadminssao = ?"
+                + ", nome = ?, cpf = ?, datanascimento = ?, login = ?, senha = ?, email = ?"
+                + "where idaluno = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, a.getId());
         stmt.setInt(2, a.getCurso().getId());
@@ -62,7 +62,7 @@ public class AlunoDAO {
     }
     
     public void exclui(Aluno a) throws SQLException{
-        String sql = "delete from aluno where idAluno = ?";
+        String sql = "delete from aluno where idaluno = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, a.getId());
         stmt.execute();
@@ -74,25 +74,43 @@ public class AlunoDAO {
         Aluno a;
         String sql = "select * "
                 + "from aluno a"
-                + "inner join curso c on (a.idCurso = c.idCurso)"
-                + "inner join materia m on (a.idMateria = m.idMateria) ";
+                + "inner join curso c on (a.idcurso = c.idcurso)"
+                + "inner join materia m on (a.idmateria = m.idmateria) ";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
             a = new Aluno();
-            a.setId(rs.getInt("a.idAluno"));
-            a.getCurso().setId(rs.getInt("c.idCurso"));
-            a.setDataAdmissao(rs.getDate("a.dataAdmissao"));
+            a.setId(rs.getInt("a.idaluno"));
+            a.getCurso().setId(rs.getInt("c.idcurso"));
+            a.setDataAdmissao(rs.getDate("a.dataadmissao"));
             a.setNome(rs.getString("a.nome"));
             a.setCpf(rs.getString("a.cpf"));
-            a.setDataNascimento(rs.getDate("a.dataNascimento"));
+            a.setDataNascimento(rs.getDate("a.datanascimento"));
             a.setLogin(rs.getString("a.login"));
             a.setSenha(rs.getString("a.senha"));
             a.setEmail("a.email");
             list.add(a);
         }
-        
         return list;
+    }
+    
+    public Aluno getAluno(Aluno a) throws SQLException {
+        String sql = "select * from aluno where idaluno = ?";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        stmt.setInt(1, a.getId());
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            a.setId(rs.getInt("a.idaluno"));
+            a.getCurso().setId(rs.getInt("c.idcurso"));
+            a.setDataAdmissao(rs.getDate("a.dataadmissao"));
+            a.setNome(rs.getString("a.nome"));
+            a.setCpf(rs.getString("a.cpf"));
+            a.setDataNascimento(rs.getDate("a.datanascimento"));
+            a.setLogin(rs.getString("a.login"));
+            a.setSenha(rs.getString("a.senha"));
+            a.setEmail("a.email");
+        }
+        return a;
     }
     
 }

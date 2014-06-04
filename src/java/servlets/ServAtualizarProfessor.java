@@ -6,8 +6,8 @@
 
 package servlets;
 
-import dao.AlunoDAO;
-import dao.ProfessorDAO;
+import dao.AlunoDao;
+import dao.ProfessorDao;
 import entidades.Professor;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -211,7 +211,7 @@ public class ServAtualizarProfessor extends HttpServlet {
         p.setSenha(request.getParameter("senha"));
         p.setEmail(request.getParameter("email"));
          try {
-            ProfessorDAO professordao = new ProfessorDAO();
+            ProfessorDao professordao = new ProfessorDao();
             professordao.atualizar(p);
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ServAtualizarProfessor.class.getName()).log(Level.SEVERE, null, ex);

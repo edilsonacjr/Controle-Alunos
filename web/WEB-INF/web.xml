@@ -32,6 +32,10 @@
         <servlet-name>ServAlunoMateria</servlet-name>
         <servlet-class>servlets.ServInserirAlunoMateria</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServInserirUsuario</servlet-name>
+        <servlet-class>servlets.ServInserirUsuario</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServInserirAluno</servlet-name>
         <url-pattern>/ServInserirAluno</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>ServAlunoMateria</servlet-name>
         <url-pattern>/ServAlunoMateria</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServInserirUsuario</servlet-name>
+        <url-pattern>/ServInserirUsuario</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

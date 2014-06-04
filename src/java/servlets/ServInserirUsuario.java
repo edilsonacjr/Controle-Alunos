@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package servlets;
 
-import dao.MateriaDao;
-import entidades.Materia;
+import dao.UsuarioDao;
+import entidades.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -23,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Dênis
  */
-public class ServInserirMateria extends HttpServlet {
+public class ServInserirUsuario extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,7 +38,7 @@ public class ServInserirMateria extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         doPost(request, response);
-        RequestDispatcher view = request.getRequestDispatcher("novoMateria.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("novoUsuario.jsp");
         view.forward(request, response);
     }
 
@@ -67,18 +68,29 @@ public class ServInserirMateria extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Materia m = new Materia();
-        m.getPeriodo().setId(Integer.parseInt(request.getParameter("periodo")));
-        m.setNome(request.getParameter("nome"));
-        m.getProfessor().setId(Integer.parseInt(request.getParameter("professor")));
-        MateriaDao materiadao;
+        Usuario u = new Usuario();
+        u.setNome(request.getParameter("nome"));
+        u.setCpf(request.getParameter("cpf"));
+        u.setLogin(request.getParameter("login"));
+        u.setSenha(request.getParameter("senha"));
+        u.setEmail(request.getParameter("email"));
+        String date = request.getParameter("datanasc");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        java.util.Date parsedDate = null;
         try {
-            materiadao = new MateriaDao();
-            materiadao.insere(m);
+            parsedDate = dateFormat.parse(date);
+        } catch (ParseException ex) {
+            Logger.getLogger(ServInserirUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        u.setDataNascimento(parsedDate);
+        UsuarioDao usuariodao;
+        try {
+            usuariodao = new UsuarioDao();
+            usuariodao.insere(u);
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(ServInserirMateria.class.getName()).log(Level.SEVERE, null, ex);
-        }        
-        //processRequest(request, response);
+            Logger.getLogger(ServInserirUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     /**

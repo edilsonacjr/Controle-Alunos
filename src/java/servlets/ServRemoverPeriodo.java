@@ -6,7 +6,7 @@
 
 package servlets;
 
-import dao.PeriodoDAO;
+import dao.PeriodoDao;
 import entidades.Periodo;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -148,9 +148,9 @@ public class ServRemoverPeriodo extends HttpServlet {
             throws ServletException, IOException {
         Periodo p = new Periodo();
         p.setId(Integer.parseInt(request.getParameter("id")));
-         PeriodoDAO periododao;
+         PeriodoDao periododao;
          try {
-            periododao = new PeriodoDAO();
+            periododao = new PeriodoDao();
             periododao.exclui(p);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ServRemoverPeriodo.class.getName()).log(Level.SEVERE, null, ex);

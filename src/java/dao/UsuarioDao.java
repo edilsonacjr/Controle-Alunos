@@ -18,11 +18,11 @@ import java.util.List;
  *
  * @author claudemir
  */
-public class UsuarioDAO {
+public class UsuarioDao {
 
     private Connection conexao;
 
-    public UsuarioDAO() throws ClassNotFoundException, SQLException {
+    public UsuarioDao() throws ClassNotFoundException, SQLException {
         conexao = Conexao.getConexao();
     }
 
@@ -40,8 +40,8 @@ public class UsuarioDAO {
     }
 
     public void atualiza(Usuario u) throws SQLException {
-        String sql = "update usuario set nome = ?, cpf = ?, dataNascimento = ? login = ?, senha = ?, email = ?"
-                + "where idUsuario = ?";
+        String sql = "update usuario set nome = ?, cpf = ?, datanascimento = ? login = ?, senha = ?, email = ?"
+                + "where idusuario = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setString(1, u.getNome());
         stmt.setString(2, u.getCpf());
@@ -55,7 +55,7 @@ public class UsuarioDAO {
     }
 
     public void exclui(Usuario u) throws SQLException {
-        String sql = "delete from usuario where idUsuario = ?";
+        String sql = "delete from usuario where idusuario = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, u.getId());
         stmt.execute();
@@ -70,9 +70,9 @@ public class UsuarioDAO {
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
             u = new Usuario();
-            u.setId(rs.getInt("idUsuario"));
+            u.setId(rs.getInt("idusuario"));
             u.setNome(rs.getString("nome"));
-            u.setDataNascimento(rs.getDate("dataNascimento"));
+            u.setDataNascimento(rs.getDate("datanascimento"));
             u.setCpf(rs.getString("cpf"));
             u.setLogin(rs.getString("login"));
             u.setSenha(rs.getString("senha"));
@@ -81,5 +81,24 @@ public class UsuarioDAO {
         }
         return list;
     }
-
+    
+    public Usuario getUsuario(Usuario u) throws SQLException{
+        String sql = "select * from usuario where idusuario = ?";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        stmt.setInt(1, u.getId());
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            u = new Usuario();
+            u.setId(rs.getInt("idusuario"));
+            u.setNome(rs.getString("nome"));
+            u.setDataNascimento(rs.getDate("datanascimento"));
+            u.setCpf(rs.getString("cpf"));
+            u.setLogin(rs.getString("login"));
+            u.setSenha(rs.getString("senha"));
+            u.setEmail(rs.getString("email"));
+        }
+        stmt.close();
+        rs.close();
+        return u;
+    }
 }
