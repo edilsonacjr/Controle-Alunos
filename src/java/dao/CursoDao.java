@@ -65,6 +65,7 @@ public class CursoDao {
         while (rs.next()){
             c = new Curso();
             c.setId(rs.getInt("idcurso"));
+            c.setNome(rs.getString("nome"));
             c.setCategoria(rs.getString("categoria"));
             c.getCordenador().setId(rs.getInt("idprofessor"));
             list.add(c);

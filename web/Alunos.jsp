@@ -1,4 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="entidades.Curso" %>
 <!DOCTYPE html>
 <html>
 
@@ -115,6 +117,7 @@
                                 <label class="col-md-4 control-label" for="selectbasic">Materia</label>
                                 <div class="col-md-5">
                                     <select id="selectbasic" name="selectbasic" class="form-control">
+                                        
                                         <option value="1">Option one</option>
                                         <option value="2">Option two</option>
                                     </select>

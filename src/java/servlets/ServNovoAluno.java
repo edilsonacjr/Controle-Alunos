@@ -6,9 +6,7 @@
 
 package servlets;
 
-import dao.AlunoDao;
 import dao.CursoDao;
-import entidades.Aluno;
 import entidades.Curso;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -27,8 +25,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author edilson
  */
-@WebServlet(name = "ServEditarAluno", urlPatterns = {"/ServEditarAluno"})
-public class ServEditarAluno extends HttpServlet {
+@WebServlet(name = "ServNovoAluno", urlPatterns = {"/ServNovoAluno"})
+public class ServNovoAluno extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,22 +40,13 @@ public class ServEditarAluno extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-        CursoDao daoC = new CursoDao();
-        List<Curso> cursos = daoC.listar();
         
+        CursoDao dao = new CursoDao();
+        List<Curso> cursos = dao.listar();
         
-        
-        AlunoDao dao = new AlunoDao();
-        List<Aluno> alunos = dao.listar();
-        int id = Integer.parseInt(request.getParameter("edita"));
-        Aluno aluno = new Aluno();
-        aluno.setId(id);
-        aluno = dao.getAluno(aluno);
-        
-        request.setAttribute("cursos", cursos);
-        request.setAttribute("aluno", aluno);
-        RequestDispatcher view = request.getRequestDispatcher("EditarAluno.jsp");
-        view.forward(request, response);        
+        request.setAttribute("curso", cursos);
+        RequestDispatcher view = request.getRequestDispatcher("novoAluno.jsp");
+        view.forward(request, response); 
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -75,9 +64,9 @@ public class ServEditarAluno extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ServEditarAluno.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServNovoAluno.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(ServEditarAluno.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServNovoAluno.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -95,9 +84,9 @@ public class ServEditarAluno extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ServEditarAluno.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServNovoAluno.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(ServEditarAluno.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServNovoAluno.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
