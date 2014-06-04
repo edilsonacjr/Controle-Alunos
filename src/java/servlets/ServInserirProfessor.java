@@ -5,10 +5,12 @@
  */
 package servlets;
 
+import dao.ProfessorDao;
 import entidades.Professor;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
@@ -82,10 +84,19 @@ public class ServInserirProfessor extends HttpServlet {
             date = dateFormat.format(parsedDate);
         } catch (ParseException ex) {
             Logger.getLogger(ServInserirProfessor.class.getName()).log(Level.SEVERE, null, ex);
-        }   
+        }
         //Date dataadmissao = new Date(System.currentTimeMillis());
         //dateFormat.format(dataadmissao);
         p.setDataNascimento(parsedDate);
+        try {
+            ProfessorDao professordao = new ProfessorDao();
+            professordao.inserir(p);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ServInserirProfessor.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ServInserirProfessor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         //p.setDataAdmissao(dataadmissao);
         //processRequest(request, response);
     }
