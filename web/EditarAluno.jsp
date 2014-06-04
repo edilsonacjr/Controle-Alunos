@@ -159,8 +159,8 @@
                             <div class="form-group" method="post">
                                 <label class="col-md-4 control-label text-left" for="button1id"></label>
                                 <div class="col-md-5 text-right">
-                                    <button id="button1id" name="button1id" class="btn btn-success" onclick="form.action = 'ServInserirAluno';">Salvar</button>
-                                    <button id="button2id" name="button2id" class="btn btn-danger" onclick="form.action = 'erro'; form.method='post';">Cancelar</button>
+                                    <button id="button1id" name="button1id" class="btn btn-success" onclick="form.action = 'erro';">Salvar</button>
+                                    <button id="button2id" name="button2id" class="btn btn-danger" onclick="form.action = 'Alunos.jsp'; form.method='post';">Cancelar</button>
                                 </div>
                             </div>
 

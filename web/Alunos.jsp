@@ -35,7 +35,7 @@
         PeriodoDao daop = new PeriodoDao();
         List<Periodo> periodos = daop.listar();
         pageContext.setAttribute("periodos", periodos);
-        
+
         MateriaDao daom = new MateriaDao();
         List<Materia> materias = daom.listar();
         pageContext.setAttribute("materias", materias);
@@ -74,20 +74,20 @@
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li>
-                            <a href="#">Página Principal</a>
+                        <li >
+                            <a href="principalAdmin.jsp">Página Principal</a>
                         </li>
                         <li>
-                            <a href="#">Professores</a>
+                            <a href="Professores.jsp">Professores</a>
                         </li>
                         <li class="active">
-                            <a href="#">Alunos</a>
+                            <a href="Alunos.jsp">Alunos</a>
                         </li>
                         <li>
-                            <a href="#">Cursos</a>
+                            <a href="Cursos.jsp">Cursos</a>
                         </li>
                         <li>
-                            <a href="#">Usuários</a>
+                            <a href="Usuarios.jsp">Usuários</a>
                         </li>
                     </ul>
 
@@ -134,7 +134,7 @@
                                 <div class="col-md-5">
                                     <select id="selectbasic" name="selectbasic" class="form-control">
                                         <c:forEach items="${periodos}" var="periodo">                                            
-                                            <option value="${periodo.id}" selected>${periodo.nome}</option>                                                                                     
+                                            <option value="${periodo.id}" selected>${periodo.nome} - ${periodo.ano}</option>                                                                                     
                                         </c:forEach>
                                     </select>
                                 </div>
