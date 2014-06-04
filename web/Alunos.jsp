@@ -1,3 +1,7 @@
+<%@page import="entidades.Materia"%>
+<%@page import="dao.MateriaDao"%>
+<%@page import="entidades.Periodo"%>
+<%@page import="dao.PeriodoDao"%>
 <%@page import="dao.CursoDao"%>
 <%@page import="entidades.Aluno"%>
 <%@page import="java.util.List"%>
@@ -23,10 +27,20 @@
         AlunoDao dao = new AlunoDao();
         List<Aluno> alunos = dao.listar();
         pageContext.setAttribute("alunos", alunos);
-        
+
         CursoDao daoC = new CursoDao();
         List<Curso> cursos = daoC.listar();
         pageContext.setAttribute("cursos", cursos);
+
+        PeriodoDao daop = new PeriodoDao();
+        List<Periodo> periodos = daop.listar();
+        pageContext.setAttribute("periodos", periodos);
+        
+        MateriaDao daom = new MateriaDao();
+        List<Materia> materias = daom.listar();
+        pageContext.setAttribute("materias", materias);
+
+
     %>
     <body>
 
@@ -110,7 +124,6 @@
                                         <c:forEach items="${cursos}" var="curso">                                            
                                             <option value="${curso.id}" selected>${curso.nome}</option>                                                                                     
                                         </c:forEach>
-                                        
                                     </select>
                                 </div>
                             </div>
@@ -120,8 +133,9 @@
                                 <label class="col-md-4 control-label" for="selectbasic">Período</label>
                                 <div class="col-md-5">
                                     <select id="selectbasic" name="selectbasic" class="form-control">
-                                        <option value="1">Option one</option>
-                                        <option value="2">Option two</option>
+                                        <c:forEach items="${periodos}" var="periodo">                                            
+                                            <option value="${periodo.id}" selected>${periodo.nome}</option>                                                                                     
+                                        </c:forEach>
                                     </select>
                                 </div>
                             </div>
@@ -132,8 +146,9 @@
                                 <div class="col-md-5">
                                     <select id="selectbasic" name="selectbasic" class="form-control">
 
-                                        <option value="1">Option one</option>
-                                        <option value="2">Option two</option>
+                                        <<c:forEach items="${materias}" var="materia">                                            
+                                            <option value="${materia.id}" selected>${materia.nome}</option>                                                                                     
+                                        </c:forEach>
                                     </select>
                                 </div>
                             </div>
