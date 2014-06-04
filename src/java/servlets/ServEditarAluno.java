@@ -40,17 +40,17 @@ public class ServEditarAluno extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-        //AlunoDAO dao = new AlunoDAO();
-        //List<Aluno> alunos = dao.listar();
+        AlunoDAO dao = new AlunoDAO();
+        List<Aluno> alunos = dao.listar();
         int id = Integer.parseInt(request.getParameter("edita"));
         System.out.println("TESTE"+id);
         Aluno aluno = new Aluno();
         aluno.setId(39);
-        //for(Aluno a : alunos){
-        //    if(a.getId() == id){
-        //        aluno = a;
-        //    }
-        //}
+        for(Aluno a : alunos){
+            if(a.getId() == id){
+                aluno = a;
+            }
+        }
         request.setAttribute("aluno", aluno);
         RequestDispatcher view = request.getRequestDispatcher("EditarAluno.jsp");
         view.forward(request, response);

@@ -80,7 +80,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="textinput" >Nome</label>
               <div class="col-md-5">
-                <input id="textinput" name="nome" placeholder="Nome" class="form-control input-md" type="text" value="${aluno.id}">
+                <input id="textinput" name="nome" placeholder="Nome" class="form-control input-md" type="text" value="${aluno.nome}">
 
               </div>
             </div>
@@ -89,7 +89,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="textinput">CPF</label>
               <div class="col-md-5">
-                <input id="textinput" name="cpf" placeholder="CPF" class="form-control input-md" type="text">
+                <input id="textinput" name="cpf" placeholder="CPF" class="form-control input-md" type="text" value="${aluno.cpf}">
 
               </div>
             </div>
@@ -98,7 +98,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="textinput">Data de Nascimento</label>
               <div class="col-md-5">
-                <input id="textinput" name="data" placeholder="data" class="form-control input-md" type="text">
+                <input id="textinput" name="data" placeholder="data" class="form-control input-md" type="text" value="">
 
               </div>
             </div>
@@ -107,7 +107,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="textinput">E-mail</label>
               <div class="col-md-5">
-                <input id="textinput" name="email" placeholder="E-mail" class="form-control input-md" type="text">
+                <input id="textinput" name="email" placeholder="E-mail" class="form-control input-md" type="text" value="${aluno.email}">
 
               </div>
             </div>
@@ -116,7 +116,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="textinput">Login</label>
               <div class="col-md-5">
-                <input id="textinput" name="login" placeholder="Login" class="form-control input-md" type="text">
+                <input id="textinput" name="login" placeholder="Login" class="form-control input-md" type="text" value="${aluno.login}">
 
               </div>
             </div>
@@ -125,7 +125,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="passwordinput">Senha</label>
               <div class="col-md-5">
-                <input id="passwordinput" name="senha" placeholder="Senha" class="form-control input-md" type="password">
+                <input id="passwordinput" name="senha" placeholder="Senha" class="form-control input-md" type="password" value="${aluno.senha}">
 
               </div>
             </div>
