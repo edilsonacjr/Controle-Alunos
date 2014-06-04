@@ -95,7 +95,7 @@
 
                             <!-- Text input-->
                             <div class="form-group">
-                                <label class="col-md-4 control-label" for="textinput">Nome</label>
+                                <label class="col-md-4 control-label" for="textinput">Nome do Professor</label>
                                 <div class="col-md-5">
                                     <input id="textinput" name="nome" placeholder="Nome" class="form-control input-md" type="text">
 
