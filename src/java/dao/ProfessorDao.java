@@ -118,6 +118,7 @@ public class ProfessorDao {
         try {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
+                p = new Professor();
                 p.setId(rs.getInt("idprofessor"));
                 p.setNome(rs.getString("nome"));
                 p.setCpf(rs.getString("cpf"));

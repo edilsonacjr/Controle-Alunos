@@ -113,6 +113,7 @@ public class UsuarioDao {
         try {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
+                u = new Usuario();
                 u.setId(rs.getInt("idusuario"));
                 u.setNome(rs.getString("nome"));
                 u.setDataNascimento(rs.getDate("datanascimento"));

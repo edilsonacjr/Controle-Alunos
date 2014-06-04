@@ -123,6 +123,7 @@ public class AlunoDao {
         try {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
+                a = new Aluno();
                 a.setId(rs.getInt("a.idaluno"));
                 a.getCurso().setId(rs.getInt("a.idcurso"));
                 //a.setDataAdmissao(rs.getDate("a.dataadmissao"));
