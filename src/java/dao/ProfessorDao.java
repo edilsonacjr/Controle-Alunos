@@ -5,6 +5,8 @@
  */
 package dao;
 
+import entidades.Curso;
+import entidades.Materia;
 import entidades.Professor;
 import java.sql.Connection;
 import java.sql.Date;
@@ -154,4 +156,44 @@ public class ProfessorDao {
         rs.close();
         return list;
     }
+    
+    public List<Curso> getCursos(Professor p) throws SQLException {
+        String sql = "select * from curso where idprofessor = ? ";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        stmt.setInt(1, p.getId());
+        Curso c;
+        List<Curso> list = new ArrayList<>();
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()){
+            c = new Curso();
+            c.setId(rs.getInt("idcurso"));
+            c.setNome(rs.getString("nome"));
+            c.setCategoria(rs.getString("categoria"));
+            c.getCordenador().setId(rs.getInt("idprofessor"));
+            list.add(c);
+        }
+        stmt.close();
+        rs.close();
+        return list;
+    }
+    
+    public List<Materia> getMaterias(Professor p) throws SQLException{
+        String sql = "select * from where idprofessor = ?";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        Materia m;
+        List<Materia> list = new ArrayList<>();
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            m = new Materia();
+            m.setId(rs.getInt("idmateria"));
+            m.getPeriodo().setId(rs.getInt("idperiodo"));
+            m.setNome(rs.getString("nome"));
+            m.getProfessor().setId(rs.getInt("idprofessor"));
+            list.add(m);
+        }
+        stmt.close();
+        rs.close();
+        return list;
+    }
+    
 }
