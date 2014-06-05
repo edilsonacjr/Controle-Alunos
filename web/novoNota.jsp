@@ -45,7 +45,7 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="logoff.jsp">Sair
+                            <a href="ServLogoff">Sair
                                 <br>
                             </a>
                         </li>
