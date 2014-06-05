@@ -6,7 +6,6 @@
 package dao;
 
 import entidades.Aluno;
-import entidades.Materia;
 import entidades.MateriaNotaFalta;
 import java.sql.Connection;
 import java.sql.Date;
@@ -15,7 +14,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.NoResultException;
 
 /**
  *
