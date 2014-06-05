@@ -10,6 +10,10 @@ import dao.PeriodoDao;
 import entidades.Periodo;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,12 +38,14 @@ public class ServBuscaPeriodo extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         String termo = request.getParameter("termo");
-        //PeriodoDao pdao = new PeriodoDao();
-        //List<Periodo> periodos = pdao.        
-        //request.setAttribute("busca", periodos);                
+        PeriodoDao pdao = new PeriodoDao();
+        Periodo p = new Periodo();
+        p.setNome(termo);
+        List<Periodo> periodos = pdao.getConsulta(p);
+        request.setAttribute("busca", periodos);                
         request.setAttribute("termo", termo);
         RequestDispatcher view = request.getRequestDispatcher("Periodos.jsp");
         view.forward(request, response);
@@ -57,7 +63,13 @@ public class ServBuscaPeriodo extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ServBuscaPeriodo.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ServBuscaPeriodo.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -71,7 +83,13 @@ public class ServBuscaPeriodo extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ServBuscaPeriodo.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ServBuscaPeriodo.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
