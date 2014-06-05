@@ -75,10 +75,10 @@
                         <li>
                             <a href="Usuarios.jsp">Usuários</a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="Periodos.jsp">Períodos</a>
                         </li>
-                        <li class="active">
+                        <li>
                             <a href="MateriasAdmin.jsp">Matérias</a>
                         </li>
                     </ul>
@@ -86,11 +86,11 @@
 
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Matérias
+                    <h1 class="page-header">Períodos
                         <br>
                     </h1>
 
-                    <a class="btn btn-primary" href="novoMateria.jsp">Novo Matéria</a>
+                    <a class="btn btn-primary" href="novoPeriodo.jsp">Novo Período</a>
 
 
                     <form class="form-horizontal" action="index.html" method="post">
@@ -99,15 +99,6 @@
                             <!-- Form Name -->
                             <legend>Consulta</legend>
 
-                            <!-- Text input-->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="textinput">Termo de consulta:</label>
-                                <div class="col-md-5">
-                                    <input id="textinput" name="textinput" placeholder="Termos" class="form-control input-md" type="text">
-
-                                </div>
-                            </div>
-
                             <!-- Select Basic -->
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="selectbasic">Curso</label>
@@ -115,18 +106,6 @@
                                     <select id="selectbasic" name="selectbasic" class="form-control">
                                         <c:forEach items="${cursos}" var="curso">                                            
                                             <option value="${curso.id}" selected>${curso.nome}</option>                                                                                     
-                                        </c:forEach>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <!-- Select Basic -->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="selectbasic">Período</label>
-                                <div class="col-md-5">
-                                    <select id="selectbasic" name="selectbasic" class="form-control">
-                                        <c:forEach items="${periodos}" var="periodo">                                            
-                                            <option value="${periodo.id}" selected>${periodo.nome} - ${periodo.ano}</option>                                                                                     
                                         </c:forEach>
                                     </select>
                                 </div>
@@ -147,7 +126,7 @@
 
 
 
-                    <h2 class="sub-header">Lista de Matérias</h2>
+                    <h2 class="sub-header">Lista de Períodos</h2>
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead>
