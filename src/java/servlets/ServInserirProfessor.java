@@ -100,8 +100,7 @@ public class ServInserirProfessor extends HttpServlet {
             professordao.inserir(p);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ServInserirProfessor.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(ServInserirProfessor.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {            
             String erro = "<div class=\"alert alert-danger\" >\n"
                     + "                            Professor: Login invalido!!!!\n"
                     + "                      </div>";
