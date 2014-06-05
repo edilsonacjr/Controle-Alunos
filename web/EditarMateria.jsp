@@ -75,7 +75,7 @@
 
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Editar Aluno &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <h1 class="page-header">Editar Materia &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         <br>
                     </h1>
 
@@ -88,86 +88,53 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="textinput" >Nome</label>
                                 <div class="col-md-5">
-                                    <input id="textinput" name="nome" placeholder="Nome" class="form-control input-md" type="text" value="${aluno.nome}">
+                                    <input id="textinput" name="nome" placeholder="Nome" class="form-control input-md" type="text" value="${materia.nome}">
 
                                 </div>
                             </div>
 
-                            <!-- Text input-->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="textinput">CPF</label>
-                                <div class="col-md-5">
-                                    <input id="textinput" name="cpf" placeholder="CPF" class="form-control input-md" type="text" value="${aluno.cpf}">
-
-                                </div>
-                            </div>
+                            
                              
-                                    <!-- Text input-->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="textinput">Data de Admissão</label>
-                                <div class="col-md-5">
-                                    <input id="textinput" name="dataadmissao" placeholder="dataadmissao" class="form-control input-md" type="text" value="${aluno.dataAdmissao}">
-
-                                </div>
-                            </div>
-                            <!-- Text input-->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="textinput">Data de Nascimento</label>
-                                <div class="col-md-5">
-                                    <input id="textinput" name="data" placeholder="data" class="form-control input-md" type="text" value="${aluno.dataNascimento}">
-
-                                </div>
-                            </div>
-
-                            <!-- Text input-->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="textinput">E-mail</label>
-                                <div class="col-md-5">
-                                    <input id="textinput" name="email" placeholder="E-mail" class="form-control input-md" type="text" value="${aluno.email}">
-
-                                </div>
-                            </div>
-
-                            <!-- Text input-->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="textinput">Login</label>
-                                <div class="col-md-5">
-                                    <input id="textinput" name="login" placeholder="Login" class="form-control input-md" type="text" value="${aluno.login}">
-
-                                </div>
-                            </div>
-
-                            <!-- Password input-->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="passwordinput">Senha</label>
-                                <div class="col-md-5">
-                                    <input id="passwordinput" name="senha" placeholder="Senha" class="form-control input-md" type="password" value="${aluno.senha}">
-
-                                </div>
-                            </div>
+                          
 
                             <!-- Select Basic -->
                             <div class="form-group">
-                                <label class="col-md-4 control-label" for="selectbasic">Curso</label>
+                                <label class="col-md-4 control-label" for="selectbasic">Periodo</label>
                                 <div class="col-md-5">
-                                    <select id="selectbasic" name="curso" class="form-control">
-                                        <c:forEach items="${cursos}" var="curso">
-                                            <c:if test="${curso.id == aluno.curso.id}">
-                                                <option value="${curso.id}" selected>${curso.nome}</option>
+                                    <select id="selectbasic" name="periodo" class="form-control">
+                                        <c:forEach items="${periodos}" var="periodo">
+                                            <c:if test="${periodo.id == materia.periodo.id}">
+                                                <option value="${periodo.id}" selected>${periodo.nome}</option>
                                             </c:if>
-                                            <c:if test="${curso.id != aluno.curso.id}">
-                                                <option value="${curso.id}">${curso.nome}</option>
+                                            <c:if test="${periodo.id != materia.periodo.id}">
+                                                <option value="${periodo.id}">${periodo.nome}</option>
                                             </c:if>
                                         </c:forEach>
                                     </select>
                                 </div>
                             </div>
 
+                            <!-- Select Basic -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="selectbasic">Professor</label>
+                                <div class="col-md-5">
+                                    <select id="selectbasic" name="professor" class="form-control">
+                                        <c:forEach items="${professores}" var="professor">
+                                            <c:if test="${professor.id == materia.professor.id}">
+                                                <option value="${professor.id}" selected>${professor.nome}</option>
+                                            </c:if>
+                                            <c:if test="${professor.id != materia.professor.id}">
+                                                <option value="${professor.id}">${professor.nome}</option>
+                                            </c:if>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+                            </div>
                             <!-- Button (Double) -->
                             <div class="form-group">
                                 <label class="col-md-4 control-label text-left" for="button1id"></label>
                                 <div class="col-md-5 text-right">
-                                    <button id="button1id" name="button1id" class="btn btn-success" onclick="form.action = 'ServAtualizarAluno'; form.method='post'" value="${aluno.id}" >Salvar</button>
+                                    <button id="button1id" name="button1id" class="btn btn-success" onclick="form.action = 'ServAtualizarMateria'; form.method='post'" value="${materia.id}" >Salvar</button>
                                     <button id="button2id" name="button2id" class="btn btn-danger" onclick="form.action = 'Alunos.jsp'; form.method='post';">Cancelar</button>
                                 </div>
                             </div>
