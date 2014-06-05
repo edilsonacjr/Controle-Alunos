@@ -115,6 +115,8 @@ public class PeriodoDao {
             p = new Periodo();
             p.setId(rs.getInt("p.idperiodo"));
             p.getCurso().setId(rs.getInt("c.idcurso"));
+            p.getCurso().setNome(rs.getString("c.nome"));
+            p.getCurso().setCategoria(rs.getString("c.categoria"));
             p.setNome(rs.getString("p.nome"));
             p.setAno(rs.getInt("p.ano"));
             p.setSemestre(rs.getInt("p.semestre"));
