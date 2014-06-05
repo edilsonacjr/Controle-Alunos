@@ -54,7 +54,7 @@ public class ServEditarCurso extends HttpServlet {
         
         request.setAttribute("professores", professores);
         request.setAttribute("curso", curso);
-        RequestDispatcher view = request.getRequestDispatcher("EditarAluno.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("EditarCurso.jsp");
         view.forward(request, response); 
     }
 

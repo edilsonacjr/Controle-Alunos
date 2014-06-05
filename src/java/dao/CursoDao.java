@@ -37,7 +37,7 @@ public class CursoDao {
     }
     
     public void atualiza(Curso c) throws SQLException {
-        String sql = "update curso set nome = ?, categoria = ?"
+        String sql = "update curso set nome = ?, categoria = ?, "
                 + "idprofessor = ? where idcurso = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setString(1, c.getNome());
@@ -92,6 +92,7 @@ public class CursoDao {
         while (rs.next()){
             c = new Curso();
             c.setId(rs.getInt("idcurso"));
+            c.setNome(rs.getString("nome"));
             c.setCategoria(rs.getString("categoria"));
             c.getCordenador().setId(rs.getInt("idprofessor"));
         }

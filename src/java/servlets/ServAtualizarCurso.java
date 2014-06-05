@@ -13,6 +13,7 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,6 +39,19 @@ public class ServAtualizarCurso extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        Curso c = new Curso();
+        c.setId(Integer.parseInt(request.getParameter("button1id")));
+        c.setNome(request.getParameter("nome"));
+        c.getCordenador().setId(Integer.parseInt(request.getParameter("cordenador")));
+        c.setCategoria(request.getParameter("categoria"));
+        try {
+            CursoDao cursodao = new CursoDao();
+            cursodao.atualiza(c);
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(ServAtualizarCurso.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         RequestDispatcher view = request.getRequestDispatcher("Cursos.jsp");
+        view.forward(request, response);
         
     }
 
@@ -53,17 +67,7 @@ public class ServAtualizarCurso extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         Curso c = new Curso();
-        c.setId(Integer.parseInt(request.getParameter("button1id")));
-        c.setNome(request.getParameter("nomecurso"));
-        c.getCordenador().setId(Integer.parseInt(request.getParameter("cordenador")));
-        c.setCategoria(request.getParameter("categoria"));
-        try {
-            CursoDao cursodao = new CursoDao();
-            cursodao.atualiza(c);
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(ServAtualizarCurso.class.getName()).log(Level.SEVERE, null, ex);
-        }
+         
         processRequest(request, response);
     }
 
