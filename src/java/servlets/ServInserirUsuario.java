@@ -37,7 +37,7 @@ public class ServInserirUsuario extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        doPost(request, response);
+        //doPost(request, response);
         RequestDispatcher view = request.getRequestDispatcher("novoUsuario.jsp");
         view.forward(request, response);
     }
@@ -90,7 +90,7 @@ public class ServInserirUsuario extends HttpServlet {
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ServInserirUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        processRequest(request, response);
     }
 
     /**

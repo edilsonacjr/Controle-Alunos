@@ -113,47 +113,10 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="textinput">Termo de consulta:</label>
                                 <div class="col-md-5">
-                                    <input id="textinput" name="textinput" placeholder="termo" class="form-control input-md" type="text">
+                                    <input id="textinput" name="textinput" placeholder="Termos" class="form-control input-md" type="text">
 
                                 </div>
-                            </div>
-
-                            <!-- Select Basic -->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="selectbasic">Curso</label>
-                                <div class="col-md-5">
-                                    <select id="selectbasic" name="selectbasic" class="form-control">
-                                        <c:forEach items="${cursos}" var="curso">                                            
-                                            <option value="${curso.id}" selected>${curso.nome}</option>                                                                                     
-                                        </c:forEach>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <!-- Select Basic -->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="selectbasic">Período</label>
-                                <div class="col-md-5">
-                                    <select id="selectbasic" name="selectbasic" class="form-control">
-                                        <c:forEach items="${periodos}" var="periodo">                                            
-                                            <option value="${periodo.id}" selected>${periodo.nome}</option>                                                                                     
-                                        </c:forEach>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <!-- Select Basic -->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="selectbasic">Materia</label>
-                                <div class="col-md-5">
-                                    <select id="selectbasic" name="selectbasic" class="form-control">
-
-                                        <<c:forEach items="${materias}" var="materia">                                            
-                                            <option value="${materia.id}" selected>${materia.nome}</option>                                                                                     
-                                        </c:forEach>
-                                    </select>
-                                </div>
-                            </div>
+                            </div>                        
 
                             <!-- Button -->
                             <div class="form-group">
