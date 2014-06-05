@@ -145,13 +145,9 @@ public class AlunoDao {
     }
 
     public List<MateriaNotaFalta> getMateriaNotaFalta(Aluno a) throws SQLException {
-        String sql = "select *, (select count(idfalta) from falta where "
-                + " am.idalunomateria = f.idalunomateria) as 'falta' from alunomateria am \n" +
-"                     inner join materia m on (am.idmateria = m.idmateria)\n" +
-"                     left join nota n on (am.idalunomateria = n.idalunomateria)\n" +
-"                     left join falta f on (am.idalunomateria = f.idalunomateria)\n" +
-"                     inner join aluno a on (am.idaluno = a.idaluno)\n" +
-"                 where a.idaluno = 1 from alunomateria am \n"
+        String sql = "select *, (select sum(idfalta) from falta where "
+                + "     am.idalunomateria = f.idalunomateria) as 'falta' \n"
+                + "from alunomateria am \n"
                 + "     inner join materia m on (am.idmateria = m.idmateria)\n"
                 + "     left join nota n on (am.idalunomateria = n.idalunomateria)\n"
                 + "     left join falta f on (am.idalunomateria = f.idalunomateria)\n"
