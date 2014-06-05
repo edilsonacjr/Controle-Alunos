@@ -105,4 +105,24 @@ public class MateriaDao {
         rs.close();
         return m;
     }
+    
+    public List<Materia> getConsulta(Materia materia) throws SQLException {
+        String sql = "select * from materia where nome like ?";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        stmt.setString(1, materia.getNome());
+        Materia m = null;
+        List<Materia> list = new ArrayList<>();
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            m = new Materia();
+            m.setId(rs.getInt("idmateria"));
+            m.getPeriodo().setId(rs.getInt("idperiodo"));
+            m.setNome(rs.getString("nome"));
+            m.getProfessor().setId(rs.getInt("idprofessor"));
+            list.add(m);
+        }
+        stmt.close();
+        rs.close();
+        return list;
+    }
 }
