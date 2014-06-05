@@ -35,7 +35,7 @@ public class ServInserirAlunoMateria extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        doPost(request, response);
+        //doPost(request, response);
         RequestDispatcher view = request.getRequestDispatcher("novoAlunoMateria.jsp");
         view.forward(request, response);
     }
@@ -76,7 +76,7 @@ public class ServInserirAlunoMateria extends HttpServlet {
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ServInserirAlunoMateria.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //processRequest(request, response);
+        processRequest(request, response);
     }
 
     /**

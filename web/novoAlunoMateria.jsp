@@ -132,10 +132,8 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label text-left" for="button1id"></label>
                                 <div class="col-md-5 text-right">
-                                    <button id="button1id" name="button1id" class="btn btn-success" onclick="document.forms[0].action = 'ServAlunoMateria';
-                                            return true;">Cadastrar</button>
-                                    <button id="button2id" name="button2id" class="btn btn-danger" onclick="document.forms[0].action = 'AlunosMaterias.jsp';
-                                            return true;">Cancelar</button>
+                                    <button id="button1id" name="button1id" class="btn btn-success" onclick="form.action = 'ServAlunoMateria'; form.method='post';">Cadastrar</button>
+                                    <button id="button2id" name="button2id" class="btn btn-danger" onclick="form.action = 'AlunosMaterias.jsp'; form.method='post';">Cancelar</button>
                                 </div>
                             </div>
 
