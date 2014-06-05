@@ -36,7 +36,7 @@ public class MateriaDao {
     }
 
     public void atualiza(Materia m) throws SQLException {
-        String sql = "update materia set idperiodo = ?, nome = ?, idprofessor = ?"
+        String sql = "update materia set idperiodo = ?, nome = ?, idprofessor = ? "
                 + "where idmateria = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, m.getPeriodo().getId());

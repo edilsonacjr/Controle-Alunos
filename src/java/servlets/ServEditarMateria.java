@@ -6,11 +6,16 @@
 
 package servlets;
 
+
 import dao.MateriaDao;
+import dao.PeriodoDao;
+import dao.ProfessorDao;
 import entidades.Materia;
+import entidades.Periodo;
+import entidades.Professor;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -24,8 +29,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author josepedro
  */
-@WebServlet(name = "ServAtualizarMateria", urlPatterns = {"/ServAtualizarMateria"})
-public class ServAtualizarMateria extends HttpServlet {
+@WebServlet(name = "ServEditarMateria", urlPatterns = {"/ServEditarMateria"})
+public class ServEditarMateria extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,23 +42,22 @@ public class ServAtualizarMateria extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        Materia m = new Materia();
-        m.setId(Integer.parseInt(request.getParameter("button1id")));
-        m.getPeriodo().setId(Integer.parseInt(request.getParameter("periodo")));
-        m.setNome(request.getParameter("nome"));
-        m.getProfessor().setId(Integer.parseInt(request.getParameter("professor")));
-        MateriaDao materiadao;
-        try {
-            materiadao = new MateriaDao();
-            materiadao.atualiza(m);
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(ServAtualizarMateria.class.getName()).log(Level.SEVERE, null, ex);
-        }        
-       
-        RequestDispatcher view = request.getRequestDispatcher("Alunos.jsp");
+        ProfessorDao daoPro = new ProfessorDao();
+        PeriodoDao daoPer = new PeriodoDao();
+        List<Professor> professores = daoPro.listar();
+        List<Periodo> periodos = daoPer.listar();
+        MateriaDao dao = new MateriaDao();
+       int id = Integer.parseInt(request.getParameter("edita"));
+       Materia materia = new Materia();
+        materia.setId(id);
+        materia = dao.getMateria(materia);
+
+        request.setAttribute("professores", professores);
+        request.setAttribute("periodos", periodos);
+        request.setAttribute("materia", materia);
+        RequestDispatcher view = request.getRequestDispatcher("EditarMateria.jsp");
         view.forward(request, response);
     }
 
@@ -69,7 +73,13 @@ public class ServAtualizarMateria extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ServEditarMateria.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ServEditarMateria.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -83,7 +93,13 @@ public class ServAtualizarMateria extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ServEditarMateria.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ServEditarMateria.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

@@ -44,18 +44,18 @@ public class ServEditarCurso extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-         ProfessorDao daoP = new ProfessorDao();
+        ProfessorDao daoP = new ProfessorDao();
         List<Professor> professores = daoP.listar();
         CursoDao dao = new CursoDao();
         int id = Integer.parseInt(request.getParameter("edita"));
         Curso curso = new Curso();
         curso.setId(id);
         curso = dao.getCurso(curso);
-        
+
         request.setAttribute("professores", professores);
         request.setAttribute("curso", curso);
         RequestDispatcher view = request.getRequestDispatcher("EditarCurso.jsp");
-        view.forward(request, response); 
+        view.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
