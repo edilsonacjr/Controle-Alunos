@@ -184,7 +184,13 @@ public class AlunoDao {
         return list;
     }
     
-    //public List<Aluno> getConsulta() {
-    //    
-   // }
+    public List<Aluno> getConsulta(String termo, Integer curso, Integer periodo, Integer materia) {
+        
+        //switch () {
+            
+        //}
+        String sql = "select * from aluno";
+        List<Aluno> list = new ArrayList();
+        return list;
+    }
 }

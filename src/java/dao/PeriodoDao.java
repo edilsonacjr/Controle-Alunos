@@ -61,16 +61,19 @@ public class PeriodoDao {
     public List<Periodo> listar() throws SQLException {
         List<Periodo> list = new ArrayList<>();
         Periodo p = null;
-        String sql = "select * from periodo";
+        String sql = "select * from periodo p\n"
+                + "    inner join curso c on (p.idcurso = c.idcurso)";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
             p = new Periodo();
-            p.setId(rs.getInt("idperiodo"));
-            p.getCurso().setId(rs.getInt("idcurso"));
-            p.setNome(rs.getString("nome"));
-            p.setAno(rs.getInt("ano"));
-            p.setSemestre(rs.getInt("semestre"));
+            p.setId(rs.getInt("p.idperiodo"));
+            p.getCurso().setId(rs.getInt("c.idcurso"));
+            p.getCurso().setNome(rs.getString("c.nome"));
+            p.getCurso().setCategoria(rs.getString("c.categoria"));
+            p.setNome(rs.getString("p.nome"));
+            p.setAno(rs.getInt("p.ano"));
+            p.setSemestre(rs.getInt("p.semestre"));
             list.add(p);
         }
         stmt.close();
