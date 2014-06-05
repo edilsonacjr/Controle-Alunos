@@ -43,7 +43,7 @@ public class ServBuscaAluno extends HttpServlet {
         String termo = request.getParameter("termo");        
         AlunoDao dao = new AlunoDao();
         Aluno a = new Aluno();
-        a.setNome("'"+termo + "%'");
+        a.setNome(termo + "%");
         List<Aluno> alunos = dao.getConsulta(a);
         request.setAttribute("busca", alunos);        
         request.setAttribute("termo", termo);
