@@ -80,6 +80,9 @@ public class AlunoDao {
             a = new Aluno();
             a.setId(rs.getInt("a.idaluno"));
             a.getCurso().setId(rs.getInt("c.idcurso"));
+            a.getCurso().setNome(rs.getString("c.nome"));
+            a.getCurso().setCategoria(rs.getString("c.categoria"));
+            a.getCurso().getCordenador().setId(rs.getInt("p.idprofessor"));
             a.setDataAdmissao(rs.getDate("a.dataadmissao"));
             a.setNome(rs.getString("a.nome"));
             a.setCpf(rs.getString("a.cpf"));
