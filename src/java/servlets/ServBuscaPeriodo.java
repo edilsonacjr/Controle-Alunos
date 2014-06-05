@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package servlets;
 
 import dao.PeriodoDao;
@@ -43,9 +42,9 @@ public class ServBuscaPeriodo extends HttpServlet {
         String termo = request.getParameter("termo");
         PeriodoDao pdao = new PeriodoDao();
         Periodo p = new Periodo();
-        p.setNome(termo);
+        p.setNome("%" + termo + "%");
         List<Periodo> periodos = pdao.getConsulta(p);
-        request.setAttribute("busca", periodos);                
+        request.setAttribute("busca", periodos);
         request.setAttribute("termo", termo);
         RequestDispatcher view = request.getRequestDispatcher("Periodos.jsp");
         view.forward(request, response);

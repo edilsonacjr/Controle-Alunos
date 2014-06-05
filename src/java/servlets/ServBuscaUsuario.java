@@ -42,7 +42,7 @@ public class ServBuscaUsuario extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String termo = request.getParameter("termo");
         Usuario u = new Usuario();
-        u.setNome("'"+termo + "%'");
+        u.setNome("%"+termo + "%");
         UsuarioDao udao = new UsuarioDao();
         List<Usuario> usuarios = udao.getConsulta(u);
         request.setAttribute("busca", usuarios);                

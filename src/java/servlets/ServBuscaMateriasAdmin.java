@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package servlets;
 
 import dao.MateriaDao;
@@ -42,9 +41,10 @@ public class ServBuscaMateriasAdmin extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String termo = request.getParameter("termo");
         Materia m = new Materia();
+        m.setNome("%" + termo + "%");
         MateriaDao mdao = new MateriaDao();
-        //List<Materia> materias = mdao.get;
-        //request.setAttribute("busca", materias);
+        List<Materia> materias = mdao.getConsulta(m);
+        request.setAttribute("busca", materias);
         request.setAttribute("termo", termo);
         RequestDispatcher view = request.getRequestDispatcher("MateriasAdmin.jsp");
         view.forward(request, response);
