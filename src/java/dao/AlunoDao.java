@@ -187,7 +187,7 @@ public class AlunoDao {
     }
 
     public List<Aluno> getConsulta(Aluno aluno) throws SQLException {
-        String sql = "select * from aluno where nome like ?";
+        String sql = "select * from aluno where nome like '?'";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setString(1, aluno.getNome());
         Aluno a = null;

@@ -129,6 +129,7 @@ public class UsuarioDao {
     public List<Usuario> getConsulta(Usuario usuario) throws SQLException {
         String sql = "select * from usuario where nome like ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
+        stmt.setString(1, usuario.getNome());
         Usuario u;
         List<Usuario> list = new ArrayList<>();
         ResultSet rs = stmt.executeQuery();
