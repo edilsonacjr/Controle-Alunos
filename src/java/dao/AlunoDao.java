@@ -187,10 +187,28 @@ public class AlunoDao {
     }
 
     public List<Aluno> getConsulta(Aluno aluno) throws SQLException {
-        String sql = "";
+        String sql = "select * from aluno where nome like ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
-        
-        return null;
-
+        stmt.setString(1, aluno.getNome());
+        Aluno a = null;
+        List<Aluno> list = new ArrayList<>();
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            a = new Aluno();
+            a.setId(rs.getInt("idaluno"));
+            a.getCurso().setId(rs.getInt("idcurso"));
+            a.setDataAdmissao(rs.getDate("dataadmissao"));
+            a.setNome(rs.getString("nome"));
+            a.setCpf(rs.getString("cpf"));
+            a.setDataNascimento(rs.getDate("datanascimento"));
+            a.setLogin(rs.getString("login"));
+            a.setSenha(rs.getString("senha"));
+            a.setEmail(rs.getString("email"));
+            list.add(a);
+        }
+        stmt.close();
+        rs.close();
+        return list;
     }
 }
+

@@ -13,7 +13,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.NoResultException;
 
 /**
  *
@@ -130,5 +129,13 @@ public class ProfessorDao {
             p.setDataAdmissao(rs.getDate("dataadmissao"));
         }
         return p;
+    }
+    
+    public List<Professor> getConstula (Professor p) throws SQLException {
+        String sql = "select * from professor where nome like ?";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        //Professor p;
+        
+        return null;
     }
 }
