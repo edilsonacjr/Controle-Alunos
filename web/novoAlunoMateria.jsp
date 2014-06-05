@@ -110,7 +110,7 @@
                                 <div class="col-md-5">
                                     <select id="selectbasic" name="aluno" class="form-control">
                                         <c:forEach items="${alunos}" var="aluno">                                            
-                                            <option value="${aluno.id}" selected>${aluno.nome}</option>                                                                                     
+                                            <option value="${aluno.id}">${aluno.nome}</option>                                                                                     
                                         </c:forEach>
                                     </select>
                                 </div>
@@ -122,7 +122,7 @@
                                 <div class="col-md-5">
                                     <select id="selectbasic" name="materia" class="form-control">
                                         <c:forEach items="${materias}" var="materia">                                            
-                                            <option value="${materia.id}" selected>${materia.nome}</option>                                                                                     
+                                            <option value="${materia.id}">${materia.nome}</option>                                                                                     
                                         </c:forEach>
                                     </select>
                                 </div>
