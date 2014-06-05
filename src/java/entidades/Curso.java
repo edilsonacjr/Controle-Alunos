@@ -5,7 +5,7 @@ public class Curso {
     private int id;
     private String nome;
     private String categoria;
-    private Professor cordenador;
+    private Professor cordenador; 
 
     public Curso(){
         this.cordenador= new Professor();
