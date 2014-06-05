@@ -40,12 +40,12 @@ public class ServBuscaAluno extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-        String termo = request.getParameter("termo");
-        
+        String termo = request.getParameter("termo");        
         AlunoDao dao = new AlunoDao();
-        //List<Aluno> alunos = dao.getConsulta(termo);
-        //request.setAttribute("busca", alunos);
-        
+        Aluno a = new Aluno();
+        a.setNome(termo + "%");
+        List<Aluno> alunos = dao.getConsulta(a);
+        request.setAttribute("busca", alunos);        
         request.setAttribute("termo", termo);
         RequestDispatcher view = request.getRequestDispatcher("Alunos.jsp");
         view.forward(request, response);
