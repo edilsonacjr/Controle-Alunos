@@ -6,8 +6,14 @@
 
 package servlets;
 
+import dao.AlunoDao;
+import entidades.Aluno;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -31,18 +37,9 @@ public class ServExcluirAluno extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ServExcluirAluno</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ServExcluirAluno at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        RequestDispatcher view = request.getRequestDispatcher("Alunos.jsp");
+        view.forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -71,6 +68,21 @@ public class ServExcluirAluno extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        Aluno a = new Aluno();
+        a.setNome(request.getParameter("exclui"));
+        AlunoDao alunodao = null;
+        try {
+            alunodao = new AlunoDao();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ServExcluirAluno.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ServExcluirAluno.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            alunodao.exclui(a);
+        } catch (SQLException ex) {
+            Logger.getLogger(ServExcluirAluno.class.getName()).log(Level.SEVERE, null, ex);
+        }
         processRequest(request, response);
     }
 
