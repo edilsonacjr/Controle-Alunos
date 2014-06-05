@@ -83,14 +83,16 @@ public class ServInserirUsuario extends HttpServlet {
         }
         u.setDataNascimento(parsedDate);
         UsuarioDao usuariodao = null;
-
+        String erro = "<div class=\"alert alert-success\" >\n"
+                + "                            Usuario: Salvo com sucesso!!!\n"
+                + "                      </div>";
         try {
             usuariodao = new UsuarioDao();
             usuariodao.insere(u);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ServInserirUsuario.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            String erro = "<div class=\"alert alert-danger\" >\n"
+            erro = "<div class=\"alert alert-danger\" >\n"
                     + "                            Usuário: Login invalido!!!!\n"
                     + "                      </div>";
             request.setAttribute("erro", erro);

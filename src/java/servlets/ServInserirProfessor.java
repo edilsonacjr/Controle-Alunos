@@ -95,13 +95,16 @@ public class ServInserirProfessor extends HttpServlet {
             Logger.getLogger(ServInserirProfessor.class.getName()).log(Level.SEVERE, null, ex);
         }
         p.setDataAdmissao(parsedDate);
+        String erro = "<div class=\"alert alert-success\" >\n"
+                + "                            Usuario: Salvo com sucesso!!!\n"
+                + "                      </div>";
         try {
             ProfessorDao professordao = new ProfessorDao();
             professordao.inserir(p);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ServInserirProfessor.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {            
-            String erro = "<div class=\"alert alert-danger\" >\n"
+            erro = "<div class=\"alert alert-danger\" >\n"
                     + "                            Professor: Login invalido!!!!\n"
                     + "                      </div>";
             request.setAttribute("erro", erro);
