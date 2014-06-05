@@ -44,8 +44,8 @@ public class AlunoDao {
 
     public void atualiza(Aluno a) throws SQLException {
         String sql = "update aluno set idcurso = ?, dataadminssao = ?"
-                + ", nome = ?, cpf = ?, datanascimento = ?, login = ?, senha = ?, email = ?"
-                + "where idaluno = ?";
+                + ", nome = ?, cpf = ?, datanascimento = ?, login = ?, "
+                + "senha = ?, email = ? where idaluno = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, a.getId());
         stmt.setInt(2, a.getCurso().getId());
@@ -72,24 +72,26 @@ public class AlunoDao {
     public List<Aluno> listar() throws SQLException {
         List<Aluno> list = new ArrayList<>();
         Aluno a;
-        String sql = "select * from "
-                + "aluno a "
-                + "inner join curso c on (a.idcurso = c.idcurso)";
+        String sql = "select * from aluno a "
+                + "inner join curso c on "
+                + "(a.idcurso = c.idcurso)";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
             a = new Aluno();
             a.setId(rs.getInt("a.idaluno"));
             a.getCurso().setId(rs.getInt("c.idcurso"));
-            //a.setDataAdmissao(rs.getDate("a.dataadmissao"));
+            a.setDataAdmissao(rs.getDate("a.dataadmissao"));
             a.setNome(rs.getString("a.nome"));
             a.setCpf(rs.getString("a.cpf"));
-            //a.setDataNascimento(rs.getDate("a.datanascimento"));
+            a.setDataNascimento(rs.getDate("a.datanascimento"));
             a.setLogin(rs.getString("a.login"));
             a.setSenha(rs.getString("a.senha"));
             a.setEmail(rs.getString("a.email"));
             list.add(a);
         }
+        stmt.close();
+        rs.close();
         return list;
     }
 
@@ -101,14 +103,16 @@ public class AlunoDao {
         while (rs.next()) {
             a.setId(rs.getInt("a.idaluno"));
             a.getCurso().setId(rs.getInt("a.idcurso"));
-            //a.setDataAdmissao(rs.getDate("a.dataadmissao"));
+            a.setDataAdmissao(rs.getDate("a.dataadmissao"));
             a.setNome(rs.getString("a.nome"));
             a.setCpf(rs.getString("a.cpf"));
-            //a.setDataNascimento(rs.getDate("a.datanascimento"));
+            a.setDataNascimento(rs.getDate("a.datanascimento"));
             a.setLogin(rs.getString("a.login"));
             a.setSenha(rs.getString("a.senha"));
             a.setEmail(rs.getString("a.email"));
         }
+        stmt.close();
+        rs.close();
         return a;
     }
 
@@ -126,10 +130,10 @@ public class AlunoDao {
                 a = new Aluno();
                 a.setId(rs.getInt("a.idaluno"));
                 a.getCurso().setId(rs.getInt("a.idcurso"));
-                //a.setDataAdmissao(rs.getDate("a.dataadmissao"));
+                a.setDataAdmissao(rs.getDate("a.dataadmissao"));
                 a.setNome(rs.getString("a.nome"));
                 a.setCpf(rs.getString("a.cpf"));
-                //a.setDataNascimento(rs.getDate("a.datanascimento"));
+                a.setDataNascimento(rs.getDate("a.datanascimento"));
                 a.setLogin(rs.getString("a.login"));
                 a.setSenha(rs.getString("a.senha"));
                 a.setEmail(rs.getString("a.email"));
@@ -141,5 +145,4 @@ public class AlunoDao {
         }
         return a;
     }
-
 }
