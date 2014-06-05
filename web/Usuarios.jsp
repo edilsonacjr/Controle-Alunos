@@ -26,9 +26,13 @@
         <link href="dashboard.css" rel="stylesheet">
     </head>
     <%
-        UsuarioDao dao = new UsuarioDao();
-        List<Usuario> usuarios = dao.listar();
-        pageContext.setAttribute("usuarios", usuarios);
+        List<Usuario> usuarios = (List<Usuario>) request.getAttribute("busca");
+
+        if (usuarios == null) {
+            UsuarioDao dao = new UsuarioDao();
+            usuarios = dao.listar();
+            pageContext.setAttribute("usuarios", usuarios);
+        }
 
         CursoDao daoC = new CursoDao();
         List<Curso> cursos = daoC.listar();
@@ -112,7 +116,7 @@
                     <a class="btn btn-primary" href="novoUsuario.jsp">Novo Usuário</a>
 
 
-                    <form class="form-horizontal" action="index.html" method="post">
+                    <form class="form-horizontal" action="ServBuscaUsuario" method="post">
                         <fieldset>
 
                             <!-- Form Name -->
@@ -122,7 +126,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="textinput">Termo de consulta:</label>
                                 <div class="col-md-5">
-                                    <input id="textinput" name="textinput" placeholder="Termos" class="form-control input-md" type="text">
+                                    <input value="${termo}" id="textinput" name="termo" placeholder="Termos" class="form-control input-md" type="text">
 
                                 </div>
                             </div>                        

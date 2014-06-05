@@ -23,15 +23,18 @@
         <link href="dashboard.css" rel="stylesheet">
     </head>
     <%
+        List<Materia> materias = (List<Materia>) request.getAttribute("busca");
 
-        MateriaDao dao = new MateriaDao();
-        List<Materia> materias = dao.listar();
-        pageContext.setAttribute("materias", materias);
+        if (materias == null) {
+            MateriaDao dao = new MateriaDao();
+            materias = dao.listar();
+            pageContext.setAttribute("materias", materias);
+        }
 
         CursoDao daoC = new CursoDao();
         List<Curso> cursos = daoC.listar();
         pageContext.setAttribute("cursos", cursos);
-        
+
         PeriodoDao daoP = new PeriodoDao();
         List<Periodo> periodos = daoP.listar();
         pageContext.setAttribute("periodos", periodos);
@@ -104,7 +107,7 @@
                     <a class="btn btn-primary" href="novoMateria.jsp">Novo Matéria</a>
 
 
-                    <form class="form-horizontal" action="index.html" method="post">
+                    <form class="form-horizontal" action="ServBuscaMateriasAdmin" method="post">
                         <fieldset>
 
                             <!-- Form Name -->
@@ -114,7 +117,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="textinput">Termo de consulta:</label>
                                 <div class="col-md-5">
-                                    <input id="textinput" name="textinput" placeholder="Termos" class="form-control input-md" type="text">
+                                    <input value="${termo}" id="textinput" name="termo" placeholder="Termos" class="form-control input-md" type="text">
 
                                 </div>
                             </div>

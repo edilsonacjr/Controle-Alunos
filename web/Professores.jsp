@@ -116,7 +116,7 @@
                     <a class="btn btn-primary" href="novoProfessor.jsp">Novo Professor</a>
 
 
-                    <form class="form-horizontal" action="ServBuscaProfessores" method="post">
+                    <form class="form-horizontal" action="ServBuscaProfessor" method="post">
                         <fieldset>
 
                             <!-- Form Name -->

@@ -23,11 +23,14 @@
         <link href="dashboard.css" rel="stylesheet">
     </head>
     <%
+        List<Periodo> periodos = (List<Periodo>) request.getAttribute("busca");
 
-        PeriodoDao dao = new PeriodoDao();
-        List<Periodo> periodos = dao.listar();
-        pageContext.setAttribute("periodos", periodos);
-        
+        if (periodos == null) {
+            PeriodoDao dao = new PeriodoDao();
+            periodos = dao.listar();
+            pageContext.setAttribute("periodos", periodos);
+        }
+
         CursoDao daoC = new CursoDao();
         List<Curso> cursos = daoC.listar();
         pageContext.setAttribute("cursos", cursos);
@@ -101,7 +104,7 @@
                     <a class="btn btn-primary" href="novoPeriodo.jsp">Novo Período</a>
 
 
-                    <form class="form-horizontal" action="index.html" method="post">
+                    <form class="form-horizontal" action="ServBuscaPeriodo" method="post">
                         <fieldset>
 
                             <!-- Form Name -->
@@ -111,8 +114,12 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="selectbasic">Curso</label>
                                 <div class="col-md-5">
-                                    <select id="selectbasic" name="selectbasic" class="form-control">
-                                        <c:forEach items="${cursos}" var="curso">                                            
+                                    <select id="selectbasic" name="termo" class="form-control">
+                                        <c:forEach items="${cursos}" var="curso">
+                                            <c:if test="${termo = curso.id}" >
+                                                <option value="${curso.id}">${curso.nome}</option>
+
+                                            </c:if>
                                             <option value="${curso.id}">${curso.nome}</option>                                                                                     
                                         </c:forEach>
                                     </select>
