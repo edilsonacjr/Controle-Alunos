@@ -39,7 +39,7 @@ public class ServBuscaPeriodo extends HttpServlet {
         
         
         request.setAttribute("termo", termo);
-        RequestDispatcher view = request.getRequestDispatcher("Alunos.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("Periodos.jsp");
         view.forward(request, response);
     }
 
