@@ -21,7 +21,7 @@
     </head>
 
     <body>
-        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+          <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -30,7 +30,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="paginaInicial.jsp">SisAlunos
+                    <a class="navbar-brand" href="index.jsp">SisAlunos
                         <br>
                     </a>
                 </div>
@@ -52,22 +52,30 @@
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
                         <li>
-                            <a href="#">Página Principal</a>
+                            <a href="index.jsp">Página Principal</a>
                         </li>
                         <li>
-                            <a href="#">Professores</a>
+                            <a href="Professores.jsp">Professores</a>
                         </li>
                         <li class="active">
-                            <a href="#">Alunos</a>
+                            <a href="Alunos.jsp">Alunos</a>
                         </li>
                         <li>
-                            <a href="#">Cursos</a>
+                            <a href="Cursos.jsp">Cursos</a>
                         </li>
                         <li>
-                            <a href="#">Usuários</a>
+                            <a href="Usuarios.jsp">Usuários</a>
+                        </li>
+                        <li>
+                            <a href="Periodos.jsp">Períodos</a>
+                        </li>
+                        <li>
+                            <a href="MateriasAdmin.jsp">Matérias</a>
+                        </li>
+                        <li>
+                            <a href="AlunosMaterias.jsp">Matricula de Aluno</a>
                         </li>
                     </ul>
-
 
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -119,7 +127,7 @@
                                 <label class="col-md-4 control-label text-left" for="button1id"></label>
                                 <div class="col-md-5 text-right">
                                     <button id="button1id" name="button1id" class="btn btn-success" onclick="form.action = 'ServAtualizarAlunoMateria'; form.method='post'" value="${alunomateria.id}" >Salvar</button>
-                                    <button id="button2id" name="button2id" class="btn btn-danger" onclick="form.action = 'Alunos.jsp'; form.method='post';">Cancelar</button>
+                                    <button id="button2id" name="button2id" class="btn btn-danger" onclick="form.action = 'AlunoMaterias.jsp'; form.method='post';">Cancelar</button>
                                 </div>
                             </div>
 
