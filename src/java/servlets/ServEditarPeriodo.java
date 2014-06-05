@@ -6,11 +6,14 @@
 
 package servlets;
 
+import dao.CursoDao;
 import dao.PeriodoDao;
+import entidades.Curso;
 import entidades.Periodo;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -24,8 +27,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author josepedro
  */
-@WebServlet(name = "ServAtualizarPeriodo", urlPatterns = {"/ServAtualizarPeriodo"})
-public class ServAtualizarPeriodo extends HttpServlet {
+@WebServlet(name = "ServEditarPeriodo", urlPatterns = {"/ServEditarPeriodo"})
+public class ServEditarPeriodo extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,26 +40,22 @@ public class ServAtualizarPeriodo extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-         Periodo p = new Periodo();
-        p.setId(Integer.parseInt(request.getParameter("button1id")));
-        p.getCurso().setId(Integer.parseInt(request.getParameter("curso")));
-        p.setNome(request.getParameter("nome"));
-        p.setSemestre(Integer.parseInt(request.getParameter("semestre")));
-        p.setAno(Integer.parseInt(request.getParameter("ano")));
-        PeriodoDao periododao;
-        try {
-            periododao = new PeriodoDao();
-            periododao.atualiza(p);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ServAtualizarPeriodo.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(ServAtualizarPeriodo.class.getName()).log(Level.SEVERE, null, ex);
-        }      
-         RequestDispatcher view = request.getRequestDispatcher("Periodos.jsp");
-        view.forward(request, response);
+        CursoDao daoC = new CursoDao();
+        List<Curso> cursos = daoC.listar();        
         
+        
+        PeriodoDao dao = new PeriodoDao();
+        int id = Integer.parseInt(request.getParameter("edita"));
+       Periodo periodo = new Periodo();
+        periodo.setId(id);
+        periodo = dao.getPeriodo(periodo);
+        
+        request.setAttribute("cursos", cursos);
+        request.setAttribute("periodo", periodo);
+        RequestDispatcher view = request.getRequestDispatcher("EditarPeriodo.jsp");
+        view.forward(request, response); 
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -71,7 +70,13 @@ public class ServAtualizarPeriodo extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ServEditarPeriodo.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ServEditarPeriodo.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -85,8 +90,13 @@ public class ServAtualizarPeriodo extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ServEditarPeriodo.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ServEditarPeriodo.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
