@@ -6,6 +6,8 @@
 package dao;
 
 import entidades.Aluno;
+import entidades.Curso;
+import entidades.Materia;
 import entidades.MateriaNotaFalta;
 import java.sql.Connection;
 import java.sql.Date;
@@ -211,5 +213,34 @@ public class AlunoDao {
         rs.close();
         return list;
     }
+    
+    public List<Aluno> getAlunosCursoMateria(Curso c, Materia m) throws SQLException{
+        String sql = "select * from aluno a \n"
+                + "inner join alunomateria am on (a.idaluno = am.idaluno) \n"
+                + "where a.idcurso = ? and am.idmateria = ?";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        stmt.setInt(1, c.getId());
+        stmt.setInt(2, m.getId());
+        ResultSet rs = stmt.executeQuery();
+        Aluno a;
+        List<Aluno> list = new ArrayList<>();
+        while (rs.next()) {
+            a = new Aluno();
+            a.setId(rs.getInt("idaluno"));
+            a.getCurso().setId(rs.getInt("idcurso"));
+            a.setDataAdmissao(rs.getDate("dataadmissao"));
+            a.setNome(rs.getString("nome"));
+            a.setCpf(rs.getString("cpf"));
+            a.setDataNascimento(rs.getDate("datanascimento"));
+            a.setLogin(rs.getString("login"));
+            a.setSenha(rs.getString("senha"));
+            a.setEmail(rs.getString("email"));
+            list.add(a);
+        }
+        stmt.close();
+        rs.close();
+        return null;
+    }
+    
 }
 
