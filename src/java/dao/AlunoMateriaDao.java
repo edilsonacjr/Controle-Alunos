@@ -71,10 +71,11 @@ public class AlunoMateriaDao {
         return list;
     }
     
-    public AlunoMateria getAlunoMateria(AlunoMateria am) throws SQLException {
+    public AlunoMateria getAlunoMateria(AlunoMateria alunomateria) throws SQLException {
         String sql = "select * from alunomateria where idalunomateria = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
-        stmt.setInt(1, am.getId());
+        stmt.setInt(1, alunomateria.getId());
+        AlunoMateria am = null;
         ResultSet rs = stmt.executeQuery();
         while (rs.next()){
             am = new AlunoMateria();

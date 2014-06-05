@@ -42,9 +42,9 @@ public class ProfessorDao {
     }
 
     public void atualizar(Professor p) throws SQLException {
-        String sql = "update professor set nome = ?, cpf = ?, datanascimento = ?"
-                + "login = ?, senha = ?, email = ?, dataadmissao = ? where "
-                + "idprofessor = ?";
+        String sql = "update professor set nome = ?, cpf = ?, "
+                + "datanascimento = ? login = ?, senha = ?, email = ?, "
+                + "dataadmissao = ? where idprofessor = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setString(1, p.getNome());
         stmt.setString(2, p.getCpf());
@@ -68,7 +68,7 @@ public class ProfessorDao {
 
     public List<Professor> listar() throws SQLException {
         List<Professor> list = new ArrayList<>();
-        Professor p;
+        Professor p = null;
         String sql = "select * from professor";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         ResultSet rs = stmt.executeQuery();
@@ -84,6 +84,8 @@ public class ProfessorDao {
             p.setDataAdmissao(rs.getDate("dataadmissao"));
             list.add(p);
         }
+        stmt.close();
+        rs.close();
         return list;
     }
 

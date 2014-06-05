@@ -41,8 +41,8 @@ public class UsuarioDao {
     }
 
     public void atualiza(Usuario u) throws SQLException {
-        String sql = "update usuario set nome = ?, cpf = ?, datanascimento = ? login = ?, senha = ?, email = ?"
-                + "where idusuario = ?";
+        String sql = "update usuario set nome = ?, cpf = ?, datanascimento = ? "
+                + "login = ?, senha = ?, email = ? where idusuario = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setString(1, u.getNome());
         stmt.setString(2, u.getCpf());
@@ -65,7 +65,7 @@ public class UsuarioDao {
 
     public List<Usuario> listar() throws SQLException {
         List<Usuario> list = new ArrayList<>();
-        Usuario u;
+        Usuario u = null;
         String sql = "select * from usuario";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         ResultSet rs = stmt.executeQuery();
@@ -80,13 +80,16 @@ public class UsuarioDao {
             u.setEmail(rs.getString("email"));
             list.add(u);
         }
+        stmt.close();
+        rs.close();
         return list;
     }
 
-    public Usuario getUsuario(Usuario u) throws SQLException {
+    public Usuario getUsuario(Usuario usuario) throws SQLException {
         String sql = "select * from usuario where idusuario = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
-        stmt.setInt(1, u.getId());
+        stmt.setInt(1, usuario.getId());
+        Usuario u = null;
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
             u = new Usuario();
@@ -106,10 +109,10 @@ public class UsuarioDao {
     public Usuario validaUsuario(Usuario usuario) throws SQLException {
         String sql = "select * from usuario where login = ? "
                 + "and senha = ?";
-        Usuario u = null;
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setString(1, usuario.getLogin());
         stmt.setString(2, usuario.getSenha());
+        Usuario u = null;
         try {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
