@@ -6,13 +6,16 @@
 package servlets;
 
 import dao.AlunoDao;
+import dao.ProfessorDao;
 import entidades.Aluno;
+import entidades.Professor;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -86,6 +89,15 @@ public class ServInserirAluno extends HttpServlet {
         a.setSenha(request.getParameter("senha"));
         a.getCurso().setId(Integer.parseInt(request.getParameter("curso")));
         Date dataadmissao = new Date(System.currentTimeMillis());
+        Professor p = new Professor();
+        try {
+            ProfessorDao pdao = new ProfessorDao();
+            List<Professor> listp = pdao.listar();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ServInserirAluno.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ServInserirAluno.class.getName()).log(Level.SEVERE, null, ex);
+        }
         //dateFormat.format(dataadmissao);
         //a.setDataAdmissao(dataadmissao);
         try {
