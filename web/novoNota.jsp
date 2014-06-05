@@ -113,7 +113,7 @@
                                 <div class="col-md-5">
                                     <select id="selectbasic" name="alunomateria" class="form-control">
                                         <c:forEach items="${alunosmaterias}" var="alunosmateria">                                            
-                                            <option value="${alunosmateria.id}" selected>${alunosmateria.id} - ${alunosmateria.curso.nome} - ${alunosmateria.aluno.nome}</option>                                                                                     
+                                            <option value="${alunosmateria.id}" selected>${alunosmateria.id} - ${alunosmateria.materia.nome} - ${alunosmateria.aluno.nome}</option>                                                                                     
                                         </c:forEach>
                                     </select>
                                 </div>
