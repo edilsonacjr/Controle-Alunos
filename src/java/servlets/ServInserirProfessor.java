@@ -88,6 +88,13 @@ public class ServInserirProfessor extends HttpServlet {
         //Date dataadmissao = new Date(System.currentTimeMillis());
         //dateFormat.format(dataadmissao);
         p.setDataNascimento(parsedDate);
+        date = request.getParameter("dataadm");
+        try {
+            parsedDate = dateFormat.parse(date);
+        } catch (ParseException ex) {
+            Logger.getLogger(ServInserirProfessor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        p.setDataAdmissao(parsedDate);
         try {
             ProfessorDao professordao = new ProfessorDao();
             professordao.inserir(p);
