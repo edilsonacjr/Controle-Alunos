@@ -85,7 +85,14 @@
                     <form class="form-horizontal">
                         <fieldset>
 
-
+                            <div class="form-group">
+                                <c:choose>
+                                    <c:when test="${empty erro}"></c:when>
+                                    <c:otherwise>
+                                        ${erro}
+                                    </c:otherwise>
+                                </c:choose> 
+                            </div>
 
                             <!-- Text input-->
                             <div class="form-group">

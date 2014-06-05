@@ -39,10 +39,12 @@ public class ServInserirAluno extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    public String erro;
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //doPost(request, response);
-        RequestDispatcher view = request.getRequestDispatcher("novoAluno.jsp");
+        response.setContentType("text/html;charset=UTF-8");
+        RequestDispatcher view = request.getRequestDispatcher("novoAluno.jsp?erro=" + erro);
         view.forward(request, response);
     }
 
@@ -100,6 +102,9 @@ public class ServInserirAluno extends HttpServlet {
         }
         //dateFormat.format(dataadmissao);
         date = request.getParameter("dataadm");
+        erro = "<div class=\"alert alert-success\" >\n"
+                + "                            Aluno: Salvo com sucesso!!!\n"
+                + "                      </div>";
         try {
             parsedDate = dateFormat.parse(date);
         } catch (ParseException ex) {
@@ -113,18 +118,20 @@ public class ServInserirAluno extends HttpServlet {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ServInserirAluno.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(ServInserirAluno.class.getName()).log(Level.SEVERE, null, ex);
+            erro = "<div class=\"alert alert-danger\" >\n"
+                    + "                            Aluno: Login invalido!!!!\n"
+                    + "                      </div>";
+            //Logger.getLogger(ServInserirAluno.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             alunodao.insere(a);
         } catch (SQLException ex) {
-            Logger.getLogger(ServInserirAluno.class.getName()).log(Level.SEVERE, null, ex);
-            String erro = "<div class=\"alert alert-danger\" >\n"
+            erro = "<div class=\"alert alert-danger\" >\n"
                     + "                            Aluno: Login invalido!!!!\n"
                     + "                      </div>";
-            request.setAttribute("erro", erro);
+            //Logger.getLogger(ServInserirAluno.class.getName()).log(Level.SEVERE, null, ex);          
         }
-
+        request.setAttribute("erro", erro);
         processRequest(request, response);
     }
 

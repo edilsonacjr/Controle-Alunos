@@ -39,8 +39,6 @@
         MateriaDao daom = new MateriaDao();
         List<Materia> materias = daom.listar();
         pageContext.setAttribute("materias", materias);
-
-
     %>
     <body>
 
@@ -49,6 +47,7 @@
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="sr-only">Toggle navigation</span>
+                        <div class="\alert alert-info" ></div>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
