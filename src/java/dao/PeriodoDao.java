@@ -38,8 +38,8 @@ public class PeriodoDao {
     }
     
     public void atualiza(Periodo p) throws SQLException {
-        String sql = "update periodo set idcurso = ?, nome = ?, ano = ?, semestre = ?"
-                + "where idperiodo = ?";
+        String sql = "update periodo set idcurso = ?, nome = ?, ano = ?, "
+                + "semestre = ? where idperiodo = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, p.getCurso().getId());
         stmt.setString(2, p.getNome());
@@ -60,7 +60,7 @@ public class PeriodoDao {
     
     public List<Periodo> listar() throws SQLException {
         List<Periodo> list = new ArrayList<>();
-        Periodo p;
+        Periodo p = null;
         String sql = "select * from periodo";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         ResultSet rs = stmt.executeQuery();
@@ -73,14 +73,19 @@ public class PeriodoDao {
             p.setSemestre(rs.getInt("semestre"));
             list.add(p);
         }
+        stmt.close();
+        rs.close();
         return list;
     }
     
-    public Periodo getPeriodo(Periodo p) throws SQLException {
+    public Periodo getPeriodo(Periodo periodo) throws SQLException {
         String sql = "select * from periodo where idperiodo = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
+        stmt.setInt(1, periodo.getId());
+        Periodo p = null;
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
+            p = new Periodo();
             p.setId(rs.getInt("idperiodo"));
             p.getCurso().setId(rs.getInt("idcurso"));
             p.setNome(rs.getString("nome"));

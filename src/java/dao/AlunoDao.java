@@ -71,7 +71,7 @@ public class AlunoDao {
 
     public List<Aluno> listar() throws SQLException {
         List<Aluno> list = new ArrayList<>();
-        Aluno a;
+        Aluno a = null;
         String sql = "select * from aluno a "
                 + "inner join curso c on "
                 + "(a.idcurso = c.idcurso)";
@@ -95,12 +95,14 @@ public class AlunoDao {
         return list;
     }
 
-    public Aluno getAluno(Aluno a) throws SQLException {
+    public Aluno getAluno(Aluno aluno) throws SQLException {
         String sql = "select * from aluno a where idaluno = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
-        stmt.setInt(1, a.getId());
+        stmt.setInt(1, aluno.getId());
+        Aluno a = null;
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
+            a = new Aluno();
             a.setId(rs.getInt("a.idaluno"));
             a.getCurso().setId(rs.getInt("a.idcurso"));
             a.setDataAdmissao(rs.getDate("a.dataadmissao"));

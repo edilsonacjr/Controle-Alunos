@@ -75,11 +75,14 @@ public class CursoDao {
         return list;
     }
     
-    public Curso getCurso(Curso c) throws SQLException {
+    public Curso getCurso(Curso curso) throws SQLException {
         String sql = "select * from curso where idcurso = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
+        stmt.setInt(1, curso.getId());
+        Curso c = null;
         ResultSet rs = stmt.executeQuery();
         while (rs.next()){
+            c = new Curso();
             c.setId(rs.getInt("idcurso"));
             c.setCategoria(rs.getString("categoria"));
             c.getCordenador().setId(rs.getInt("idprofessor"));

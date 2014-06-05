@@ -37,11 +37,11 @@ public class FaltaDao {
     }
     
     public void atualiza(Falta f) throws SQLException {
-        String sql = "update falta set idalunomateria = ?, data ?"
+        String sql = "update falta set data ?, idalunomateria = ?, "
                 + "where idfalta = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
-        stmt.setInt(1, f.getAlunoMateria().getId());
-        stmt.setDate(2, new Date(f.getData().getTime()));
+        stmt.setDate(1, new Date(f.getData().getTime()));
+        stmt.setInt(2, f.getAlunoMateria().getId());
         stmt.setInt(3, f.getId());
         stmt.execute();
         stmt.close();
@@ -73,12 +73,14 @@ public class FaltaDao {
         return list;
     }
     
-    public Falta getFalta(Falta f) throws SQLException {
+    public Falta getFalta(Falta falta) throws SQLException {
         String sql = "select * from falta where idfalta = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
-        stmt.setInt(1, f.getId());
+        stmt.setInt(1, falta.getId());
+        Falta f = null;
         ResultSet rs = stmt.executeQuery();
         while (rs.next()){
+            f = new Falta();
             f.setId(rs.getInt("idfalta"));
             f.getAlunoMateria().setId(rs.getInt("idalunomateria"));
             f.setData(rs.getDate("data"));
