@@ -6,6 +6,7 @@
 package servlets;
 
 import dao.PeriodoDao;
+import entidades.Curso;
 import entidades.Periodo;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -40,10 +41,10 @@ public class ServBuscaPeriodo extends HttpServlet {
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         String termo = request.getParameter("termo");
-        PeriodoDao pdao = new PeriodoDao();
-        Periodo p = new Periodo();
-        p.setNome("%" + termo + "%");
-        List<Periodo> periodos = pdao.getConsulta(p);
+        PeriodoDao pdao = new PeriodoDao();        
+        Curso c = new Curso();
+        c.setNome("%" + termo + "%");
+        List<Periodo> periodos = pdao.getConsulta(c);
         request.setAttribute("busca", periodos);
         request.setAttribute("termo", termo);
         RequestDispatcher view = request.getRequestDispatcher("Periodos.jsp");
