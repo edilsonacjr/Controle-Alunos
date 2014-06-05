@@ -150,7 +150,7 @@ public class AlunoDao {
                 + "     left join nota n on (am.idalunomateria = n.idalunomateria)\n"
                 + "     left join falta f on (am.dialunomateria = f.idalunomateria)\n"
                 + "     inner join aluno a on (am.idaluno = a.idaluno)\n"
-                + " where idaluno = ?";
+                + " where a.idaluno = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, a.getId());
         MateriaNotaFalta mnf = null;
