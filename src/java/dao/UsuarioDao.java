@@ -13,7 +13,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.NoResultException;
 
 /**
  *
@@ -125,5 +124,27 @@ public class UsuarioDao {
             u.setEmail(rs.getString("email"));
         }
         return u;
+    }
+    
+    public List<Usuario> getConsulta(Usuario usuario) throws SQLException {
+        String sql = "select * from usuario where nome like ?";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        Usuario u;
+        List<Usuario> list = new ArrayList<>();
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            u = new Usuario();
+            u.setId(rs.getInt("idusuario"));
+            u.setNome(rs.getString("nome"));
+            u.setCpf(rs.getString("cpf"));
+            u.setDataNascimento(rs.getDate("datanascimento"));
+            u.setLogin(rs.getString("login"));
+            u.setSenha(rs.getString("senha"));
+            u.setEmail(rs.getString("email"));
+            list.add(u);
+        }
+        stmt.close();
+        rs.close();
+        return list;
     }
 }
