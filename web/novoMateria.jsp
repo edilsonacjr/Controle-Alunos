@@ -108,7 +108,7 @@
                                 <div class="col-md-5">
                                     <select id="selectbasic" name="periodo" class="form-control">
                                         <c:forEach items="${periodos}" var="periodo">                                            
-                                            <option value="${periodo.id}" selected>${periodo.nome}</option>                                                                                     
+                                            <option value="${periodo.id}" selected>${periodo.nome} - ${periodo.curso.nome} - ${periodo.ano}</option>                                                                                     
                                         </c:forEach>
                                     </select>
                                 </div>
