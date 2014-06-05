@@ -30,7 +30,7 @@
             materias = dao.listar();
             pageContext.setAttribute("materias", materias);
         }
-
+        pageContext.setAttribute("materias", materias);
         CursoDao daoC = new CursoDao();
         List<Curso> cursos = daoC.listar();
         pageContext.setAttribute("cursos", cursos);
