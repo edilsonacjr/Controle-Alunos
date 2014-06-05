@@ -107,7 +107,10 @@ public class MateriaDao {
     }
     
     public List<Materia> getConsulta(Materia materia) throws SQLException {
-        String sql = "select * from materia where nome like ?";
+        String sql = "select * from materia m \n "
+                + " inner join periodo pe on (m.idperiodo = pe.idperiodo) \n"
+                + "inner join professor pr on (m.idprofessor = pr.idprofessor)"
+                + "where m.nome like ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setString(1, materia.getNome());
         Materia m = null;
@@ -115,10 +118,20 @@ public class MateriaDao {
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
             m = new Materia();
-            m.setId(rs.getInt("idmateria"));
-            m.getPeriodo().setId(rs.getInt("idperiodo"));
-            m.setNome(rs.getString("nome"));
-            m.getProfessor().setId(rs.getInt("idprofessor"));
+            m.setId(rs.getInt("m.idmateria"));
+            m.getPeriodo().setId(rs.getInt("pe.idperiodo"));
+            m.getPeriodo().getCurso().setId(rs.getInt("pe.idcurso"));
+            m.getPeriodo().setNome(rs.getString("pe.nome"));
+            m.getPeriodo().setAno(rs.getInt("pe.ano"));
+            m.setNome(rs.getString("m.nome"));
+            m.getProfessor().setId(rs.getInt("pr.idprofessor"));
+            m.getProfessor().setNome(rs.getString("pr.nome"));
+            m.getProfessor().setCpf(rs.getString("pr.cpf"));
+            m.getProfessor().setDataNascimento(rs.getDate("pr.datanascimento"));
+            m.getProfessor().setLogin(rs.getString("pr.login"));
+            m.getProfessor().setSenha(rs.getString("pr.senha"));
+            m.getProfessor().setEmail(rs.getString("pr.email"));
+            m.getProfessor().setDataAdmissao(rs.getDate("pr.dataadmissao"));
             list.add(m);
         }
         stmt.close();
