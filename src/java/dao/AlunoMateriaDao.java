@@ -68,7 +68,6 @@ public class AlunoMateriaDao {
             am = new AlunoMateria();
             am.setId(rs.getInt("idalunomateria"));
             am.getAluno().setId(rs.getInt("idaluno"));
-            am.getAluno().getCurso().setId(rs.getInt("c.idcurso"));
             am.getAluno().setDataAdmissao(rs.getDate("a.dataadmissao"));
             am.getAluno().setNome(rs.getString("a.nome"));
             am.getAluno().setCpf(rs.getString("a.cpf"));

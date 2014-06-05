@@ -47,7 +47,6 @@ public class AlunoDao {
                 + ", nome = ?, cpf = ?, datanascimento = ?, login = ?, "
                 + "senha = ?, email = ? where idaluno = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
-       // stmt.setInt(1, a.getId());
         stmt.setInt(1, a.getCurso().getId());
         stmt.setDate(2, new Date(a.getDataAdmissao().getTime()));
         stmt.setString(3, a.getNome());
