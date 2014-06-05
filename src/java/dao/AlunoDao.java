@@ -80,6 +80,9 @@ public class AlunoDao {
             a = new Aluno();
             a.setId(rs.getInt("a.idaluno"));
             a.getCurso().setId(rs.getInt("c.idcurso"));
+            a.getCurso().setNome(rs.getString("c.nome"));
+            a.getCurso().setCategoria(rs.getString("c.categoria"));
+            a.getCurso().getCordenador().setId(rs.getInt("p.idprofessor"));
             a.setDataAdmissao(rs.getDate("a.dataadmissao"));
             a.setNome(rs.getString("a.nome"));
             a.setCpf(rs.getString("a.cpf"));
@@ -182,11 +185,23 @@ public class AlunoDao {
         rs.close();
         return list;
     }
-    
+
     public List<Aluno> getConsulta(String termo, Integer curso, Integer periodo, Integer materia) throws SQLException {
         String sql = "select * from aluno a \n"
-                + "         inner join curso c on ()";
+                + "   left join alunomateria am on (a.idaluno = am.idaluno) \n"
+                + "   left join curso c on (a.idcurso = c.idcurso)\n"
+                + "   left join periodo p on (c.idperiodo = p.idperiodo)\n"
+                + "   left join materia m on (c.idmateria = m.idmateria)\n"
+                + "where a.nome like ? and\n"
+                + "      c.idcurso = ? and\n"
+                + "      p.idperiodo = ? and\n"
+                + "      m.idmateria = ? ";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        stmt.setString(1, termo);
+        stmt.setInt(2, curso);
+        stmt.setInt(3, periodo);
+        stmt.setInt(4, materia);
         return null;
-        
+
     }
 }
