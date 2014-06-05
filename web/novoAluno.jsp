@@ -79,12 +79,6 @@
                         <li>
                             <a href="AlunosMaterias.jsp">Aluno Matérias</a>
                         </li>
-                        <li>
-                            <a href="Faltas.jsp">Faltas</a>
-                        </li>
-                        <li>
-                            <a href="Notas.jsp">Notas</a>
-                        </li>
                     </ul>
 
 
