@@ -36,11 +36,12 @@ public class AlunoMateriaDao {
     }
     
     public void altera(AlunoMateria am) throws SQLException {
-        String sql = "update alunomateria set idaluno = ?, idmateria = ?"
+        String sql = "update alunomateria set idaluno = ?, idmateria = ? "
                 + "where idalunomateria = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, am.getAluno().getId());
         stmt.setInt(2, am.getMateria().getId());
+        stmt.setInt(3,am.getId());
         stmt.execute();
         stmt.close();
     }
