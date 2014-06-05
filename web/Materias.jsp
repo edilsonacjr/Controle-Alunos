@@ -11,10 +11,10 @@
 <%
         HttpSession sessao = request.getSession(true);
         Aluno a = (Aluno) sessao.getAttribute("aluno");
-        //AlunoDao dao = new AlunoDao();
-        //List<MateriaNotaFalta> mnfs = dao.getMateriaNotaFalta(a);
-        //pageContext.setAttribute("mnfs", mnfs);
-        System.out.println(a.getNome());
+        AlunoDao dao = new AlunoDao();
+        List<MateriaNotaFalta> mnfs = dao.getMateriaNotaFalta(a);
+        pageContext.setAttribute("mnfs", mnfs);
+        
     %>
 <body>
 

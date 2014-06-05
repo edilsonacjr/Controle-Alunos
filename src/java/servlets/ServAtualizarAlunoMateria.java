@@ -48,7 +48,7 @@ public class ServAtualizarAlunoMateria extends HttpServlet {
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ServAtualizarAlunoMateria.class.getName()).log(Level.SEVERE, null, ex);
         }
-        RequestDispatcher view = request.getRequestDispatcher("AlunoMateria.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("AlunosMaterias.jsp");
         view.forward(request, response);
     }
 

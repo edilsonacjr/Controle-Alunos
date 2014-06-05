@@ -37,7 +37,6 @@ public class ServInserirUsuario extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //doPost(request, response);
         RequestDispatcher view = request.getRequestDispatcher("novoUsuario.jsp");
         view.forward(request, response);
     }
@@ -87,20 +86,16 @@ public class ServInserirUsuario extends HttpServlet {
 
         try {
             usuariodao = new UsuarioDao();
+            usuariodao.insere(u);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ServInserirUsuario.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(ServInserirUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-            usuariodao.insere(u);
-        } catch (SQLException ex) {
-            Logger.getLogger(ServInserirUsuario.class.getName()).log(Level.SEVERE, null, ex);
             String erro = "<div class=\"alert alert-danger\" >\n"
                     + "                            Usuário: Login invalido!!!!\n"
                     + "                      </div>";
             request.setAttribute("erro", erro);
         }
+        processRequest(request, response);
 
     }
 
