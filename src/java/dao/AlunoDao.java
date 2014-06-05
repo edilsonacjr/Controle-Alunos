@@ -119,9 +119,9 @@ public class AlunoDao {
     }
 
     public Aluno validaAluno(Aluno aluno) throws SQLException {
-        String sql = "select * from aluno a"
+        String sql = "select * from aluno a "
                 + "left join curso c on (a.idcurso = c.idcurso) "
-                + "where login = ? and senha = ?";
+                + "where login = ? and senha = ? ";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setString(1, aluno.getLogin());
         stmt.setString(2, aluno.getSenha());
