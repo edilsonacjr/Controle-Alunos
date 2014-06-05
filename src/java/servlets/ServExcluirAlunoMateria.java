@@ -47,7 +47,7 @@ public class ServExcluirAlunoMateria extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(ServExcluirAlunoMateria.class.getName()).log(Level.SEVERE, null, ex);
         }
-        RequestDispatcher view = request.getRequestDispatcher("PrinciapalAdmin.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("AlunosMaterias.jsp");
         view.forward(request, response);
     }
 
