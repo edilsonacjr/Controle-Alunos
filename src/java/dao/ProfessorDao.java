@@ -6,6 +6,7 @@
 package dao;
 
 import entidades.Curso;
+import entidades.Materia;
 import entidades.Professor;
 import java.sql.Connection;
 import java.sql.Date;
@@ -175,4 +176,24 @@ public class ProfessorDao {
         rs.close();
         return list;
     }
+    
+    public List<Materia> getMaterias(Professor p) throws SQLException{
+        String sql = "select * from where idprofessor = ?";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        Materia m;
+        List<Materia> list = new ArrayList<>();
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            m = new Materia();
+            m.setId(rs.getInt("idmateria"));
+            m.getPeriodo().setId(rs.getInt("idperiodo"));
+            m.setNome(rs.getString("nome"));
+            m.getProfessor().setId(rs.getInt("idprofessor"));
+            list.add(m);
+        }
+        stmt.close();
+        rs.close();
+        return list;
+    }
+    
 }
