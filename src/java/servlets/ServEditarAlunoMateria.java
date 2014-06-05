@@ -7,14 +7,15 @@
 package servlets;
 
 import dao.AlunoDao;
-import dao.ProfessorDao;
-import entidades.Professor;
+import dao.AlunoMateriaDao;
+import dao.MateriaDao;
+import entidades.Aluno;
+import entidades.AlunoMateria;
+import entidades.Materia;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -28,8 +29,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author josepedro
  */
-@WebServlet(name = "ServAtualizarProfessor", urlPatterns = {"/ServAtualizarProfessor"})
-public class ServAtualizarProfessor extends HttpServlet {
+@WebServlet(name = "ServEditarAlunoMateria", urlPatterns = {"/ServEditarAlunoMateria"})
+public class ServEditarAlunoMateria extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,39 +42,24 @@ public class ServAtualizarProfessor extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-         Professor p = new Professor();
-        p.setId(Integer.parseInt(request.getParameter("button1id")));
-        p.setNome(request.getParameter("nome"));
-        p.setCpf(request.getParameter("cpf"));
-        String date = request.getParameter("data");
-        String dateAdm = request.getParameter("dataadmissao");
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        java.util.Date parsedDate;
-        try {
-            parsedDate = dateFormat.parse(date);
-            date = dateFormat.format(parsedDate);
-        } catch (ParseException ex) {
-            Logger.getLogger(ServAtualizarProfessor.class.getName()).log(Level.SEVERE, null, ex);
-        }        
-        Date dataadmissao = new Date(System.currentTimeMillis());
-        dateFormat.format(dataadmissao);
-        p.setDataNascimento(Date.valueOf(date));
-        p.setDataAdmissao(dataadmissao);
+         MateriaDao daoM = new MateriaDao();
+        List<Materia> materias = daoM.listar();
+        AlunoDao daoA = new AlunoDao();
+        List<Aluno> alunos = daoA.listar();
+        AlunoMateriaDao dao = new AlunoMateriaDao();
+        int id = Integer.parseInt(request.getParameter("edita"));
+        AlunoMateria alunoMateria = new AlunoMateria();
+        alunoMateria.setId(id);
+        alunoMateria = dao.getAlunoMateria(alunoMateria);
         
-        p.setLogin(request.getParameter("login"));
-        p.setSenha(request.getParameter("senha"));
-        p.setEmail(request.getParameter("email"));
-         try {
-            ProfessorDao professordao = new ProfessorDao();
-            professordao.atualizar(p);
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(ServAtualizarProfessor.class.getName()).log(Level.SEVERE, null, ex);
-        }
-         RequestDispatcher view = request.getRequestDispatcher("Professores.jsp");
-        view.forward(request, response);
         
+        request.setAttribute("alunos", alunos);
+        request.setAttribute("alunomateria", alunoMateria);
+        request.setAttribute("materias",materias);
+        RequestDispatcher view = request.getRequestDispatcher("EditarAlunoMateria.jsp");
+        view.forward(request, response); 
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -88,7 +74,13 @@ public class ServAtualizarProfessor extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ServEditarAlunoMateria.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ServEditarAlunoMateria.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -102,8 +94,13 @@ public class ServAtualizarProfessor extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ServEditarAlunoMateria.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ServEditarAlunoMateria.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

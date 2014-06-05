@@ -47,7 +47,6 @@ public class AlunoDao {
                 + ", nome = ?, cpf = ?, datanascimento = ?, login = ?, "
                 + "senha = ?, email = ? where idaluno = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
-       // stmt.setInt(1, a.getId());
         stmt.setInt(1, a.getCurso().getId());
         stmt.setDate(2, new Date(a.getDataAdmissao().getTime()));
         stmt.setString(3, a.getNome());
@@ -184,13 +183,10 @@ public class AlunoDao {
         return list;
     }
     
-    public List<Aluno> getConsulta(String termo, Integer curso, Integer periodo, Integer materia) {
+    public List<Aluno> getConsulta(String termo, Integer curso, Integer periodo, Integer materia) throws SQLException {
+        String sql = "select * from aluno a \n"
+                + "         inner join curso c on ()";
+        return null;
         
-        //switch () {
-            
-        //}
-        String sql = "select * from aluno";
-        List<Aluno> list = new ArrayList();
-        return list;
     }
 }

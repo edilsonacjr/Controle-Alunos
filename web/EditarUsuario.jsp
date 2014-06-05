@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page import="entidades.Aluno" %>
+<%@page import="entidades.Usuario" %>
 <%@page import="entidades.Curso" %>
 <%@page import="entidades.Periodo" %>
 <%@page import="entidades.Materia" %>
@@ -15,7 +15,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <link rel="shortcut icon" href="assets/img/faviconsss.ico">
-        <title>SisAlunos</title>
+        <title>SisUsuarios</title>
         <link href="dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="dashboard.css" rel="stylesheet">
     </head>
@@ -34,7 +34,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.jsp">SisAlunos
+                    <a class="navbar-brand" href="index.jsp">SisUsuarios
                         <br>
                     </a>
                 </div>
@@ -62,7 +62,7 @@
                             <a href="Professores.jsp">Professores</a>
                         </li>
                         <li class="active">
-                            <a href="Alunos.jsp">Alunos</a>
+                            <a href="Usuarios.jsp">Usuarios</a>
                         </li>
                         <li>
                             <a href="Cursos.jsp">Cursos</a>
@@ -77,14 +77,14 @@
                             <a href="MateriasAdmin.jsp">Matérias</a>
                         </li>
                         <li>
-                            <a href="AlunosMaterias.jsp">Matricula de Aluno</a>
+                            <a href="UsuariosMaterias.jsp">Matricula de Usuario</a>
                         </li>
                     </ul>
 
 
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Editar Materia &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <h1 class="page-header">Editar Usuario &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         <br>
                     </h1>
 
@@ -97,54 +97,64 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="textinput" >Nome</label>
                                 <div class="col-md-5">
-                                    <input id="textinput" name="nome" placeholder="Nome" class="form-control input-md" type="text" value="${materia.nome}">
+                                    <input id="textinput" name="nome" placeholder="Nome" class="form-control input-md" type="text" value="${usuario.nome}">
 
                                 </div>
                             </div>
 
-                            
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="textinput">CPF</label>
+                                <div class="col-md-5">
+                                    <input id="textinput" name="cpf" placeholder="CPF" class="form-control input-md" type="text" value="${usuario.cpf}">
+
+                                </div>
+                            </div>
                              
-                          
-
-                            <!-- Select Basic -->
+                            
+                            <!-- Text input-->
                             <div class="form-group">
-                                <label class="col-md-4 control-label" for="selectbasic">Periodo</label>
+                                <label class="col-md-4 control-label" for="textinput">Data de Nascimento</label>
                                 <div class="col-md-5">
-                                    <select id="selectbasic" name="periodo" class="form-control">
-                                        <c:forEach items="${periodos}" var="periodo">
-                                            <c:if test="${periodo.id == materia.periodo.id}">
-                                                <option value="${periodo.id}" selected>${periodo.nome}</option>
-                                            </c:if>
-                                            <c:if test="${periodo.id != materia.periodo.id}">
-                                                <option value="${periodo.id}">${periodo.nome}</option>
-                                            </c:if>
-                                        </c:forEach>
-                                    </select>
+                                    <input id="textinput" name="data" placeholder="data" class="form-control input-md" type="text" value="${usuario.dataNascimento}">
+
                                 </div>
                             </div>
 
-                            <!-- Select Basic -->
+                            <!-- Text input-->
                             <div class="form-group">
-                                <label class="col-md-4 control-label" for="selectbasic">Professor</label>
+                                <label class="col-md-4 control-label" for="textinput">E-mail</label>
                                 <div class="col-md-5">
-                                    <select id="selectbasic" name="professor" class="form-control">
-                                        <c:forEach items="${professores}" var="professor">
-                                            <c:if test="${professor.id == materia.professor.id}">
-                                                <option value="${professor.id}" selected>${professor.nome}</option>
-                                            </c:if>
-                                            <c:if test="${professor.id != materia.professor.id}">
-                                                <option value="${professor.id}">${professor.nome}</option>
-                                            </c:if>
-                                        </c:forEach>
-                                    </select>
+                                    <input id="textinput" name="email" placeholder="E-mail" class="form-control input-md" type="text" value="${usuario.email}">
+
                                 </div>
                             </div>
+
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="textinput">Login</label>
+                                <div class="col-md-5">
+                                    <input id="textinput" name="login" placeholder="Login" class="form-control input-md" type="text" value="${usuario.login}">
+
+                                </div>
+                            </div>
+
+                            <!-- Password input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="passwordinput">Senha</label>
+                                <div class="col-md-5">
+                                    <input id="passwordinput" name="senha" placeholder="Senha" class="form-control input-md" type="password" value="${usuario.senha}">
+
+                                </div>
+                            </div>
+
+
                             <!-- Button (Double) -->
                             <div class="form-group">
                                 <label class="col-md-4 control-label text-left" for="button1id"></label>
                                 <div class="col-md-5 text-right">
-                                    <button id="button1id" name="button1id" class="btn btn-success" onclick="form.action = 'ServAtualizarMateria'; form.method='post'" value="${materia.id}" >Salvar</button>
-                                    <button id="button2id" name="button2id" class="btn btn-danger" onclick="form.action = 'MateriasAdmin.jsp'; form.method='post';">Cancelar</button>
+                                    <button id="button1id" name="button1id" class="btn btn-success" onclick="form.action = 'ServAtualizarUsuario'; form.method='post'" value="${usuario.id}" >Salvar</button>
+                                    <button id="button2id" name="button2id" class="btn btn-danger" onclick="form.action = 'Usuarios.jsp'; form.method='post';">Cancelar</button>
                                 </div>
                             </div>
 

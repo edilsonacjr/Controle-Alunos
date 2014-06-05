@@ -91,7 +91,9 @@
                     <form class="form-horizontal">
                         <fieldset>
 
-
+                            <%  
+                                request.getParameter("erro");
+                            %>
 
                             <!-- Text input-->
                             <div class="form-group">

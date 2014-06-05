@@ -21,10 +21,6 @@
     </head>
 
     <body>
-        <%
-            //List<Curso> cs = (List) request.getAttribute("cursos");
-            //System.out.println(cs);
-            %>
           <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -81,10 +77,9 @@
                         </li>
                     </ul>
 
-
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Editar Materia &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <h1 class="page-header">Editar Relação Aluno Matéria  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         <br>
                     </h1>
 
@@ -93,58 +88,46 @@
 
 
 
-                            <!-- Text input-->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="textinput" >Nome</label>
-                                <div class="col-md-5">
-                                    <input id="textinput" name="nome" placeholder="Nome" class="form-control input-md" type="text" value="${materia.nome}">
 
+                            <!-- Select Basic -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="selectbasic">Aluno</label>
+                                <div class="col-md-5">
+                                    <select id="selectbasic" name="aluno" class="form-control">
+                                        <c:forEach items="${alunos}" var="aluno">
+                                            <c:if test="${aluno.id == alunomateria.aluno.id}">
+                                                <option value="${aluno.id}" selected>${aluno.nome}</option>
+                                            </c:if>
+                                            <c:if test="${aluno.id != alunomateria.aluno.id}">
+                                                <option value="${aluno.id}">${aluno.nome}</option>
+                                            </c:if>
+                                        </c:forEach>
+                                    </select>
                                 </div>
                             </div>
-
                             
-                             
-                          
-
-                            <!-- Select Basic -->
                             <div class="form-group">
-                                <label class="col-md-4 control-label" for="selectbasic">Periodo</label>
+                                <label class="col-md-4 control-label" for="selectbasic">Materias</label>
                                 <div class="col-md-5">
-                                    <select id="selectbasic" name="periodo" class="form-control">
-                                        <c:forEach items="${periodos}" var="periodo">
-                                            <c:if test="${periodo.id == materia.periodo.id}">
-                                                <option value="${periodo.id}" selected>${periodo.nome}</option>
+                                    <select id="selectbasic" name="materia" class="form-control">
+                                        <c:forEach items="${materias}" var="materia">
+                                            <c:if test="${materia.id == alunomateria.materia.id}">
+                                                <option value="${materia.id}" selected>${materia.nome}</option>
                                             </c:if>
-                                            <c:if test="${periodo.id != materia.periodo.id}">
-                                                <option value="${periodo.id}">${periodo.nome}</option>
+                                            <c:if test="${materia.id != alunomateria.materia.id}">
+                                                <option value="${materia.id}">${materia.nome}</option>
                                             </c:if>
                                         </c:forEach>
                                     </select>
                                 </div>
                             </div>
 
-                            <!-- Select Basic -->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="selectbasic">Professor</label>
-                                <div class="col-md-5">
-                                    <select id="selectbasic" name="professor" class="form-control">
-                                        <c:forEach items="${professores}" var="professor">
-                                            <c:if test="${professor.id == materia.professor.id}">
-                                                <option value="${professor.id}" selected>${professor.nome}</option>
-                                            </c:if>
-                                            <c:if test="${professor.id != materia.professor.id}">
-                                                <option value="${professor.id}">${professor.nome}</option>
-                                            </c:if>
-                                        </c:forEach>
-                                    </select>
-                                </div>
-                            </div>
                             <!-- Button (Double) -->
                             <div class="form-group">
                                 <label class="col-md-4 control-label text-left" for="button1id"></label>
                                 <div class="col-md-5 text-right">
-                                    <button id="button1id" name="button1id" class="btn btn-success" onclick="form.action = 'ServAtualizarMateria'; form.method='post'" value="${materia.id}" >Salvar</button>
-                                    <button id="button2id" name="button2id" class="btn btn-danger" onclick="form.action = 'MateriasAdmin.jsp'; form.method='post';">Cancelar</button>
+                                    <button id="button1id" name="button1id" class="btn btn-success" onclick="form.action = 'ServAtualizarAlunoMateria'; form.method='post'" value="${alunomateria.id}" >Salvar</button>
+                                    <button id="button2id" name="button2id" class="btn btn-danger" onclick="form.action = 'AlunoMaterias.jsp'; form.method='post';">Cancelar</button>
                                 </div>
                             </div>
 

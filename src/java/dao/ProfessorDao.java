@@ -43,7 +43,7 @@ public class ProfessorDao {
 
     public void atualizar(Professor p) throws SQLException {
         String sql = "update professor set nome = ?, cpf = ?, "
-                + "datanascimento = ? login = ?, senha = ?, email = ?, "
+                + "datanascimento = ?, login = ?, senha = ?, email = ?, "
                 + "dataadmissao = ? where idprofessor = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setString(1, p.getNome());
