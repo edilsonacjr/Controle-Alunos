@@ -41,7 +41,7 @@ public class UsuarioDao {
     }
 
     public void atualiza(Usuario u) throws SQLException {
-        String sql = "update usuario set nome = ?, cpf = ?, datanascimento = ? "
+        String sql = "update usuario set nome = ?, cpf = ?, datanascimento = ? , "
                 + "login = ?, senha = ?, email = ? where idusuario = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setString(1, u.getNome());
