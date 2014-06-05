@@ -1,14 +1,12 @@
 <%@page import="entidades.Materia"%>
+<%@page import="entidades.Professor"%>
 <%@page import="dao.MateriaDao"%>
 <%@page import="entidades.Periodo"%>
 <%@page import="dao.PeriodoDao"%>
 <%@page import="dao.CursoDao"%>
-<%@page import="entidades.Aluno"%>
 <%@page import="java.util.List"%>
-<%@page import="dao.AlunoDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page import="entidades.Curso" %>
 <!DOCTYPE html>
 <html>
 
@@ -24,22 +22,10 @@
         <link href="dashboard.css" rel="stylesheet">
     </head>
     <%
-        AlunoDao dao = new AlunoDao();
-        List<Aluno> alunos = dao.listar();
-        pageContext.setAttribute("alunos", alunos);
-
-        CursoDao daoC = new CursoDao();
-        List<Curso> cursos = daoC.listar();
-        pageContext.setAttribute("cursos", cursos);
-
-        PeriodoDao daop = new PeriodoDao();
-        List<Periodo> periodos = daop.listar();
-        pageContext.setAttribute("periodos", periodos);
-
-        MateriaDao daom = new MateriaDao();
-        List<Materia> materias = daom.listar();
-        pageContext.setAttribute("materias", materias);
-
+       
+        MateriaDao dao = new MateriaDao();
+        List<Materia> materias = dao.listar();
+        pageContext.setAttribute("materias", materias); 
 
     %>
     <body>
@@ -80,7 +66,7 @@
                         <li>
                             <a href="Professores.jsp">Professores</a>
                         </li>
-                        <li class="active">
+                        <li >
                             <a href="Alunos.jsp">Alunos</a>
                         </li>
                         <li>
@@ -92,7 +78,7 @@
                         <li>
                             <a href="Periodos.jsp">Períodos</a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="MateriasAdmin.jsp">Matérias</a>
                         </li>
                     </ul>
@@ -100,11 +86,11 @@
 
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Alunos
+                    <h1 class="page-header">Matérias
                         <br>
                     </h1>
 
-                    <a class="btn btn-primary" href="novoAluno.jsp">Novo Aluno</a>
+                    <a class="btn btn-primary" href="novoMateria.jsp">Novo Matéria</a>
 
 
                     <form class="form-horizontal" action="index.html" method="post">
@@ -127,9 +113,8 @@
                                 <label class="col-md-4 control-label" for="selectbasic">Curso</label>
                                 <div class="col-md-5">
                                     <select id="selectbasic" name="selectbasic" class="form-control">
-                                        <option value="0" selected>Escolha</option>
                                         <c:forEach items="${cursos}" var="curso">                                            
-                                            <option value="${curso.id}" >${curso.nome}</option>                                                                                     
+                                            <option value="${curso.id}" selected>${curso.nome}</option>                                                                                     
                                         </c:forEach>
                                     </select>
                                 </div>
@@ -140,22 +125,8 @@
                                 <label class="col-md-4 control-label" for="selectbasic">Período</label>
                                 <div class="col-md-5">
                                     <select id="selectbasic" name="selectbasic" class="form-control">
-                                        <option value="0" selected>Escolha</option>
                                         <c:forEach items="${periodos}" var="periodo">                                            
-                                            <option value="${periodo.id}">${periodo.nome} - ${periodo.ano}</option>                                                                                     
-                                        </c:forEach>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <!-- Select Basic -->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="selectbasic">Materia</label>
-                                <div class="col-md-5">
-                                    <select id="selectbasic" name="selectbasic" class="form-control">
-                                        <option value="0" selected>Escolha</option>
-                                        <<c:forEach items="${materias}" var="materia">                                            
-                                            <option value="${materia.id}">${materia.nome}</option>                                                                                     
+                                            <option value="${periodo.id}" selected>${periodo.nome} - ${periodo.ano}</option>                                                                                     
                                         </c:forEach>
                                     </select>
                                 </div>
@@ -176,32 +147,30 @@
 
 
 
-                    <h2 class="sub-header">Lista de Alunos</h2>
+                    <h2 class="sub-header">Lista de Matérias</h2>
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead>
                                 <tr>
                                     <th>ID</th>
                                     <th>Nome</th>
-                                    <th>Curso</th>
-                                    <th>CPF</th>
-                                    <th>E-mail</th>
+                                    <th>Período</th>
+                                    <th>Professor</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <c:forEach items="${alunos}" var="aluno">
+                                <c:forEach items="${materias}" var="materia">
                                     <tr>
-                                        <td>${aluno.id}</td>
-                                        <td>${aluno.nome}</td>
-                                        <td>${aluno.curso.nome}</td>
-                                        <td>${aluno.cpf}</td>
-                                        <td>${aluno.email}</td>
+                                        <td>${materia.id}</td>
+                                        <td>${materia.nome}</td>
+                                        <td>${materia.periodo.nome}</td>
+                                        <td>${materia.professor.nome}</td>
                                         <td>
                                             <form method="post">
                                                 <div class="form-group">
                                                     <label class="col-md-0 control-label" for="button1id"></label>
                                                     <div class="col-md-6 text-right">
-                                                        <button id="button1id" name="edita" class="btn btn-success" onclick="form.action = 'ServEditarAluno';" value="${aluno.id}">Editar</button>
+                                                        <button id="button1id" name="edita" class="btn btn-success" onclick="form.action = 'ServEditarMateria';" value="${materia.id}">Editar</button>
                                                         <button id="button2id" name="exclui" class="btn btn-danger" onclick="form.action = 'index.html';" value="${aluno.id}">Excluir</button>
                                                     </div>
                                                 </div>
