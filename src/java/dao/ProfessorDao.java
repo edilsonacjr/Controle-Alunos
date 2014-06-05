@@ -117,23 +117,17 @@ public class ProfessorDao {
         stmt.setString(1, professor.getLogin());
         stmt.setString(2, professor.getSenha());
         Professor p = null;
-        try {
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                p = new Professor();
-                p.setId(rs.getInt("idprofessor"));
-                p.setNome(rs.getString("nome"));
-                p.setCpf(rs.getString("cpf"));
-                p.setDataNascimento(rs.getDate("datanascimento"));
-                p.setLogin(rs.getString("login"));
-                p.setSenha(rs.getString("senha"));
-                p.setEmail(rs.getString("email"));
-                p.setDataAdmissao(rs.getDate("dataadmissao"));
-            }
-        } catch (NoResultException e) {
-            p = null;
-        } catch (RuntimeException e) {
-            e.printStackTrace();
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            p = new Professor();
+            p.setId(rs.getInt("idprofessor"));
+            p.setNome(rs.getString("nome"));
+            p.setCpf(rs.getString("cpf"));
+            p.setDataNascimento(rs.getDate("datanascimento"));
+            p.setLogin(rs.getString("login"));
+            p.setSenha(rs.getString("senha"));
+            p.setEmail(rs.getString("email"));
+            p.setDataAdmissao(rs.getDate("dataadmissao"));
         }
         return p;
     }
