@@ -56,6 +56,8 @@ public class ServLogin extends HttpServlet {
             sessao.setMaxInactiveInterval(30 * 60);
             sessao.setAttribute("usr", "Alun-" + login);
             response.sendRedirect("principalAlunos.jsp");
+            System.out.println("TESTE");
+            return;
         }
 
         Professor p = new Professor();
@@ -67,7 +69,8 @@ public class ServLogin extends HttpServlet {
             HttpSession sessao = request.getSession(true);
             sessao.setMaxInactiveInterval(30 * 60);
             sessao.setAttribute("usr", "Prof-" + login);
-            response.sendRedirect("principalAlunos.jsp");
+            response.sendRedirect("principalProf.jsp");
+            return;
         }
 
         Usuario u = new Usuario();
@@ -80,6 +83,7 @@ public class ServLogin extends HttpServlet {
             sessao.setMaxInactiveInterval(30 * 60);
             sessao.setAttribute("usr", "Admin-" + login);
             response.sendRedirect("principalAdmin.jsp");
+            return;
         }
         String erro = "<div class=\"alert alert-danger\" >\n"
                 + "                            Usuário ou senha Inválida\n"
