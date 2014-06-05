@@ -54,6 +54,10 @@ public class ServEditarPeriodo extends HttpServlet {
         
         request.setAttribute("cursos", cursos);
         request.setAttribute("periodo", periodo);
+        String erro = "<div class=\"alert alert-success\" >\n"
+                + "                            Periodo: Alterado com sucesso!!!\n"
+                + "                      </div>";
+        request.setAttribute("erro", erro);
         RequestDispatcher view = request.getRequestDispatcher("EditarPeriodo.jsp");
         view.forward(request, response); 
     }

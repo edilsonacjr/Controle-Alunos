@@ -49,6 +49,10 @@ public class ServEditarUsuario extends HttpServlet {
         usuario.setId(id);
         usuario = dao.getUsuario(usuario);        
         request.setAttribute("usuario", usuario);
+        String erro = "<div class=\"alert alert-success\" >\n"
+                + "                            Usuario: Alterado com sucesso!!!\n"
+                + "                      </div>";
+        request.setAttribute("erro", erro);
         RequestDispatcher view = request.getRequestDispatcher("EditarUsuario.jsp");
         view.forward(request, response);       
     }
