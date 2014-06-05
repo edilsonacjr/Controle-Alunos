@@ -96,7 +96,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="selectbasic">Curso</label>
                                 <div class="col-md-5">
-                                    <select id="selectbasic" name="cursolist" class="form-control">
+                                    <select id="selectbasic" name="cursoslist" class="form-control">
                                         <option value="0" selected>Escolha</option>
                                         <c:forEach items="${cursos}" var="curso">                                            
                                             <option value="${curso.id}" >${curso.nome}</option>                                                                                     
