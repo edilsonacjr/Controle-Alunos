@@ -25,7 +25,6 @@
     </head>
     <%
         List<Aluno> alunos = (List<Aluno>)request.getAttribute("busca");
-        System.out.println("TAMANHO:"+alunos.size());
         
         if (alunos == null) {
             AlunoDao dao = new AlunoDao();

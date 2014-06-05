@@ -7,9 +7,13 @@
 package servlets;
 
 import dao.AlunoDao;
+import entidades.Aluno;
+import entidades.Curso;
+import entidades.Materia;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -41,10 +45,14 @@ public class ServSeguirNota extends HttpServlet {
         
         int idcurso = Integer.parseInt(request.getParameter("cursolist"));
         int idmateria = Integer.parseInt(request.getParameter("materialist"));
+        Curso c = new Curso();
+        Materia m = new Materia();
+        c.setId(idcurso);
+        m.setId(idmateria);
         
         AlunoDao dao = new AlunoDao();
-        //List<Aluno> alunos = dao.getConsulta(termo);
-        //request.setAttribute("busca", alunos);
+        List<Aluno> alunos = dao.getAlunosCursoMateria(c, m);
+        request.setAttribute("alunos", alunos);
         
         //request.setAttribute("termo", termo);
         RequestDispatcher view = request.getRequestDispatcher("lancarNotas.jsp");
