@@ -145,7 +145,13 @@ public class AlunoDao {
     }
 
     public List<MateriaNotaFalta> getMateriaNotaFalta(Aluno a) throws SQLException {
-        String sql = "select * from alunomateria am \n"
+        String sql = "select select *, (select sum(idfalta) from falta where "
+                + " am.idalunomateria = f.idalunomateria) as 'falta' from alunomateria am \n" +
+"                     inner join materia m on (am.idmateria = m.idmateria)\n" +
+"                     left join nota n on (am.idalunomateria = n.idalunomateria)\n" +
+"                     left join falta f on (am.idalunomateria = f.idalunomateria)\n" +
+"                     inner join aluno a on (am.idaluno = a.idaluno)\n" +
+"                 where a.idaluno = 1 from alunomateria am \n"
                 + "     inner join materia m on (am.idmateria = m.idmateria)\n"
                 + "     left join nota n on (am.idalunomateria = n.idalunomateria)\n"
                 + "     left join falta f on (am.idalunomateria = f.idalunomateria)\n"
@@ -176,9 +182,7 @@ public class AlunoDao {
             mnf.getNota().setN2(rs.getDouble("n.n2"));
             mnf.getNota().setN3(rs.getDouble("n.n3"));
             mnf.getNota().getAlunoMateria().setId(rs.getInt("n.idalunomateria"));
-            /*mnf.getFalta().setId(rs.getInt("f.idfalta"));
-            mnf.getFalta().getAlunoMateria().setId(rs.getInt("f.idalunomateria"));
-            mnf.getFalta().setData(rs.getDate("f.data"));*/
+            mnf.setFalta(rs.getInt("falta"));
             list.add(mnf);
         }
         stmt.close();
