@@ -82,7 +82,7 @@ public class AlunoDao {
             a.getCurso().setId(rs.getInt("c.idcurso"));
             a.getCurso().setNome(rs.getString("c.nome"));
             a.getCurso().setCategoria(rs.getString("c.categoria"));
-           a.getCurso().getCordenador().setId(rs.getInt("c.idprofessor"));
+            a.getCurso().getCordenador().setId(rs.getInt("c.idprofessor"));
             a.setDataAdmissao(rs.getDate("a.dataadmissao"));
             a.setNome(rs.getString("a.nome"));
             a.setCpf(rs.getString("a.cpf"));
@@ -150,7 +150,7 @@ public class AlunoDao {
                 + "     left join nota n on (am.idalunomateria = n.idalunomateria)\n"
                 + "     left join falta f on (am.dialunomateria = f.idalunomateria)\n"
                 + "     inner join aluno a on (am.idaluno = a.idaluno)\n"
-                + " where idaluno = ?";
+                + " where a.idaluno = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, a.getId());
         MateriaNotaFalta mnf = null;
