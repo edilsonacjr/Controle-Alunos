@@ -96,7 +96,14 @@
                     <form class="form-horizontal">
                         <fieldset>
 
-
+                            <div class="form-group">
+                                <c:choose>
+                                    <c:when test="${empty erro}"></c:when>
+                                    <c:otherwise>
+                                        ${erro}
+                                    </c:otherwise>
+                                </c:choose> 
+                            </div>
 
                             <!-- Text input-->
                             <div class="form-group">
@@ -132,8 +139,10 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label text-left" for="button1id"></label>
                                 <div class="col-md-5 text-right">
-                                    <button id="button1id" name="button1id" class="btn btn-success" onclick="form.action = 'ServInserirCurso'; form.method='post';">Cadastrar</button>
-                                    <button id="button2id" name="button2id" class="btn btn-danger" onclick="form.action = 'Cursos.jsp'; form.method='post';">Cancelar</button>
+                                    <button id="button1id" name="button1id" class="btn btn-success" onclick="form.action = 'ServInserirCurso';
+                                            form.method = 'post';">Cadastrar</button>
+                                    <button id="button2id" name="button2id" class="btn btn-danger" onclick="form.action = 'Cursos.jsp';
+                                            form.method = 'post';">Cancelar</button>
                                 </div>
                             </div>
 

@@ -87,6 +87,10 @@ public class ServInserirFalta extends HttpServlet {
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ServInserirFalta.class.getName()).log(Level.SEVERE, null, ex);
         }
+        String erro = "<div class=\"alert alert-success\" >\n"
+                + "                            Falta: Salvo com sucesso!!!\n"
+                + "                      </div>";
+        request.setAttribute("erro", erro);
         processRequest(request, response);
     }
 

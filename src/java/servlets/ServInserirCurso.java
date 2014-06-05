@@ -76,6 +76,10 @@ public class ServInserirCurso extends HttpServlet {
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ServInserirCurso.class.getName()).log(Level.SEVERE, null, ex);
         }
+        String erro = "<div class=\"alert alert-success\" >\n"
+                + "                            Curso: Salvo com sucesso!!!\n"
+                + "                      </div>";
+        request.setAttribute("erro", erro);
         processRequest(request, response);
     }
 

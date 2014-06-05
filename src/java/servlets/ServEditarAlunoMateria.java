@@ -58,6 +58,10 @@ public class ServEditarAlunoMateria extends HttpServlet {
         request.setAttribute("alunos", alunos);
         request.setAttribute("alunomateria", alunoMateria);
         request.setAttribute("materias",materias);
+        String erro = "<div class=\"alert alert-success\" >\n"
+                + "                            Matricula do Aluno: Alterado com sucesso!!!\n"
+                + "                      </div>";
+        request.setAttribute("erro", erro);
         RequestDispatcher view = request.getRequestDispatcher("EditarAlunoMateria.jsp");
         view.forward(request, response); 
     }

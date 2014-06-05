@@ -80,6 +80,10 @@ public class ServInserirPeriodo extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(ServInserirPeriodo.class.getName()).log(Level.SEVERE, null, ex);
         }
+        String erro = "<div class=\"alert alert-success\" >\n"
+                + "                            Periodo: Salvo com sucesso!!!\n"
+                + "                      </div>";
+        request.setAttribute("erro", erro);
         processRequest(request, response);
     }
 

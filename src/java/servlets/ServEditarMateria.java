@@ -57,6 +57,10 @@ public class ServEditarMateria extends HttpServlet {
         request.setAttribute("professores", professores);
         request.setAttribute("periodos", periodos);
         request.setAttribute("materia", materia);
+        String erro = "<div class=\"alert alert-success\" >\n"
+                + "                            Materia: Alterada com sucesso!!!\n"
+                + "                      </div>";
+        request.setAttribute("erro", erro);
         RequestDispatcher view = request.getRequestDispatcher("EditarMateria.jsp");
         view.forward(request, response);
     }

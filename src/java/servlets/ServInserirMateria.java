@@ -78,6 +78,10 @@ public class ServInserirMateria extends HttpServlet {
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ServInserirMateria.class.getName()).log(Level.SEVERE, null, ex);
         }        
+        String erro = "<div class=\"alert alert-success\" >\n"
+                + "                            Materia: Salva com sucesso!!!\n"
+                + "                      </div>";
+        request.setAttribute("erro", erro);
         processRequest(request, response);
     }
 

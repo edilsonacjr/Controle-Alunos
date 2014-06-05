@@ -54,6 +54,10 @@ public class ServEditarCurso extends HttpServlet {
 
         request.setAttribute("professores", professores);
         request.setAttribute("curso", curso);
+        String erro = "<div class=\"alert alert-success\" >\n"
+                + "                            Curso: Alterado com sucesso!!!\n"
+                + "                      </div>";
+        request.setAttribute("erro", erro);
         RequestDispatcher view = request.getRequestDispatcher("EditarCurso.jsp");
         view.forward(request, response);
     }

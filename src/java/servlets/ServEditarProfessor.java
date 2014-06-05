@@ -50,6 +50,10 @@ public class ServEditarProfessor extends HttpServlet {
         professor.setId(id);
         professor = dao.getProfessor(professor);
         request.setAttribute("professor", professor);
+        String erro = "<div class=\"alert alert-success\" >\n"
+                + "                            Professor: Alterado com sucesso!!!\n"
+                + "                      </div>";
+        request.setAttribute("erro", erro);
         RequestDispatcher view = request.getRequestDispatcher("EditarProfessor.jsp");
         view.forward(request, response); 
     }
