@@ -47,7 +47,7 @@ public class ServExcluirPeriodo extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(ServExcluirPeriodo.class.getName()).log(Level.SEVERE, null, ex);
         }
-        RequestDispatcher view = request.getRequestDispatcher("PrinciapalAdmin.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("Periodos.jsp");
         view.forward(request, response);
     }
 
