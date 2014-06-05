@@ -88,13 +88,7 @@
                             <a href="Materias.jsp">Matérias</a>
                         </li>
                         <li>
-                            <a href="AlunosMaterias.jsp">Aluno Matérias</a>
-                        </li>
-                        <li>
-                            <a href="Faltas.jsp">Faltas</a>
-                        </li>
-                        <li>
-                            <a href="Notas.jsp">Notas</a>
+                            <a href="AlunosMaterias.jsp">Matricula de Aluno</a>
                         </li>
                     </ul>
 
@@ -114,7 +108,7 @@
                                 <div class="col-md-5">
                                     <select id="selectbasic" name="periodo" class="form-control">
                                         <c:forEach items="${periodos}" var="periodo">                                            
-                                            <option value="${periodo.id}" selected>${periodo.nome}</option>                                                                                     
+                                            <option value="${periodo.id}" selected>${periodo.nome} - ${periodo.curso.nome} - ${periodo.ano}</option>                                                                                     
                                         </c:forEach>
                                     </select>
                                 </div>
