@@ -185,11 +185,21 @@ public class AlunoDao {
     }
     
     public List<Aluno> getConsulta(String termo, Integer curso, Integer periodo, Integer materia) {
+        String sql = "select * from aluno a \n"
+                + "         inner join curso c on ()";
+        String concat = ""; 
+        if (curso != 0) {
+            concat = "and c.idcurso = ?";
+        }
         
-        //switch () {
-            
-        //}
-        String sql = "select * from aluno";
+        if (periodo != 0 ) {
+            concat = "and p.idcurso = ?";
+        }
+        
+        if (materia != 0) {
+            concat = "and m.idmateria = ?";
+        }
+        
         List<Aluno> list = new ArrayList();
         return list;
     }
