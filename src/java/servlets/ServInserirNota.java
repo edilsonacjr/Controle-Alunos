@@ -36,7 +36,7 @@ public class ServInserirNota extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        doPost(request, response);
+        //doPost(request, response);
         RequestDispatcher view = request.getRequestDispatcher("novoNota.jsp");
         view.forward(request, response);
     }
@@ -79,7 +79,7 @@ public class ServInserirNota extends HttpServlet {
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ServInserirNota.class.getName()).log(Level.SEVERE, null, ex);
         }       
-        //processRequest(request, response);
+        processRequest(request, response);
     }
 
     /**
