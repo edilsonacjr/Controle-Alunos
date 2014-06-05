@@ -6,7 +6,6 @@
 package dao;
 
 import entidades.Aluno;
-import entidades.Materia;
 import entidades.MateriaNotaFalta;
 import java.sql.Connection;
 import java.sql.Date;
@@ -15,7 +14,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.NoResultException;
 
 /**
  *
@@ -149,8 +147,8 @@ public class AlunoDao {
                 + "     inner join materia m on (am.idmateria = m.idmateria)\n"
                 + "     left join nota n on (am.idalunomateria = n.idalunomateria)\n"
                 + "     left join falta f on (am.dialunomateria = f.idalunomateria)\n"
-                + "     inner join aluno a on (am.idaluno = a.idaluno) "
-                + "   where idaluno = ?";
+                + "     inner join aluno a on (am.idaluno = a.idaluno)\n"
+                + " where idaluno = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, a.getId());
         MateriaNotaFalta mnf = null;
