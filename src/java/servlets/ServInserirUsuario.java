@@ -83,14 +83,25 @@ public class ServInserirUsuario extends HttpServlet {
             Logger.getLogger(ServInserirUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
         u.setDataNascimento(parsedDate);
-        UsuarioDao usuariodao;
+        UsuarioDao usuariodao = null;
+
         try {
             usuariodao = new UsuarioDao();
-            usuariodao.insere(u);
-        } catch (ClassNotFoundException | SQLException ex) {
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ServInserirUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
             Logger.getLogger(ServInserirUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
-        processRequest(request, response);
+        try {
+            usuariodao.insere(u);
+        } catch (SQLException ex) {
+            Logger.getLogger(ServInserirUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            String erro = "<div class=\"alert alert-danger\" >\n"
+                    + "                            Usuário: Login invalido!!!!\n"
+                    + "                      </div>";
+            request.setAttribute("erro", erro);
+        }
+
     }
 
     /**

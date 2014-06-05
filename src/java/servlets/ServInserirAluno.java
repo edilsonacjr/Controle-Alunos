@@ -75,14 +75,14 @@ public class ServInserirAluno extends HttpServlet {
         Aluno a = new Aluno();
         a.setNome(request.getParameter("nome"));
         a.setCpf(request.getParameter("cpf"));
-        String date = request.getParameter("data");        
+        String date = request.getParameter("data");
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        java.util.Date parsedDate = null;       
+        java.util.Date parsedDate = null;
         try {
             parsedDate = dateFormat.parse(date);
         } catch (ParseException ex) {
             Logger.getLogger(ServInserirAluno.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        }
         a.setDataNascimento(parsedDate);
         a.setEmail(request.getParameter("email"));
         a.setLogin(request.getParameter("login"));
@@ -106,12 +106,25 @@ public class ServInserirAluno extends HttpServlet {
             Logger.getLogger(ServInserirAluno.class.getName()).log(Level.SEVERE, null, ex);
         }
         a.setDataAdmissao(parsedDate);
+
+        AlunoDao alunodao = null;
         try {
-            AlunoDao alunodao = new AlunoDao();
-            alunodao.insere(a);
-        } catch (ClassNotFoundException | SQLException ex) {
+            alunodao = new AlunoDao();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ServInserirAluno.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
             Logger.getLogger(ServInserirAluno.class.getName()).log(Level.SEVERE, null, ex);
         }
+        try {
+            alunodao.insere(a);
+        } catch (SQLException ex) {
+            Logger.getLogger(ServInserirAluno.class.getName()).log(Level.SEVERE, null, ex);
+            String erro = "<div class=\"alert alert-danger\" >\n"
+                    + "                            Aluno: Login invalido!!!!\n"
+                    + "                      </div>";
+            request.setAttribute("erro", erro);
+        }
+
         processRequest(request, response);
     }
 
