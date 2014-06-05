@@ -24,7 +24,7 @@
         <link href="dashboard.css" rel="stylesheet">
     </head>
     <%
-        
+        /*
         CursoDao daoC = new CursoDao();
         List<Curso> cursos = daoC.listar();
         pageContext.setAttribute("cursos", cursos);
@@ -35,7 +35,7 @@
 
         MateriaDao daom = new MateriaDao();
         List<Materia> materias = daom.listar();
-        pageContext.setAttribute("materias", materias);
+        pageContext.setAttribute("materias", materias);*/
 
 
     %>
