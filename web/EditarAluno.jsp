@@ -101,12 +101,20 @@
 
                                 </div>
                             </div>
+                             
+                                    <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="textinput">Data de Admissão</label>
+                                <div class="col-md-5">
+                                    <input id="textinput" name="dataadmissao" placeholder="dataadmissao" class="form-control input-md" type="text" value="${aluno.dataAdmissao}">
 
+                                </div>
+                            </div>
                             <!-- Text input-->
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="textinput">Data de Nascimento</label>
                                 <div class="col-md-5">
-                                    <input id="textinput" name="data" placeholder="data" class="form-control input-md" type="text" value="">
+                                    <input id="textinput" name="data" placeholder="data" class="form-control input-md" type="text" value="${aluno.dataNascimento}">
 
                                 </div>
                             </div>
@@ -156,10 +164,10 @@
                             </div>
 
                             <!-- Button (Double) -->
-                            <div class="form-group" method="post">
+                            <div class="form-group">
                                 <label class="col-md-4 control-label text-left" for="button1id"></label>
                                 <div class="col-md-5 text-right">
-                                    <button id="button1id" name="button1id" class="btn btn-success" onclick="form.action = 'erro';">Salvar</button>
+                                    <button id="button1id" name="button1id" class="btn btn-success" onclick="form.action = 'ServAtualizarAluno'; form.method='post'" value="${aluno.id}" >Salvar</button>
                                     <button id="button2id" name="button2id" class="btn btn-danger" onclick="form.action = 'Alunos.jsp'; form.method='post';">Cancelar</button>
                                 </div>
                             </div>
