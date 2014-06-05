@@ -44,7 +44,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="paginaInicial.jsp">SisAlunos
+                    <a class="navbar-brand" href="principalAdmin.jsp">SisAlunos
                         <br>
                     </a>
                 </div>
@@ -65,13 +65,13 @@
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li >
-                            <a href="principalAdmin.jsp">Página Principal</a>
+                        <li>
+                            <a href="principalAdmin.jsp" >Página Principal</a>
                         </li>
                         <li>
                             <a href="Professores.jsp">Professores</a>
                         </li>
-                        <li >
+                        <li>
                             <a href="Alunos.jsp">Alunos</a>
                         </li>
                         <li>
@@ -80,7 +80,7 @@
                         <li>
                             <a href="Usuarios.jsp">Usuários</a>
                         </li>
-                        <li class="active">
+                        <li  class="active">
                             <a href="Periodos.jsp">Períodos</a>
                         </li>
                         <li>
