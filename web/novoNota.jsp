@@ -84,7 +84,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="textinput">Nota 1</label>
                                 <div class="col-md-5">
-                                    <input id="textinput" name="nota1" placeholder="Nota1" class="form-control input-md" type="text">
+                                    <input id="textinput" name="nota1" placeholder="Nota 1" class="form-control input-md" type="text">
 
                                 </div>
                             </div>
@@ -93,7 +93,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="textinput">Nota 2</label>
                                 <div class="col-md-5">
-                                    <input id="textinput" name="nota2" placeholder="Nota2" class="form-control input-md" type="text">
+                                    <input id="textinput" name="nota2" placeholder="Nota 2" class="form-control input-md" type="text">
 
                                 </div>
                             </div>                                                        
@@ -102,7 +102,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="textinput">Nota 3</label>
                                 <div class="col-md-5">
-                                    <input id="textinput" name="nota3" placeholder="Nota3" class="form-control input-md" type="text">
+                                    <input id="textinput" name="nota3" placeholder="Nota 3" class="form-control input-md" type="text">
 
                                 </div>
                             </div>
@@ -113,7 +113,7 @@
                                 <div class="col-md-5">
                                     <select id="selectbasic" name="alunomateria" class="form-control">
                                         <c:forEach items="${alunosmaterias}" var="alunosmateria">                                            
-                                            <option value="${alunosmateria.id}" selected>${alunosmateria.id}</option>                                                                                     
+                                            <option value="${alunosmateria.id}">${alunosmateria.id} - ${alunosmateria.materia.nome} - ${alunosmateria.aluno.nome}</option>                                                                                     
                                         </c:forEach>
                                     </select>
                                 </div>

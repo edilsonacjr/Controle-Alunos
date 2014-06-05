@@ -79,7 +79,7 @@
                             <a href="Periodos.jsp">Períodos</a>
                         </li>
                         <li>
-                            <a href="Materias.jsp">Matérias</a>
+                            <a href="MateriasAdmin.jsp">Matérias</a>
                         </li>
                         <li>
                             <a href="AlunosMaterias.jsp">Matricula de Aluno</a>
@@ -122,7 +122,7 @@
                                 <div class="col-md-5">
                                     <select id="selectbasic" name="coordenador" class="form-control">
                                         <c:forEach items="${professores}" var="professor">                                            
-                                            <option value="${professor.id}" selected>${professor.nome}</option>                                                                                     
+                                            <option value="${professor.id}">${professor.nome}</option>                                                                                     
                                         </c:forEach>
                                     </select>
                                 </div>
