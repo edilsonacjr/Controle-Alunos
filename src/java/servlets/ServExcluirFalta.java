@@ -6,8 +6,14 @@
 
 package servlets;
 
+import dao.FaltaDao;
+import entidades.Falta;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -31,18 +37,18 @@ public class ServExcluirFalta extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ServExcluirFalta</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ServExcluirFalta at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        Falta f = new Falta();
+        f.setId(Integer.parseInt(request.getParameter("exclui")));
+        try {
+            FaltaDao fdao = new FaltaDao();
+            fdao.exclui(f);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ServExcluirFalta.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ServExcluirFalta.class.getName()).log(Level.SEVERE, null, ex);
         }
+        RequestDispatcher view = request.getRequestDispatcher("PrinciapalProf.jsp");
+        view.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
