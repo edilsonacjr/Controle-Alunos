@@ -116,11 +116,14 @@
                                 <div class="col-md-5">
                                     <select id="selectbasic" name="termo" class="form-control">
                                         <c:forEach items="${cursos}" var="curso">
-                                            <c:if test="${termo = curso.id}" >
-                                                <option value="${curso.id}">${curso.nome}</option>
+                                            <c:if test="${termo == curso.id}" >
+                                                <option value="${curso.id}" selected>${curso.nome}</option>
 
                                             </c:if>
-                                            <option value="${curso.id}">${curso.nome}</option>                                                                                     
+                                            <c:if test="${termo != curso.id}" >
+                                                <option value="${curso.id}">${curso.nome}</option>
+
+                                            </c:if>                                                                                                                                
                                         </c:forEach>
                                     </select>
                                 </div>
