@@ -39,8 +39,10 @@
         MateriaDao daom = new MateriaDao();
         List<Materia> materias = daom.listar();
         pageContext.setAttribute("materias", materias);
-
-
+        String erro = "<div class=\"alert alert-info\" >\n"
+                    + "                            Insera os dados para o Aluno\n"
+                    + "                      </div>";
+        request.setAttribute("erro", erro);
     %>
     <body>
 
@@ -49,6 +51,7 @@
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="sr-only">Toggle navigation</span>
+                        <div class="\alert alert-info" ></div>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
