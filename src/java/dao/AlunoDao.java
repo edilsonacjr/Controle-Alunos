@@ -148,7 +148,7 @@ public class AlunoDao {
         String sql = "select * from alunomateria am \n"
                 + "     inner join materia m on (am.idmateria = m.idmateria)\n"
                 + "     left join nota n on (am.idalunomateria = n.idalunomateria)\n"
-                + "     left join falta f on (am.dialunomateria = f.idalunomateria)\n"
+                + "     left join falta f on (am.idalunomateria = f.idalunomateria)\n"
                 + "     inner join aluno a on (am.idaluno = a.idaluno)\n"
                 + " where a.idaluno = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
@@ -176,9 +176,9 @@ public class AlunoDao {
             mnf.getNota().setN2(rs.getDouble("n.n2"));
             mnf.getNota().setN3(rs.getDouble("n.n3"));
             mnf.getNota().getAlunoMateria().setId(rs.getInt("n.idalunomateria"));
-            mnf.getFalta().setId(rs.getInt("f.idfalta"));
+            /*mnf.getFalta().setId(rs.getInt("f.idfalta"));
             mnf.getFalta().getAlunoMateria().setId(rs.getInt("f.idalunomateria"));
-            mnf.getFalta().setData(rs.getDate("f.data"));
+            mnf.getFalta().setData(rs.getDate("f.data"));*/
             list.add(mnf);
         }
         stmt.close();

@@ -15,13 +15,12 @@ public class MateriaNotaFalta {
     private Aluno aluno;
     private Materia materia;
     private Nota nota;
-    private Falta falta;
+    private Integer falta;
     
     public MateriaNotaFalta(){
         aluno = new Aluno();
         materia = new Materia();
         nota = new Nota();
-        falta = new Falta();
     }
 
     public Aluno getAluno() {
@@ -48,11 +47,11 @@ public class MateriaNotaFalta {
         this.nota = nota;
     }
 
-    public Falta getFalta() {
+    public Integer getFalta() {
         return falta;
     }
 
-    public void setFalta(Falta falta) {
+    public void setFalta(Integer falta) {
         this.falta = falta;
     }
     
