@@ -63,6 +63,12 @@
           <li>
             <a href="Usuarios.jsp">Usuários</a>
           </li>
+          <li>
+            <a href="Periodos.jsp">Períodos</a>
+          </li>
+          <li>
+            <a href="MateriasAdmin.jsp">Matérias</a>
+          </li>
         </ul>
 
 

@@ -34,7 +34,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="paginaInicial.jsp">SisAlunos
+                    <a class="navbar-brand" href="index.jsp">SisAlunos
                         <br>
                     </a>
                 </div>
@@ -56,7 +56,7 @@
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
                         <li>
-                            <a href="paginaInicial.jsp">Página Principal</a>
+                            <a href="index.jsp">Página Principal</a>
                         </li>
                         <li>
                             <a href="Professores.jsp">Professores</a>
@@ -74,10 +74,10 @@
                             <a href="Periodos.jsp">Períodos</a>
                         </li>
                         <li>
-                            <a href="Materias.jsp">Matérias</a>
+                            <a href="MateriasAdmin.jsp">Matérias</a>
                         </li>
                         <li>
-                            <a href="AlunosMaterias.jsp">Aluno Matérias</a>
+                            <a href="AlunosMaterias.jsp">Matricula de Aluno</a>
                         </li>
                     </ul>
 
@@ -119,6 +119,14 @@
 
                                 </div>
                             </div>
+                            
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="textinput">Data de Admissão</label>
+                                <div class="col-md-5">
+                                    <input id="textinput" name="dataadm" placeholder="Data de Admissão" class="form-control input-md" type="text">
+
+                                </div>
+                            </div>
 
                             <!-- Text input-->
                             <div class="form-group">
@@ -153,7 +161,7 @@
                                 <div class="col-md-5">
                                     <select id="selectbasic" name="curso" class="form-control">
                                         <c:forEach items="${cursos}" var="curso">                                            
-                                            <option value="${curso.id}" selected>${curso.nome}</option>                                                                                     
+                                            <option value="${curso.id}">${curso.nome}</option>                                                                                     
                                         </c:forEach>
                                     </select>
                                 </div>

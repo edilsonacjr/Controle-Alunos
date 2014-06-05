@@ -35,7 +35,7 @@ public class ServInserirPeriodo extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        doPost(request, response);
+        //doPost(request, response);
         RequestDispatcher view = request.getRequestDispatcher("novoPeriodo.jsp");
         view.forward(request, response);
     }
@@ -80,7 +80,7 @@ public class ServInserirPeriodo extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(ServInserirPeriodo.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //processRequest(request, response);
+        processRequest(request, response);
     }
 
     /**

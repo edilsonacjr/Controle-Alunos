@@ -28,7 +28,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="paginaInicial.jsp">SisAlunos
+                    <a class="navbar-brand" href="index.jsp">SisAlunos
                         <br>
                     </a>
                 </div>
@@ -50,7 +50,7 @@
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
                         <li>
-                            <a href="paginaInicial.jsp">Página Principal</a>
+                            <a href="index.jsp">Página Principal</a>
                         </li>
                         <li>
                             <a href="Professores.jsp">Professores</a>
@@ -68,16 +68,10 @@
                             <a href="Periodos.jsp">Períodos</a>
                         </li>
                         <li>
-                            <a href="Materias.jsp">Matérias</a>
+                            <a href="MateriasAdmin.jsp">Matérias</a>
                         </li>
                         <li>
-                            <a href="AlunosMaterias.jsp">Aluno Matérias</a>
-                        </li>
-                        <li>
-                            <a href="Faltas.jsp">Faltas</a>
-                        </li>
-                        <li>
-                            <a href="Notas.jsp">Notas</a>
+                            <a href="AlunosMaterias.jsp">Matricula de Aluno</a>
                         </li>
                     </ul>
 
@@ -150,10 +144,8 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label text-left" for="button1id"></label>
                                 <div class="col-md-5 text-right">
-                                    <button id="button1id" name="button1id" class="btn btn-success" onclick="document.forms[0].action = 'ServInserirUsuario';
-                                            return true;">Cadastrar</button>
-                                    <button id="button2id" name="button2id" class="btn btn-danger" onclick="document.forms[0].action = 'Usuarios.jsp';
-                                            return true;">Cancelar</button>
+                                    <button id="button1id" name="button1id" class="btn btn-success" onclick="form.action = 'ServInserirUsuario'; form.method='post';">Cadastrar</button>
+                                    <button id="button2id" name="button2id" class="btn btn-danger" onclick="form.action = 'Usuarios.jsp'; form.method='post';">Cancelar</button>
                                 </div>
                             </div>
 

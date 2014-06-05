@@ -38,7 +38,7 @@ public class ServInserirProfessor extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        doPost(request, response);
+        //doPost(request, response);
         RequestDispatcher view = request.getRequestDispatcher("novoProfessor.jsp");
         view.forward(request, response);
     }
@@ -88,6 +88,13 @@ public class ServInserirProfessor extends HttpServlet {
         //Date dataadmissao = new Date(System.currentTimeMillis());
         //dateFormat.format(dataadmissao);
         p.setDataNascimento(parsedDate);
+        date = request.getParameter("dataadm");
+        try {
+            parsedDate = dateFormat.parse(date);
+        } catch (ParseException ex) {
+            Logger.getLogger(ServInserirProfessor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        p.setDataAdmissao(parsedDate);
         try {
             ProfessorDao professordao = new ProfessorDao();
             professordao.inserir(p);
@@ -96,9 +103,7 @@ public class ServInserirProfessor extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(ServInserirProfessor.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        //p.setDataAdmissao(dataadmissao);
-        //processRequest(request, response);
+        processRequest(request, response);
     }
 
     /**

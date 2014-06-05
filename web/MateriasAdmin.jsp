@@ -1,16 +1,12 @@
-<%@page import="entidades.Professor"%>
-<%@page import="dao.ProfessorDao"%>
 <%@page import="entidades.Materia"%>
+<%@page import="entidades.Professor"%>
 <%@page import="dao.MateriaDao"%>
 <%@page import="entidades.Periodo"%>
 <%@page import="dao.PeriodoDao"%>
 <%@page import="dao.CursoDao"%>
-<%@page import="entidades.Aluno"%>
 <%@page import="java.util.List"%>
-<%@page import="dao.AlunoDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page import="entidades.Curso" %>
 <!DOCTYPE html>
 <html>
 
@@ -26,22 +22,10 @@
         <link href="dashboard.css" rel="stylesheet">
     </head>
     <%
-        ProfessorDao dao = new ProfessorDao();
-        List<Professor> professores = dao.listar();
-        pageContext.setAttribute("professores", professores);
-
-        CursoDao daoC = new CursoDao();
-        List<Curso> cursos = daoC.listar();
-        pageContext.setAttribute("cursos", cursos);
-
-        PeriodoDao daop = new PeriodoDao();
-        List<Periodo> periodos = daop.listar();
-        pageContext.setAttribute("periodos", periodos);
-        
-        MateriaDao daom = new MateriaDao();
-        List<Materia> materias = daom.listar();
-        pageContext.setAttribute("materias", materias);
-
+       
+        MateriaDao dao = new MateriaDao();
+        List<Materia> materias = dao.listar();
+        pageContext.setAttribute("materias", materias); 
 
     %>
     <body>
@@ -76,31 +60,37 @@
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
+                        <li >
+                            <a href="principalAdmin.jsp">Página Principal</a>
+                        </li>
                         <li>
-                            <a href="#">Página Principal</a>
+                            <a href="Professores.jsp">Professores</a>
+                        </li>
+                        <li >
+                            <a href="Alunos.jsp">Alunos</a>
+                        </li>
+                        <li>
+                            <a href="Cursos.jsp">Cursos</a>
+                        </li>
+                        <li>
+                            <a href="Usuarios.jsp">Usuários</a>
+                        </li>
+                        <li>
+                            <a href="Periodos.jsp">Períodos</a>
                         </li>
                         <li class="active">
-                            <a href="#">Professores</a>
-                        </li>
-                        <li>
-                            <a href="#">Alunos</a>
-                        </li>
-                        <li>
-                            <a href="#">Cursos</a>
-                        </li>
-                        <li>
-                            <a href="#">Usuários</a>
+                            <a href="MateriasAdmin.jsp">Matérias</a>
                         </li>
                     </ul>
 
 
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Professores
+                    <h1 class="page-header">Matérias
                         <br>
                     </h1>
 
-                    <a class="btn btn-primary" href="novoProfessor.jsp">Novo Professor</a>
+                    <a class="btn btn-primary" href="novoMateria.jsp">Novo Matéria</a>
 
 
                     <form class="form-horizontal" action="index.html" method="post">
@@ -115,6 +105,30 @@
                                 <div class="col-md-5">
                                     <input id="textinput" name="textinput" placeholder="Termos" class="form-control input-md" type="text">
 
+                                </div>
+                            </div>
+
+                            <!-- Select Basic -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="selectbasic">Curso</label>
+                                <div class="col-md-5">
+                                    <select id="selectbasic" name="selectbasic" class="form-control">
+                                        <c:forEach items="${cursos}" var="curso">                                            
+                                            <option value="${curso.id}" selected>${curso.nome}</option>                                                                                     
+                                        </c:forEach>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Select Basic -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="selectbasic">Período</label>
+                                <div class="col-md-5">
+                                    <select id="selectbasic" name="selectbasic" class="form-control">
+                                        <c:forEach items="${periodos}" var="periodo">                                            
+                                            <option value="${periodo.id}" selected>${periodo.nome} - ${periodo.ano}</option>                                                                                     
+                                        </c:forEach>
+                                    </select>
                                 </div>
                             </div>
 
@@ -133,31 +147,31 @@
 
 
 
-                    <h2 class="sub-header">Lista de Professores</h2>
+                    <h2 class="sub-header">Lista de Matérias</h2>
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead>
                                 <tr>
                                     <th>ID</th>
                                     <th>Nome</th>
-                                    <th>CPF</th>
-                                    <th>E-mail</th>
+                                    <th>Período</th>
+                                    <th>Professor</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <c:forEach items="${professores}" var="professor">
+                                <c:forEach items="${materias}" var="materia">
                                     <tr>
-                                        <td>${professor.id}</td>
-                                        <td>${professor.nome}</td>
-                                        <td>${professor.cpf}</td>
-                                        <td>${professor.email}</td>
+                                        <td>${materia.id}</td>
+                                        <td>${materia.nome}</td>
+                                        <td>${materia.periodo.nome}</td>
+                                        <td>${materia.professor.nome}</td>
                                         <td>
                                             <form method="post">
                                                 <div class="form-group">
                                                     <label class="col-md-0 control-label" for="button1id"></label>
                                                     <div class="col-md-6 text-right">
-                                                        <button id="button1id" name="edita" class="btn btn-success" onclick="form.action = 'ServEditarAluno';" value="${professor.id}">Editar</button>
-                                                        <button id="button2id" name="exclui" class="btn btn-danger" onclick="form.action = 'index.html';" value="${professor.id}">Excluir</button>
+                                                        <button id="button1id" name="edita" class="btn btn-success" onclick="form.action = 'ServEditarMateria';" value="${materia.id}">Editar</button>
+                                                        <button id="button2id" name="exclui" class="btn btn-danger" onclick="form.action = 'index.html';" value="${materia.id}">Excluir</button>
                                                     </div>
                                                 </div>
                                             </form>

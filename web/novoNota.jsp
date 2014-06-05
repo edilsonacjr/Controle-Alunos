@@ -38,7 +38,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="paginaInicial.jsp">SisAlunos
+                    <a class="navbar-brand" href="index.jsp">SisAlunos
                         <br>
                     </a>
                 </div>
@@ -60,28 +60,7 @@
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
                         <li>
-                            <a href="paginaInicial.jsp">Página Principal</a>
-                        </li>
-                        <li>
-                            <a href="Professores.jsp">Professores</a>
-                        </li>
-                        <li >
-                            <a href="Alunos.jsp">Alunos</a>
-                        </li>
-                        <li >
-                            <a href="Cursos.jsp">Cursos</a>
-                        </li>
-                        <li>
-                            <a href="Usuarios.jsp">Usuários</a>
-                        </li>
-                        <li>
-                            <a href="Periodos.jsp">Períodos</a>
-                        </li>
-                        <li>
-                            <a href="Materias.jsp">Matérias</a>
-                        </li>
-                        <li>
-                            <a href="AlunosMaterias.jsp">Aluno Matérias</a>
+                            <a href="index.jsp">Página Principal</a>
                         </li>
                         <li>
                             <a href="Faltas.jsp">Faltas</a>
@@ -105,7 +84,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="textinput">Nota 1</label>
                                 <div class="col-md-5">
-                                    <input id="textinput" name="nota1" placeholder="Nota1" class="form-control input-md" type="text">
+                                    <input id="textinput" name="nota1" placeholder="Nota 1" class="form-control input-md" type="text">
 
                                 </div>
                             </div>
@@ -114,7 +93,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="textinput">Nota 2</label>
                                 <div class="col-md-5">
-                                    <input id="textinput" name="nota2" placeholder="Nota2" class="form-control input-md" type="text">
+                                    <input id="textinput" name="nota2" placeholder="Nota 2" class="form-control input-md" type="text">
 
                                 </div>
                             </div>                                                        
@@ -123,18 +102,18 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="textinput">Nota 3</label>
                                 <div class="col-md-5">
-                                    <input id="textinput" name="nota3" placeholder="Nota3" class="form-control input-md" type="text">
+                                    <input id="textinput" name="nota3" placeholder="Nota 3" class="form-control input-md" type="text">
 
                                 </div>
                             </div>
                             
                             <!-- Select Basic -->
                             <div class="form-group">
-                                <label class="col-md-4 control-label" for="selectbasic">Aluno - Materia</label>
+                                <label class="col-md-4 control-label" for="selectbasic">Matricula do Aluno</label>
                                 <div class="col-md-5">
                                     <select id="selectbasic" name="alunomateria" class="form-control">
                                         <c:forEach items="${alunosmaterias}" var="alunosmateria">                                            
-                                            <option value="${alunosmateria.id}" selected>${alunosmateria.id}</option>                                                                                     
+                                            <option value="${alunosmateria.id}">${alunosmateria.id} - ${alunosmateria.materia.nome} - ${alunosmateria.aluno.nome}</option>                                                                                     
                                         </c:forEach>
                                     </select>
                                 </div>
@@ -144,10 +123,8 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label text-left" for="button1id"></label>
                                 <div class="col-md-5 text-right">
-                                    <button id="button1id" name="button1id" class="btn btn-success" onclick="document.forms[0].action = 'ServInserirNota';
-                                            return true;">Cadastrar</button>
-                                    <button id="button2id" name="button2id" class="btn btn-danger" onclick="document.forms[0].action = 'Notas.jsp';
-                                            return true;">Cancelar</button>
+                                    <button id="button1id" name="button1id" class="btn btn-success" onclick="form.action = 'ServInserirNota'; form.method='post';">Cadastrar</button>
+                                    <button id="button2id" name="button2id" class="btn btn-danger" onclick="form.action = 'Notas.jsp'; form.method='post';">Cancelar</button>
                                 </div>
                             </div>
 

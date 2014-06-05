@@ -52,10 +52,10 @@
             <a href="principalProf.jsp" >Página Principal</a>
           </li>
           <li>
-            <a href="Alunos.jsp">Lançar notas</a>
+            <a href="preLancarNotas.jsp">Lançar notas</a>
           </li>
           <li>
-            <a href="Cursos.jsp">Lançar Faltas</a>
+            <a href="preLancarFaltas.jsp">Lançar Faltas</a>
           </li>
         </ul>
 

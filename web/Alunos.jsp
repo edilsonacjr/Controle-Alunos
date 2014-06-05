@@ -53,7 +53,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="paginaInicial.jsp">SisAlunos
+                    <a class="navbar-brand" href="principalAdmin.jsp">SisAlunos
                         <br>
                     </a>
                 </div>
@@ -89,6 +89,12 @@
                         <li>
                             <a href="Usuarios.jsp">Usuários</a>
                         </li>
+                        <li>
+                            <a href="Periodos.jsp">Períodos</a>
+                        </li>
+                        <li>
+                            <a href="MateriasAdmin.jsp">Matérias</a>
+                        </li>
                     </ul>
 
 
@@ -111,7 +117,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="textinput">Termo de consulta:</label>
                                 <div class="col-md-5">
-                                    <input id="textinput" name="textinput" placeholder="termo" class="form-control input-md" type="text">
+                                    <input id="textinput" name="textinput" placeholder="Termos" class="form-control input-md" type="text">
 
                                 </div>
                             </div>
@@ -121,8 +127,9 @@
                                 <label class="col-md-4 control-label" for="selectbasic">Curso</label>
                                 <div class="col-md-5">
                                     <select id="selectbasic" name="selectbasic" class="form-control">
+                                        <option value="0" selected>Escolha</option>
                                         <c:forEach items="${cursos}" var="curso">                                            
-                                            <option value="${curso.id}" selected>${curso.nome}</option>                                                                                     
+                                            <option value="${curso.id}" >${curso.nome}</option>                                                                                     
                                         </c:forEach>
                                     </select>
                                 </div>
@@ -133,8 +140,9 @@
                                 <label class="col-md-4 control-label" for="selectbasic">Período</label>
                                 <div class="col-md-5">
                                     <select id="selectbasic" name="selectbasic" class="form-control">
+                                        <option value="0" selected>Escolha</option>
                                         <c:forEach items="${periodos}" var="periodo">                                            
-                                            <option value="${periodo.id}" selected>${periodo.nome} - ${periodo.ano}</option>                                                                                     
+                                            <option value="${periodo.id}">${periodo.nome} - ${periodo.ano}/${periodo.curso.nome}</option>                                                                                     
                                         </c:forEach>
                                     </select>
                                 </div>
@@ -145,9 +153,9 @@
                                 <label class="col-md-4 control-label" for="selectbasic">Materia</label>
                                 <div class="col-md-5">
                                     <select id="selectbasic" name="selectbasic" class="form-control">
-
+                                        <option value="0" selected>Escolha</option>
                                         <<c:forEach items="${materias}" var="materia">                                            
-                                            <option value="${materia.id}" selected>${materia.nome}</option>                                                                                     
+                                            <option value="${materia.id}">${materia.nome}</option>                                                                                     
                                         </c:forEach>
                                     </select>
                                 </div>

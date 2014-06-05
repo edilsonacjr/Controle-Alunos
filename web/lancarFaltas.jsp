@@ -1,5 +1,3 @@
-<%@page import="entidades.Professor"%>
-<%@page import="dao.ProfessorDao"%>
 <%@page import="entidades.Materia"%>
 <%@page import="dao.MateriaDao"%>
 <%@page import="entidades.Periodo"%>
@@ -26,9 +24,9 @@
         <link href="dashboard.css" rel="stylesheet">
     </head>
     <%
-        ProfessorDao dao = new ProfessorDao();
-        List<Professor> professores = dao.listar();
-        pageContext.setAttribute("professores", professores);
+        AlunoDao dao = new AlunoDao();
+        List<Aluno> alunos = dao.listar();
+        pageContext.setAttribute("alunos", alunos);
 
         CursoDao daoC = new CursoDao();
         List<Curso> cursos = daoC.listar();
@@ -37,7 +35,7 @@
         PeriodoDao daop = new PeriodoDao();
         List<Periodo> periodos = daop.listar();
         pageContext.setAttribute("periodos", periodos);
-        
+
         MateriaDao daom = new MateriaDao();
         List<Materia> materias = daom.listar();
         pageContext.setAttribute("materias", materias);
@@ -77,94 +75,53 @@
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
                         <li>
-                            <a href="#">Página Principal</a>
-                        </li>
-                        <li class="active">
-                            <a href="#">Professores</a>
+                            <a href="principalProf.jsp" >Página Principal</a>
                         </li>
                         <li>
-                            <a href="#">Alunos</a>
+                            <a href="preLancarNotas.jsp">Lançar notas</a>
                         </li>
-                        <li>
-                            <a href="#">Cursos</a>
-                        </li>
-                        <li>
-                            <a href="#">Usuários</a>
+                        <li  class="active">
+                            <a href="preLancarFaltas.jsp">Lançar Faltas</a>
                         </li>
                     </ul>
 
 
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Professores
+                    <h1 class="page-header">Lançar Faltas
                         <br>
                     </h1>
 
-                    <a class="btn btn-primary" href="novoProfessor.jsp">Novo Professor</a>
-
-
-                    <form class="form-horizontal" action="index.html" method="post">
-                        <fieldset>
-
-                            <!-- Form Name -->
-                            <legend>Consulta</legend>
-
-                            <!-- Text input-->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="textinput">Termo de consulta:</label>
-                                <div class="col-md-5">
-                                    <input id="textinput" name="textinput" placeholder="Termos" class="form-control input-md" type="text">
-
-                                </div>
-                            </div>
-
-                            <!-- Button -->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label text-right" for="singlebutton"></label>
-                                <div class="col-md-5 text-right">
-                                    <button id="singlebutton" name="singlebutton" class="btn btn-primary btn-sm">Buscar</button>
-                                </div>
-                            </div>
-
-                        </fieldset>
-                    </form>
-
-
-
-
-
-                    <h2 class="sub-header">Lista de Professores</h2>
+                    <h2 class="sub-header"></h2>
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Nome</th>
-                                    <th>CPF</th>
-                                    <th>E-mail</th>
+                                    <th>Nome</th>                                    
+                                    <th>Numero de Faltas</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <c:forEach items="${professores}" var="professor">
+                                <c:forEach items="${alunos}" var="aluno">
                                     <tr>
-                                        <td>${professor.id}</td>
-                                        <td>${professor.nome}</td>
-                                        <td>${professor.cpf}</td>
-                                        <td>${professor.email}</td>
-                                        <td>
-                                            <form method="post">
-                                                <div class="form-group">
-                                                    <label class="col-md-0 control-label" for="button1id"></label>
-                                                    <div class="col-md-6 text-right">
-                                                        <button id="button1id" name="edita" class="btn btn-success" onclick="form.action = 'ServEditarAluno';" value="${professor.id}">Editar</button>
-                                                        <button id="button2id" name="exclui" class="btn btn-danger" onclick="form.action = 'index.html';" value="${professor.id}">Excluir</button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </td>
-                                    </tr>
+                                <form method="post">
+                                    <td>${aluno.id}</td>
+                                    <td>${aluno.nome}</td>
+                                    <td>5</td>
+                                    <td>
+                                        <div class="form-group">
+                                            <label class="col-md-0 control-label" for="button1id"></label>
+                                            <div class="col-md-6 text-right">
+                                                <button id="button1id" name="alunomateria" class="btn btn-success" onclick="form.action = 'ServInserirNota';" value="${aluno.id}">Lançar Falta</button>
+                                                
+                                            </div>
+                                        </div>
+                                    </td>
+                                </form>
+                                </tr>
 
-                                </c:forEach>                                
+                            </c:forEach>                                
                             </tbody>
                         </table>
                     </div>
