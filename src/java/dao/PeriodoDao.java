@@ -6,6 +6,7 @@
 
 package dao;
 
+import entidades.Curso;
 import entidades.Periodo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -101,20 +102,22 @@ public class PeriodoDao {
         return p;
     }
     
-    public List<Periodo> getConsulta(Periodo periodo) throws SQLException {
-        String sql = "select * from periodo where nome like ?";
+    public List<Periodo> getConsulta(Curso c) throws SQLException {
+        String sql = "select * from periodo p \n"
+                + "inner join curso c on (p.idcurso = c.idcurso) \n"
+                + "where c.nome like ? ";
         PreparedStatement stmt = conexao.prepareStatement(sql);
-        stmt.setString(1, periodo.getNome());
+        stmt.setString(1, c.getNome());
         Periodo p = null;
         List<Periodo> list = new ArrayList<>();
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
             p = new Periodo();
-            p.setId(rs.getInt("idperiodo"));
-            p.getCurso().setId(rs.getInt("idcurso"));
-            p.setNome(rs.getString("nome"));
-            p.setAno(rs.getInt("ano"));
-            p.setSemestre(rs.getInt("semestre"));
+            p.setId(rs.getInt("p.idperiodo"));
+            p.getCurso().setId(rs.getInt("c.idcurso"));
+            p.setNome(rs.getString("p.nome"));
+            p.setAno(rs.getInt("p.ano"));
+            p.setSemestre(rs.getInt("p.semestre"));
             list.add(p);
         }
         stmt.close();
