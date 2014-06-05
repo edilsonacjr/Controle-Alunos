@@ -33,6 +33,7 @@
             professores = dao.listar();
             pageContext.setAttribute("professores", professores);
         }
+        pageContext.setAttribute("professores", professores);
 
         CursoDao daoC = new CursoDao();
         List<Curso> cursos = daoC.listar();
