@@ -180,6 +180,7 @@ public class ProfessorDao {
     public List<Materia> getMaterias(Professor p) throws SQLException{
         String sql = "select * from where idprofessor = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
+        stmt.setInt(1, p.getId());
         Materia m;
         List<Materia> list = new ArrayList<>();
         ResultSet rs = stmt.executeQuery();
