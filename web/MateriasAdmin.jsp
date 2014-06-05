@@ -1,3 +1,4 @@
+<%@page import="entidades.Curso"%>
 <%@page import="entidades.Materia"%>
 <%@page import="entidades.Professor"%>
 <%@page import="dao.MateriaDao"%>
@@ -22,11 +23,18 @@
         <link href="dashboard.css" rel="stylesheet">
     </head>
     <%
-       
+
         MateriaDao dao = new MateriaDao();
         List<Materia> materias = dao.listar();
-        pageContext.setAttribute("materias", materias); 
+        pageContext.setAttribute("materias", materias);
 
+        CursoDao daoC = new CursoDao();
+        List<Curso> cursos = daoC.listar();
+        pageContext.setAttribute("cursos", cursos);
+        
+        PeriodoDao daoP = new PeriodoDao();
+        List<Periodo> periodos = daoP.listar();
+        pageContext.setAttribute("periodos", periodos);
     %>
     <body>
 
@@ -39,14 +47,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="paginaInicial.jsp">SisAlunos
+                    <a class="navbar-brand" href="principalAdmin.jsp">SisAlunos
                         <br>
                     </a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="logoff.jsp">Sair
+                            <a href="ServLogoff">Sair
                                 <br>
                             </a>
                         </li>
@@ -81,6 +89,9 @@
                         <li class="active">
                             <a href="MateriasAdmin.jsp">Matérias</a>
                         </li>
+                        <li>
+                            <a href="AlunosMaterias.jsp">Matrícula de Alunos</a>
+                        </li>
                     </ul>
 
 
@@ -113,8 +124,9 @@
                                 <label class="col-md-4 control-label" for="selectbasic">Curso</label>
                                 <div class="col-md-5">
                                     <select id="selectbasic" name="selectbasic" class="form-control">
+                                        <option value="0" selected>Escolha</option>
                                         <c:forEach items="${cursos}" var="curso">                                            
-                                            <option value="${curso.id}" selected>${curso.nome}</option>                                                                                     
+                                            <option value="${curso.id}">${curso.nome}</option>                                                                                     
                                         </c:forEach>
                                     </select>
                                 </div>
@@ -125,8 +137,9 @@
                                 <label class="col-md-4 control-label" for="selectbasic">Período</label>
                                 <div class="col-md-5">
                                     <select id="selectbasic" name="selectbasic" class="form-control">
+                                        <option value="0" selected>Escolha</option>
                                         <c:forEach items="${periodos}" var="periodo">                                            
-                                            <option value="${periodo.id}" selected>${periodo.nome} - ${periodo.ano}</option>                                                                                     
+                                            <option value="${periodo.id}">${periodo.nome} - ${periodo.ano}</option>                                                                                     
                                         </c:forEach>
                                     </select>
                                 </div>

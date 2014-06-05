@@ -141,7 +141,7 @@
                                 <label class="col-md-4 control-label text-left" for="button1id"></label>
                                 <div class="col-md-5 text-right">
                                     <button id="button1id" name="button1id" class="btn btn-success" onclick="form.action = 'ServInserirPeriodo'; form.method='post';">Cadastrar</button>
-                                    <button id="button2id" name="button2id" class="btn btn-danger" onclick="form.action = 'Cursos.jsp'; form.method='post';">Cancelar</button>
+                                    <button id="button2id" name="button2id" class="btn btn-danger" onclick="form.action = 'Periodos.jsp'; form.method='post';">Cancelar</button>
                                 </div>
                             </div>
 

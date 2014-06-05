@@ -4,6 +4,7 @@
 <%@page import="entidades.Periodo"%>
 <%@page import="dao.PeriodoDao"%>
 <%@page import="dao.CursoDao"%>
+<%@page import="entidades.Curso"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -22,10 +23,14 @@
         <link href="dashboard.css" rel="stylesheet">
     </head>
     <%
-       
+
         PeriodoDao dao = new PeriodoDao();
         List<Periodo> periodos = dao.listar();
-        pageContext.setAttribute("periodos", periodos); 
+        pageContext.setAttribute("periodos", periodos);
+        
+        CursoDao daoC = new CursoDao();
+        List<Curso> cursos = daoC.listar();
+        pageContext.setAttribute("cursos", cursos);
 
     %>
     <body>
@@ -81,6 +86,9 @@
                         <li>
                             <a href="MateriasAdmin.jsp">Matérias</a>
                         </li>
+                        <li>
+                            <a href="AlunosMaterias.jsp">Matrícula de Alunos</a>
+                        </li>
                     </ul>
 
 
@@ -105,7 +113,7 @@
                                 <div class="col-md-5">
                                     <select id="selectbasic" name="selectbasic" class="form-control">
                                         <c:forEach items="${cursos}" var="curso">                                            
-                                            <option value="${curso.id}" selected>${curso.nome}</option>                                                                                     
+                                            <option value="${curso.id}">${curso.nome}</option>                                                                                     
                                         </c:forEach>
                                     </select>
                                 </div>
@@ -151,7 +159,7 @@
                                                 <div class="form-group">
                                                     <label class="col-md-0 control-label" for="button1id"></label>
                                                     <div class="col-md-6 text-right">
-                                                        <button id="button1id" name="edita" class="btn btn-success" onclick="form.action = 'ServEditarMateria';" value="${periodo.id}">Editar</button>
+                                                        <button id="button1id" name="edita" class="btn btn-success" onclick="form.action = 'ServEditarPeriodo';" value="${periodo.id}">Editar</button>
                                                         <button id="button2id" name="exclui" class="btn btn-danger" onclick="form.action = 'index.html';" value="${periodo.id}">Excluir</button>
                                                     </div>
                                                 </div>
