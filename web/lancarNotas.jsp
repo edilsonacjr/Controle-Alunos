@@ -123,7 +123,7 @@
                                         <div class="form-group">
                                             <label class="col-md-0 control-label" for="button1id"></label>
                                             <div class="col-md-6 text-right">
-                                                <button id="button1id" name="edita" class="btn btn-success" onclick="form.action = 'ServEditarAluno';" value="${aluno.id}">Salvar</button>
+                                                <button id="button1id" name="alunomateria" class="btn btn-success" onclick="form.action = 'ServInserirNota';" value="${aluno.id}">Salvar</button>
                                                 
                                             </div>
                                         </div>
