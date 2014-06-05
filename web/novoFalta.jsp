@@ -80,7 +80,7 @@
 
                             <!-- Select Basic -->
                             <div class="form-group">
-                                <label class="col-md-4 control-label" for="selectbasic">Aluno - Materia</label>
+                                <label class="col-md-4 control-label" for="selectbasic">Matricula do Aluno</label>
                                 <div class="col-md-5">
                                     <select id="selectbasic" name="alunomateria" class="form-control">
                                         <c:forEach items="${alunosmaterias}" var="alunosmateria">                                            
