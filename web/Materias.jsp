@@ -85,8 +85,6 @@
                                     <th>Materia</th>
                                     <th>Faltas</th>
                                     <th>Notas</th>
-                                    <th>CPF</th>
-                                    <th>E-mail</th>
                                 </tr>
                             </thead>
                             <tbody>
