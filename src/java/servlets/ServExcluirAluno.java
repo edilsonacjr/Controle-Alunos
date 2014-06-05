@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package servlets;
 
 import dao.AlunoDao;
@@ -37,9 +36,24 @@ public class ServExcluirAluno extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        Aluno a = new Aluno();
+        a.setId(Integer.parseInt(request.getParameter("exclui")));
+        AlunoDao alunodao = null;
+        try {
+            alunodao = new AlunoDao();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ServExcluirAluno.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ServExcluirAluno.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            alunodao.exclui(a);
+        } catch (SQLException ex) {
+            Logger.getLogger(ServExcluirAluno.class.getName()).log(Level.SEVERE, null, ex);
+        }
         RequestDispatcher view = request.getRequestDispatcher("Alunos.jsp");
         view.forward(request, response);
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -68,21 +82,7 @@ public class ServExcluirAluno extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Aluno a = new Aluno();
-        a.setNome(request.getParameter("exclui"));
-        AlunoDao alunodao = null;
-        try {
-            alunodao = new AlunoDao();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ServExcluirAluno.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(ServExcluirAluno.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-            alunodao.exclui(a);
-        } catch (SQLException ex) {
-            Logger.getLogger(ServExcluirAluno.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
         processRequest(request, response);
     }
 
