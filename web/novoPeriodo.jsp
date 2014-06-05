@@ -81,14 +81,8 @@
                             <a href="Materias.jsp">Matérias</a>
                         </li>
                         <li>
-                            <a href="AlunosMaterias.jsp">Aluno Matérias</a>
-                        </li>
-                        <li>
-                            <a href="Faltas.jsp">Faltas</a>
-                        </li>
-                        <li>
-                            <a href="Notas.jsp">Notas</a>
-                        </li>
+                            <a href="AlunosMaterias.jsp">Matricula de Aluno</a>
+                        </li>                        
                     </ul>
 
 

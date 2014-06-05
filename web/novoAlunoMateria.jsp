@@ -90,20 +90,14 @@
                             <a href="Materias.jsp">Matérias</a>
                         </li>
                         <li>
-                            <a href="AlunosMaterias.jsp">Aluno Matérias</a>
-                        </li>
-                        <li>
-                            <a href="Faltas.jsp">Faltas</a>
-                        </li>
-                        <li>
-                            <a href="Notas.jsp">Notas</a>
+                            <a href="AlunosMaterias.jsp">Matricula de Aluno</a>
                         </li>
                     </ul>
 
 
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Novo Aluno - Matéria &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <h1 class="page-header">Nova Matricula de Aluno &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         <br>
                     </h1>
 
