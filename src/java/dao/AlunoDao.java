@@ -147,8 +147,8 @@ public class AlunoDao {
     public List<MateriaNotaFalta> getMateriaNotaFalta(Aluno a) throws SQLException {
         String sql = "select * from alunomateria am \n"
                 + "     inner join materia m on (am.idmateria = m.idmateria)\n"
-                + "     inner left nota n on (am.idalunomateria = n.idalunomateria)\n"
-                + "     inner left falta f on (am.dialunomateria = f.idalunomateria)\n"
+                + "     left join nota n on (am.idalunomateria = n.idalunomateria)\n"
+                + "     left join falta f on (am.dialunomateria = f.idalunomateria)\n"
                 + "     inner join aluno a on (am.idaluno = a.idaluno) "
                 + "   where idaluno = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
