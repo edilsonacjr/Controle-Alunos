@@ -1,3 +1,6 @@
+<%@page import="entidades.MateriaNotaFalta"%>
+<%@page import="java.util.List"%>
+<%@page import="dao.AlunoDao"%>
 <%@page import="entidades.Aluno"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -8,7 +11,10 @@
 <%
         HttpSession sessao = request.getSession(true);
         Aluno a = (Aluno) sessao.getAttribute("aluno");
-        
+        //AlunoDao dao = new AlunoDao();
+        //List<MateriaNotaFalta> mnfs = dao.getMateriaNotaFalta(a);
+        //pageContext.setAttribute("mnfs", mnfs);
+        System.out.println(a.getNome());
     %>
 <body>
 
@@ -65,9 +71,38 @@
 
       </div>
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-        <div class="table-responsive">
-        </div>
-      </div>
+                    <h1 class="page-header">Histórico
+                        <br>
+                    </h1>
+
+                    <h2 class="sub-header"></h2>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Materia</th>
+                                    <th>Faltas</th>
+                                    <th>Curso</th>
+                                    <th>CPF</th>
+                                    <th>E-mail</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <c:forEach items="${alunos}" var="aluno">
+                                    <tr>
+                                        <td>${aluno.id}</td>
+                                        <td>${aluno.nome}</td>
+                                        <td>${aluno.curso.nome}</td>
+                                        <td>${aluno.cpf}</td>
+                                        <td>${aluno.email}</td>
+                                        
+                                    </tr>
+
+                                </c:forEach>                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
     </div>
   </div>
 

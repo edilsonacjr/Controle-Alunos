@@ -74,54 +74,27 @@
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li >
-                            <a href="principalAdmin.jsp">Página Principal</a>
+                        <li>
+                            <a href="principalProf.jsp" >Página Principal</a>
                         </li>
                         <li>
-                            <a href="Professores.jsp">Professores</a>
+                            <a href="preLancarNotas.jsp">Lançar notas</a>
                         </li>
-                        <li class="active">
-                            <a href="Alunos.jsp">Alunos</a>
-                        </li>
-                        <li>
-                            <a href="Cursos.jsp">Cursos</a>
-                        </li>
-                        <li>
-                            <a href="Usuarios.jsp">Usuários</a>
-                        </li>
-                        <li>
-                            <a href="Periodos.jsp">Períodos</a>
-                        </li>
-                        <li>
-                            <a href="MateriasAdmin.jsp">Matérias</a>
+                        <li  class="active">
+                            <a href="preLancarFaltas.jsp">Lançar Faltas</a>
                         </li>
                     </ul>
 
 
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Alunos
+                    <h1 class="page-header">Lançar Faltas
                         <br>
                     </h1>
-
-                    <a class="btn btn-primary" href="novoAluno.jsp">Novo Aluno</a>
 
 
                     <form class="form-horizontal" action="index.html" method="post">
                         <fieldset>
-
-                            <!-- Form Name -->
-                            <legend>Consulta</legend>
-
-                            <!-- Text input-->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="textinput">Termo de consulta:</label>
-                                <div class="col-md-5">
-                                    <input id="textinput" name="textinput" placeholder="Termos" class="form-control input-md" type="text">
-
-                                </div>
-                            </div>
-
                             <!-- Select Basic -->
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="selectbasic">Curso</label>
@@ -130,19 +103,6 @@
                                         <option value="0" selected>Escolha</option>
                                         <c:forEach items="${cursos}" var="curso">                                            
                                             <option value="${curso.id}" >${curso.nome}</option>                                                                                     
-                                        </c:forEach>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <!-- Select Basic -->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="selectbasic">Período</label>
-                                <div class="col-md-5">
-                                    <select id="selectbasic" name="selectbasic" class="form-control">
-                                        <option value="0" selected>Escolha</option>
-                                        <c:forEach items="${periodos}" var="periodo">                                            
-                                            <option value="${periodo.id}">${periodo.nome} - ${periodo.ano}/${periodo.curso.nome}</option>                                                                                     
                                         </c:forEach>
                                     </select>
                                 </div>
@@ -165,54 +125,12 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label text-right" for="singlebutton"></label>
                                 <div class="col-md-5 text-right">
-                                    <button id="singlebutton" name="singlebutton" class="btn btn-primary btn-sm">Buscar</button>
+                                    <button id="singlebutton" name="singlebutton" class="btn btn-primary btn-sm">Seguir</button>
                                 </div>
                             </div>
 
                         </fieldset>
                     </form>
-
-
-
-
-
-                    <h2 class="sub-header">Lista de Alunos</h2>
-                    <div class="table-responsive">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Nome</th>
-                                    <th>Curso</th>
-                                    <th>CPF</th>
-                                    <th>E-mail</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <c:forEach items="${alunos}" var="aluno">
-                                    <tr>
-                                        <td>${aluno.id}</td>
-                                        <td>${aluno.nome}</td>
-                                        <td>${aluno.curso.nome}</td>
-                                        <td>${aluno.cpf}</td>
-                                        <td>${aluno.email}</td>
-                                        <td>
-                                            <form method="post">
-                                                <div class="form-group">
-                                                    <label class="col-md-0 control-label" for="button1id"></label>
-                                                    <div class="col-md-6 text-right">
-                                                        <button id="button1id" name="edita" class="btn btn-success" onclick="form.action = 'ServEditarAluno';" value="${aluno.id}">Editar</button>
-                                                        <button id="button2id" name="exclui" class="btn btn-danger" onclick="form.action = 'index.html';" value="${aluno.id}">Excluir</button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </td>
-                                    </tr>
-
-                                </c:forEach>                                
-                            </tbody>
-                        </table>
-                    </div>
                 </div>
             </div>
         </div>
