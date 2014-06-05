@@ -85,7 +85,7 @@
                             <a href="Periodos.jsp">Períodos</a>
                         </li>
                         <li>
-                            <a href="Materias.jsp">Matérias</a>
+                            <a href="MateriasAdmin.jsp">Matérias</a>
                         </li>
                         <li>
                             <a href="AlunosMaterias.jsp">Matricula de Aluno</a>
