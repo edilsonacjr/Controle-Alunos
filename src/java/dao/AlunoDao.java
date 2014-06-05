@@ -176,9 +176,9 @@ public class AlunoDao {
             mnf.getNota().setN2(rs.getDouble("n.n2"));
             mnf.getNota().setN3(rs.getDouble("n.n3"));
             mnf.getNota().getAlunoMateria().setId(rs.getInt("n.idalunomateria"));
-            mnf.getFalta().setId(rs.getInt("idfalta"));
-            mnf.getFalta().getAlunoMateria().setId(rs.getInt("idalunomateria"));
-            mnf.getFalta().setData(rs.getDate("data"));
+            mnf.getFalta().setId(rs.getInt("f.idfalta"));
+            mnf.getFalta().getAlunoMateria().setId(rs.getInt("f.idalunomateria"));
+            mnf.getFalta().setData(rs.getDate("f.data"));
             list.add(mnf);
         }
         stmt.close();
