@@ -147,7 +147,7 @@
                                 <div class="col-md-5 text-right">
                                     <button id="button1id" name="button1id" class="btn btn-success" onclick="form.action = 'ServAtualizarPeriodo';
                                             form.method = 'post'" value="${periodo.id}" >Salvar</button>
-                                    <button id="button2id" name="button2id" class="btn btn-danger" onclick="form.action = 'Periodo.jsp';
+                                    <button id="button2id" name="button2id" class="btn btn-danger" onclick="form.action = 'Periodos.jsp';
                                             form.method = 'post';">Cancelar</button>
                                 </div>
                             </div>
