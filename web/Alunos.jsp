@@ -39,10 +39,6 @@
         MateriaDao daom = new MateriaDao();
         List<Materia> materias = daom.listar();
         pageContext.setAttribute("materias", materias);
-        String erro = "<div class=\"alert alert-info\" >\n"
-                    + "                            Insera os dados para o Aluno\n"
-                    + "                      </div>";
-        request.setAttribute("erro", erro);
     %>
     <body>
 
