@@ -43,7 +43,8 @@ public class ServBuscaPeriodo extends HttpServlet {
         String termo = request.getParameter("termo");
         PeriodoDao pdao = new PeriodoDao();        
         Curso c = new Curso();
-        c.setNome("%" + termo + "%");
+        c.setId(Integer.parseInt(termo));
+        //c.setNome("%" + termo + "%");
         List<Periodo> periodos = pdao.getConsulta(c);
         request.setAttribute("busca", periodos);
         request.setAttribute("termo", termo);
