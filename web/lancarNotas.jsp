@@ -24,10 +24,7 @@
         <link href="dashboard.css" rel="stylesheet">
     </head>
     <%
-        AlunoDao dao = new AlunoDao();
-        List<Aluno> alunos = dao.listar();
-        pageContext.setAttribute("alunos", alunos);
-
+        
         CursoDao daoC = new CursoDao();
         List<Curso> cursos = daoC.listar();
         pageContext.setAttribute("cursos", cursos);

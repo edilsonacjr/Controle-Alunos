@@ -50,7 +50,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="paginaInicial.jsp">SisAlunos
+                    <a class="navbar-brand" href="principalProf.jsp">SisAlunos
                         <br>
                     </a>
                 </div>
@@ -90,7 +90,7 @@
                     </h1>
 
 
-                    <form class="form-horizontal" action="index.html" method="post">
+                    <form class="form-horizontal" action="ServSeguirNota" method="post">
                         <fieldset>
                             <!-- Select Basic -->
                             <div class="form-group">
