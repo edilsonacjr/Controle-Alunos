@@ -189,7 +189,9 @@ public class AlunoDao {
     }
 
     public List<Aluno> getConsulta(Aluno aluno) throws SQLException {
-        String sql = "select * from aluno where nome like ?";
+        String sql = "select * from aluno a \n"
+                + "    inner join curso c on (a.idcurso = c.idcurso) \n"
+                + "where nome like ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setString(1, aluno.getNome());
         Aluno a = null;
@@ -197,15 +199,18 @@ public class AlunoDao {
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
             a = new Aluno();
-            a.setId(rs.getInt("idaluno"));
-            a.getCurso().setId(rs.getInt("idcurso"));
-            a.setDataAdmissao(rs.getDate("dataadmissao"));
-            a.setNome(rs.getString("nome"));
-            a.setCpf(rs.getString("cpf"));
-            a.setDataNascimento(rs.getDate("datanascimento"));
-            a.setLogin(rs.getString("login"));
-            a.setSenha(rs.getString("senha"));
-            a.setEmail(rs.getString("email"));
+            a.setId(rs.getInt("a.idaluno"));
+            a.getCurso().setId(rs.getInt("c.idcurso"));
+            a.getCurso().setNome(rs.getString("c.nome"));
+            a.getCurso().setCategoria(rs.getString("c.categoria"));
+            a.getCurso().getCordenador().setId(rs.getInt("c.idprofessor"));
+            a.setDataAdmissao(rs.getDate("a.dataadmissao"));
+            a.setNome(rs.getString("a.nome"));
+            a.setCpf(rs.getString("a.cpf"));
+            a.setDataNascimento(rs.getDate("a.datanascimento"));
+            a.setLogin(rs.getString("a.login"));
+            a.setSenha(rs.getString("a.senha"));
+            a.setEmail(rs.getString("a.email"));
             list.add(a);
         }
         //System.out.println("TAMANHO 2: " + stmt);
@@ -239,7 +244,7 @@ public class AlunoDao {
         }
         stmt.close();
         rs.close();
-        return null;
+        return list;
     }
     
 }
