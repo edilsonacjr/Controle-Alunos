@@ -56,19 +56,19 @@
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
                         <li>
-                            <a href="#">Página Principal</a>
+                            <a href="paginaInicial.jsp">Página Principal</a>
                         </li>
                         <li>
-                            <a href="#">Professores</a>
+                            <a href="Professores.jsp">Professores</a>
                         </li>
                         <li class="active">
-                            <a href="#">Alunos</a>
+                            <a href="Alunos.jsp">Alunos</a>
                         </li>
                         <li>
-                            <a href="#">Cursos</a>
+                            <a href="Cursos.jsp">Cursos</a>
                         </li>
                         <li>
-                            <a href="#">Usuários</a>
+                            <a href="Usuarios.jsp">Usuários</a>
                         </li>
                         <li>
                             <a href="Periodos.jsp">Períodos</a>

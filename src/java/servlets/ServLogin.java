@@ -45,9 +45,6 @@ public class ServLogin extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String login = request.getParameter("login");
         String senha = request.getParameter("senha");
-        
-        HttpSession sessao = request.getSession(true);
-        
 
         Aluno a = new Aluno();
         AlunoDao daoa = new AlunoDao();
@@ -55,7 +52,9 @@ public class ServLogin extends HttpServlet {
         a.setSenha(senha);
         a = daoa.validaAluno(a);
         if (a != null) {
-            sessao.setAttribute("usr", "Alun-"+login);
+            HttpSession sessao = request.getSession(true);
+            sessao.setMaxInactiveInterval(30 * 60);
+            sessao.setAttribute("usr", "Alun-" + login);
             response.sendRedirect("principalAlunos.jsp");
         }
 
@@ -65,7 +64,9 @@ public class ServLogin extends HttpServlet {
         p.setSenha(senha);
         p = daop.validaProfessor(p);
         if (p != null) {
-            sessao.setAttribute("usr", "Prof-"+login);
+            HttpSession sessao = request.getSession(true);
+            sessao.setMaxInactiveInterval(30 * 60);
+            sessao.setAttribute("usr", "Prof-" + login);
             response.sendRedirect("principalAlunos.jsp");
         }
 
@@ -75,16 +76,18 @@ public class ServLogin extends HttpServlet {
         u.setSenha(senha);
         u = daou.validaUsuario(u);
         if (u != null) {
-            sessao.setAttribute("usr", "Admin-"+login);
+            HttpSession sessao = request.getSession(true);
+            sessao.setMaxInactiveInterval(30 * 60);
+            sessao.setAttribute("usr", "Admin-" + login);
             response.sendRedirect("principalAdmin.jsp");
         }
-        String erro = "<div class=\"alert alert-danger\" >\n" +
-"                            Usuário ou senha Inválida\n" +
-"                      </div>";
+        String erro = "<div class=\"alert alert-danger\" >\n"
+                + "                            Usuário ou senha Inválida\n"
+                + "                      </div>";
         request.setAttribute("erro", erro);
         RequestDispatcher view = request.getRequestDispatcher("index.jsp");
         view.forward(request, response);
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
