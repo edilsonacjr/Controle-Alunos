@@ -53,7 +53,7 @@ public class ServAtualizarMateria extends HttpServlet {
             Logger.getLogger(ServAtualizarMateria.class.getName()).log(Level.SEVERE, null, ex);
         }        
        
-        RequestDispatcher view = request.getRequestDispatcher("Alunos.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("MateriasAdmin.jsp");
         view.forward(request, response);
     }
 
