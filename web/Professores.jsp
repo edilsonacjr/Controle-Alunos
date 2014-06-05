@@ -37,7 +37,7 @@
         PeriodoDao daop = new PeriodoDao();
         List<Periodo> periodos = daop.listar();
         pageContext.setAttribute("periodos", periodos);
-        
+
         MateriaDao daom = new MateriaDao();
         List<Materia> materias = daom.listar();
         pageContext.setAttribute("materias", materias);
@@ -55,14 +55,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="paginaInicial.jsp">SisAlunos
+                    <a class="navbar-brand" href="principalAdmin.jsp">SisAlunos
                         <br>
                     </a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="logoff.jsp">Sair
+                            <a href="ServLogoff">Sair
                                 <br>
                             </a>
                         </li>
@@ -77,19 +77,28 @@
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
                         <li>
-                            <a href="#">Página Principal</a>
+                            <a href="principalAdmin.jsp" >Página Principal</a>
                         </li>
                         <li class="active">
-                            <a href="#">Professores</a>
+                            <a href="Professores.jsp">Professores</a>
                         </li>
                         <li>
-                            <a href="#">Alunos</a>
+                            <a href="Alunos.jsp">Alunos</a>
                         </li>
                         <li>
-                            <a href="#">Cursos</a>
+                            <a href="Cursos.jsp">Cursos</a>
                         </li>
                         <li>
-                            <a href="#">Usuários</a>
+                            <a href="Usuarios.jsp">Usuários</a>
+                        </li>
+                        <li>
+                            <a href="Periodos.jsp">Períodos</a>
+                        </li>
+                        <li>
+                            <a href="MateriasAdmin.jsp">Matérias</a>
+                        </li>
+                        <li>
+                            <a href="AlunosMaterias.jsp">Matrícula de Alunos</a>
                         </li>
                     </ul>
 
