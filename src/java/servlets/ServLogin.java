@@ -55,6 +55,7 @@ public class ServLogin extends HttpServlet {
             HttpSession sessao = request.getSession(true);
             sessao.setMaxInactiveInterval(30 * 60);
             sessao.setAttribute("usr", "Alun-" + login);
+            sessao.setAttribute("aluno", a);
             response.sendRedirect("principalAlunos.jsp");
             System.out.println("TESTE");
             return;

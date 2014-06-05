@@ -1,9 +1,15 @@
+<%@page import="entidades.Aluno"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
 <head></head>
-
+<%
+        HttpSession sessao = request.getSession(true);
+        Aluno a = (Aluno) sessao.getAttribute("aluno");
+        
+    %>
 <body>
 
   <meta charset="UTF-8">
@@ -27,7 +33,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="paginaInicial.jsp">SisAlunos
+        <a class="navbar-brand" href="principalAlunos.jsp">SisAlunos
           <br>
         </a>
       </div>
@@ -57,7 +63,11 @@
         </ul>
 
 
-      </div>      
+      </div>
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <div class="table-responsive">
+        </div>
+      </div>
     </div>
   </div>
 
