@@ -59,7 +59,7 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="logoff.jsp">Sair
+                            <a href="ServLogoff">Sair
                                 <br>
                             </a>
                         </li>
@@ -93,6 +93,9 @@
                         </li>
                         <li>
                             <a href="MateriasAdmin.jsp">Matérias</a>
+                        </li>
+                        <li>
+                            <a href="AlunosMaterias.jsp">Matrícula de Alunos</a>
                         </li>
                     </ul>
 
