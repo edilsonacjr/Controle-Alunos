@@ -63,27 +63,6 @@
                             <a href="paginaInicial.jsp">Página Principal</a>
                         </li>
                         <li>
-                            <a href="Professores.jsp">Professores</a>
-                        </li>
-                        <li >
-                            <a href="Alunos.jsp">Alunos</a>
-                        </li>
-                        <li >
-                            <a href="Cursos.jsp">Cursos</a>
-                        </li>
-                        <li>
-                            <a href="Usuarios.jsp">Usuários</a>
-                        </li>
-                        <li>
-                            <a href="Periodos.jsp">Períodos</a>
-                        </li>
-                        <li>
-                            <a href="Materias.jsp">Matérias</a>
-                        </li>
-                        <li>
-                            <a href="AlunosMaterias.jsp">Aluno Matérias</a>
-                        </li>
-                        <li>
                             <a href="Faltas.jsp">Faltas</a>
                         </li>
                         <li class="active">

@@ -59,33 +59,12 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
-                    <ul class="nav nav-sidebar">
-                        <li>
-                            <a href="paginaInicial.jsp">Página Principal</a>
-                        </li>
-                        <li>
-                            <a href="Professores.jsp">Professores</a>
-                        </li>
-                        <li >
-                            <a href="Alunos.jsp">Alunos</a>
-                        </li>
-                        <li >
-                            <a href="Cursos.jsp">Cursos</a>
-                        </li>
-                        <li>
-                            <a href="Usuarios.jsp">Usuários</a>
-                        </li>
-                        <li>
-                            <a href="Periodos.jsp">Períodos</a>
-                        </li>
-                        <li>
-                            <a href="Materias.jsp">Matérias</a>
-                        </li>
-                        <li>
-                            <a href="AlunosMaterias.jsp">Aluno Matérias</a>
-                        </li>
+                    <ul class="nav nav-sidebar">                       
                         <li class="active">
                             <a href="Faltas.jsp">Faltas</a>
+                        </li>
+                        <li>
+                            <a href="Notas.jsp">Notas</a>
                         </li>
                     </ul>
 
