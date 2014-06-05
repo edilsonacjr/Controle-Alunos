@@ -100,4 +100,26 @@ public class PeriodoDao {
         rs.close();
         return p;
     }
+    
+    public List<Periodo> getConsulta(Periodo periodo) throws SQLException {
+        String sql = "select * from periodo where nome like ?";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        stmt.setString(1, periodo.getNome());
+        Periodo p = null;
+        List<Periodo> list = new ArrayList<>();
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            p = new Periodo();
+            p.setId(rs.getInt("idperiodo"));
+            p.getCurso().setId(rs.getInt("idcurso"));
+            p.setNome(rs.getString("nome"));
+            p.setAno(rs.getInt("ano"));
+            p.setSemestre(rs.getInt("semestre"));
+            list.add(p);
+        }
+        stmt.close();
+        rs.close();
+        return list;
+    }
+    
 }
