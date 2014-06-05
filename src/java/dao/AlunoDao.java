@@ -191,7 +191,7 @@ public class AlunoDao {
     public List<Aluno> getConsulta(Aluno aluno) throws SQLException {
         String sql = "select * from aluno a \n"
                 + "    inner join curso c on (a.idcurso = c.idcurso) \n"
-                + "where nome like ?";
+                + "where a.nome like ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setString(1, aluno.getNome());
         Aluno a = null;
