@@ -2,6 +2,8 @@
 <%@page import="java.util.List"%>
 <%@page import="dao.AlunoDao"%>
 <%@page import="entidades.Aluno"%>
+<%@page import="entidades.Materia"%>
+<%@page import="entidades.Nota"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -39,14 +41,14 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="principalAlunos.jsp">SisAlunos
+        <a class="navbar-brand" href="principalAlunos">SisAlunos
           <br>
         </a>
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <a href="logoff.jsp">Sair
+            <a href="ServLogoff">Sair
               <br>
             </a>
           </li>
@@ -82,20 +84,17 @@
                                 <tr>
                                     <th>Materia</th>
                                     <th>Faltas</th>
-                                    <th>Curso</th>
+                                    <th>Notas</th>
                                     <th>CPF</th>
                                     <th>E-mail</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <c:forEach items="${alunos}" var="aluno">
+                                <c:forEach items="${mnfs}" var="mnf">
                                     <tr>
-                                        <td>${aluno.id}</td>
-                                        <td>${aluno.nome}</td>
-                                        <td>${aluno.curso.nome}</td>
-                                        <td>${aluno.cpf}</td>
-                                        <td>${aluno.email}</td>
-                                        
+                                        <td>${mnf.materia.nome}</td>
+                                        <td>${mnf.falta}</td>
+                                        <td>${mnf.nota.n1}</td>                                        
                                     </tr>
 
                                 </c:forEach>                                

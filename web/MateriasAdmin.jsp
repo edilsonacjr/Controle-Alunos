@@ -119,32 +119,6 @@
                                 </div>
                             </div>
 
-                            <!-- Select Basic -->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="selectbasic">Curso</label>
-                                <div class="col-md-5">
-                                    <select id="selectbasic" name="selectbasic" class="form-control">
-                                        <option value="0" selected>Escolha</option>
-                                        <c:forEach items="${cursos}" var="curso">                                            
-                                            <option value="${curso.id}">${curso.nome}</option>                                                                                     
-                                        </c:forEach>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <!-- Select Basic -->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="selectbasic">Período</label>
-                                <div class="col-md-5">
-                                    <select id="selectbasic" name="selectbasic" class="form-control">
-                                        <option value="0" selected>Escolha</option>
-                                        <c:forEach items="${periodos}" var="periodo">                                            
-                                            <option value="${periodo.id}">${periodo.nome} - ${periodo.ano}</option>                                                                                     
-                                        </c:forEach>
-                                    </select>
-                                </div>
-                            </div>
-
                             <!-- Button -->
                             <div class="form-group">
                                 <label class="col-md-4 control-label text-right" for="singlebutton"></label>

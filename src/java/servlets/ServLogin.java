@@ -53,7 +53,7 @@ public class ServLogin extends HttpServlet {
         a = daoa.validaAluno(a);
         if (a != null) {
             HttpSession sessao = request.getSession(true);
-            sessao.setMaxInactiveInterval(30 * 60);
+            sessao.setMaxInactiveInterval(3000 * 60);
             sessao.setAttribute("usr", "Alun-" + login);
             sessao.setAttribute("aluno", a);
             response.sendRedirect("principalAlunos.jsp");
@@ -68,7 +68,7 @@ public class ServLogin extends HttpServlet {
         p = daop.validaProfessor(p);
         if (p != null) {
             HttpSession sessao = request.getSession(true);
-            sessao.setMaxInactiveInterval(30 * 60);
+            sessao.setMaxInactiveInterval(3000 * 60);
             sessao.setAttribute("usr", "Prof-" + login);
             response.sendRedirect("principalProf.jsp");
             return;
@@ -81,7 +81,7 @@ public class ServLogin extends HttpServlet {
         u = daou.validaUsuario(u);
         if (u != null) {
             HttpSession sessao = request.getSession(true);
-            sessao.setMaxInactiveInterval(30 * 60);
+            sessao.setMaxInactiveInterval(3000 * 60);
             sessao.setAttribute("usr", "Admin-" + login);
             response.sendRedirect("principalAdmin.jsp");
             return;

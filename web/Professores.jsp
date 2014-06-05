@@ -26,9 +26,13 @@
         <link href="dashboard.css" rel="stylesheet">
     </head>
     <%
-        ProfessorDao dao = new ProfessorDao();
-        List<Professor> professores = dao.listar();
-        pageContext.setAttribute("professores", professores);
+        List<Professor> professores = (List<Professor>) request.getAttribute("busca");
+
+        if (professores == null) {
+            ProfessorDao dao = new ProfessorDao();
+            professores = dao.listar();
+            pageContext.setAttribute("professores", professores);
+        }
 
         CursoDao daoC = new CursoDao();
         List<Curso> cursos = daoC.listar();
@@ -112,7 +116,7 @@
                     <a class="btn btn-primary" href="novoProfessor.jsp">Novo Professor</a>
 
 
-                    <form class="form-horizontal" action="index.html" method="post">
+                    <form class="form-horizontal" action="ServBuscaProfessores" method="post">
                         <fieldset>
 
                             <!-- Form Name -->
@@ -122,7 +126,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="textinput">Termo de consulta:</label>
                                 <div class="col-md-5">
-                                    <input id="textinput" name="textinput" placeholder="Termos" class="form-control input-md" type="text">
+                                    <input value="${termo}" id="textinput" name="termo" placeholder="Termos" class="form-control input-md" type="text">
 
                                 </div>
                             </div>
