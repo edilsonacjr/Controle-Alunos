@@ -99,7 +99,13 @@ public class ServInserirAluno extends HttpServlet {
             Logger.getLogger(ServInserirAluno.class.getName()).log(Level.SEVERE, null, ex);
         }
         //dateFormat.format(dataadmissao);
-        //a.setDataAdmissao(dataadmissao);
+        date = request.getParameter("dataadm");
+        try {
+            parsedDate = dateFormat.parse(date);
+        } catch (ParseException ex) {
+            Logger.getLogger(ServInserirAluno.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        a.setDataAdmissao(parsedDate);
         try {
             AlunoDao alunodao = new AlunoDao();
             alunodao.insere(a);

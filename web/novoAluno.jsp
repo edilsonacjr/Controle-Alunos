@@ -119,6 +119,14 @@
 
                                 </div>
                             </div>
+                            
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="textinput">Data de Admissão</label>
+                                <div class="col-md-5">
+                                    <input id="textinput" name="dataadm" placeholder="Data de Admissão" class="form-control input-md" type="text">
+
+                                </div>
+                            </div>
 
                             <!-- Text input-->
                             <div class="form-group">
