@@ -82,7 +82,7 @@ public class AlunoDao {
             a.getCurso().setId(rs.getInt("c.idcurso"));
             a.getCurso().setNome(rs.getString("c.nome"));
             a.getCurso().setCategoria(rs.getString("c.categoria"));
-           a.getCurso().getCordenador().setId(rs.getInt("c.idprofessor"));
+            a.getCurso().getCordenador().setId(rs.getInt("c.idprofessor"));
             a.setDataAdmissao(rs.getDate("a.dataadmissao"));
             a.setNome(rs.getString("a.nome"));
             a.setCpf(rs.getString("a.cpf"));
