@@ -105,9 +105,9 @@ public class PeriodoDao {
     public List<Periodo> getConsulta(Curso c) throws SQLException {
         String sql = "select * from periodo p \n"
                 + "inner join curso c on (p.idcurso = c.idcurso) \n"
-                + "where c.nome like ? ";
+                + "where c.idcurso = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
-        stmt.setString(1, c.getNome());
+        stmt.setInt(1, c.getId());
         Periodo p = null;
         List<Periodo> list = new ArrayList<>();
         ResultSet rs = stmt.executeQuery();
