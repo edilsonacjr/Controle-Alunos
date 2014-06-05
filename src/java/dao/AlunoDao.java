@@ -191,7 +191,7 @@ public class AlunoDao {
     public List<Aluno> getConsulta(Aluno aluno) throws SQLException {
         String sql = "select * from aluno where nome like ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
-        stmt.setString(1, "\'"+aluno.getNome()+"\'");
+        stmt.setString(1, aluno.getNome());
         Aluno a = null;
         List<Aluno> list = new ArrayList<>();
         ResultSet rs = stmt.executeQuery();
@@ -208,6 +208,7 @@ public class AlunoDao {
             a.setEmail(rs.getString("email"));
             list.add(a);
         }
+        //System.out.println("TAMANHO 2: " + stmt);
         stmt.close();
         rs.close();
         return list;

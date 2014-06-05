@@ -1,3 +1,5 @@
+<%@page import="entidades.Professor"%>
+<%@page import="dao.ProfessorDao"%>
 <%@page import="entidades.Materia"%>
 <%@page import="dao.MateriaDao"%>
 <%@page import="entidades.Periodo"%>
@@ -24,20 +26,15 @@
         <link href="dashboard.css" rel="stylesheet">
     </head>
     <%
-        AlunoDao dao = new AlunoDao();
-        List<Aluno> alunos = dao.listar();
-        pageContext.setAttribute("alunos", alunos);
-
-        CursoDao daoC = new CursoDao();
-        List<Curso> cursos = daoC.listar();
+        HttpSession sessao = request.getSession(true);
+        Professor p = (Professor) sessao.getAttribute("prof");
+        
+        ProfessorDao daoP = new ProfessorDao();
+        List<Curso> cursos = daoP.getCursos(p);
         pageContext.setAttribute("cursos", cursos);
-
-        PeriodoDao daop = new PeriodoDao();
-        List<Periodo> periodos = daop.listar();
-        pageContext.setAttribute("periodos", periodos);
-
-        MateriaDao daom = new MateriaDao();
-        List<Materia> materias = daom.listar();
+        
+        
+        List<Materia> materias = daoP.getMaterias(p);
         pageContext.setAttribute("materias", materias);
 
 
@@ -99,7 +96,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="selectbasic">Curso</label>
                                 <div class="col-md-5">
-                                    <select id="selectbasic" name="selectbasic" class="form-control">
+                                    <select id="selectbasic" name="cursolist" class="form-control">
                                         <option value="0" selected>Escolha</option>
                                         <c:forEach items="${cursos}" var="curso">                                            
                                             <option value="${curso.id}" >${curso.nome}</option>                                                                                     
@@ -112,7 +109,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="selectbasic">Materia</label>
                                 <div class="col-md-5">
-                                    <select id="selectbasic" name="selectbasic" class="form-control">
+                                    <select id="selectbasic" name="materiaslist" class="form-control">
                                         <option value="0" selected>Escolha</option>
                                         <<c:forEach items="${materias}" var="materia">                                            
                                             <option value="${materia.id}">${materia.nome}</option>                                                                                     

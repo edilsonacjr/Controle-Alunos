@@ -7,11 +7,9 @@
 package servlets;
 
 import dao.AlunoDao;
-import entidades.Aluno;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -25,8 +23,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author edilson
  */
-@WebServlet(name = "ServBuscaAluno", urlPatterns = {"/ServBuscaAluno"})
-public class ServBuscaAluno extends HttpServlet {
+@WebServlet(name = "ServSeguirNota", urlPatterns = {"/ServSeguirNota"})
+public class ServSeguirNota extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,15 +38,16 @@ public class ServBuscaAluno extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-        String termo = request.getParameter("termo");        
+        
+        int idcurso = Integer.parseInt(request.getParameter("cursolist"));
+        int idmateria = Integer.parseInt(request.getParameter("materialist"));
+        
         AlunoDao dao = new AlunoDao();
-        Aluno a = new Aluno();
-        a.setNome("%"+termo + "%");
-        List<Aluno> alunos = dao.getConsulta(a);
-        //System.out.println("TAMANHO "+alunos.size());
-        request.setAttribute("busca", alunos);        
-        request.setAttribute("termo", termo);
-        RequestDispatcher view = request.getRequestDispatcher("Alunos.jsp");
+        //List<Aluno> alunos = dao.getConsulta(termo);
+        //request.setAttribute("busca", alunos);
+        
+        //request.setAttribute("termo", termo);
+        RequestDispatcher view = request.getRequestDispatcher("lancarNotas.jsp");
         view.forward(request, response);
     }
 
@@ -67,9 +66,9 @@ public class ServBuscaAluno extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ServBuscaAluno.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServSeguirNota.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(ServBuscaAluno.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServSeguirNota.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -87,9 +86,9 @@ public class ServBuscaAluno extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ServBuscaAluno.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServSeguirNota.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(ServBuscaAluno.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServSeguirNota.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
