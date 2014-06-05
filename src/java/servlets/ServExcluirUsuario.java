@@ -47,7 +47,7 @@ public class ServExcluirUsuario extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(ServExcluirUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
-        RequestDispatcher view = request.getRequestDispatcher("PrinciapalAdmin.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("Usuarios.jsp");
         view.forward(request, response);
     }
 

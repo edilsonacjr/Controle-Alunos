@@ -51,7 +51,7 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="logoff.jsp">Sair
+                            <a href="ServLogoff">Sair
                                 <br>
                             </a>
                         </li>
@@ -160,7 +160,7 @@
                                                     <label class="col-md-0 control-label" for="button1id"></label>
                                                     <div class="col-md-6 text-right">
                                                         <button id="button1id" name="edita" class="btn btn-success" onclick="form.action = 'ServEditarPeriodo';" value="${periodo.id}">Editar</button>
-                                                        <button id="button2id" name="exclui" class="btn btn-danger" onclick="form.action = 'index.html';" value="${periodo.id}">Excluir</button>
+                                                        <button id="button2id" name="exclui" class="btn btn-danger" onclick="form.action = 'ServExcluirPeriodo';" value="${periodo.id}">Excluir</button>
                                                     </div>
                                                 </div>
                                             </form>
