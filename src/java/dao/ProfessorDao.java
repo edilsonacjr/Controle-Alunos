@@ -131,11 +131,27 @@ public class ProfessorDao {
         return p;
     }
     
-    public List<Professor> getConstula (Professor p) throws SQLException {
+    public List<Professor> getConstula (Professor prof) throws SQLException {
         String sql = "select * from professor where nome like ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
-        //Professor p;
-        
-        return null;
+        stmt.setString(1, prof.getNome());
+        Professor p;
+        List<Professor> list = new ArrayList<>();
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            p = new Professor();
+            p.setId(rs.getInt("idprofessor"));
+            p.setNome(rs.getString("nome"));
+            p.setCpf(rs.getString("cpf"));
+            p.setDataNascimento(rs.getDate("datanascimento"));
+            p.setLogin(rs.getString("login"));
+            p.setSenha(rs.getString("senha"));
+            p.setEmail(rs.getString("email"));
+            p.setDataAdmissao(rs.getDate("dataadmissao"));
+            list.add(p);
+        }
+        stmt.close();
+        rs.close();
+        return list;
     }
 }
