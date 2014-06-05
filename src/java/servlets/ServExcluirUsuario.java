@@ -6,8 +6,14 @@
 
 package servlets;
 
+import dao.UsuarioDao;
+import entidades.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -31,18 +37,18 @@ public class ServExcluirUsuario extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ServExcluirUsuario</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ServExcluirUsuario at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        Usuario u = new Usuario();
+        u.setId(Integer.parseInt(request.getParameter("exclui")));
+        try {
+            UsuarioDao udao = new UsuarioDao();
+            udao.exclui(u);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ServExcluirUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ServExcluirUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
+        RequestDispatcher view = request.getRequestDispatcher("PrinciapalAdmin.jsp");
+        view.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
