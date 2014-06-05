@@ -36,6 +36,42 @@
         <servlet-name>ServInserirUsuario</servlet-name>
         <servlet-class>servlets.ServInserirUsuario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServExcluirAluno</servlet-name>
+        <servlet-class>servlets.ServExcluirAluno</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServExcluirCurso</servlet-name>
+        <servlet-class>servlets.ServExcluirCurso</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServExcluirAlunoMateria</servlet-name>
+        <servlet-class>servlets.ServExcluirAlunoMateria</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServExcluirUsuario</servlet-name>
+        <servlet-class>servlets.ServExcluirUsuario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServExcluirFalta</servlet-name>
+        <servlet-class>servlets.ServExcluirFalta</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServExcluirNota</servlet-name>
+        <servlet-class>servlets.ServExcluirNota</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServExcluirPeriodo</servlet-name>
+        <servlet-class>servlets.ServExcluirPeriodo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServExcluirMateria</servlet-name>
+        <servlet-class>servlets.ServExcluirMateria</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServExcluirProfessor</servlet-name>
+        <servlet-class>servlets.ServExcluirProfessor</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServInserirAluno</servlet-name>
         <url-pattern>/ServInserirAluno</url-pattern>
@@ -71,6 +107,42 @@
     <servlet-mapping>
         <servlet-name>ServInserirUsuario</servlet-name>
         <url-pattern>/ServInserirUsuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServExcluirAluno</servlet-name>
+        <url-pattern>/ServExcluirAluno</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServExcluirCurso</servlet-name>
+        <url-pattern>/ServExcluirCurso</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServExcluirAlunoMateria</servlet-name>
+        <url-pattern>/ServExcluirAlunoMateria</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServExcluirUsuario</servlet-name>
+        <url-pattern>/ServExcluirUsuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServExcluirFalta</servlet-name>
+        <url-pattern>/ServExcluirFalta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServExcluirNota</servlet-name>
+        <url-pattern>/ServExcluirNota</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServExcluirPeriodo</servlet-name>
+        <url-pattern>/ServExcluirPeriodo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServExcluirMateria</servlet-name>
+        <url-pattern>/ServExcluirMateria</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServExcluirProfessor</servlet-name>
+        <url-pattern>/ServExcluirProfessor</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
