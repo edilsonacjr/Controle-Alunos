@@ -42,7 +42,7 @@ public class ServBuscaProfessor extends HttpServlet {
         String termo = request.getParameter("termo");
         ProfessorDao pdao = new ProfessorDao();
         Professor p = new Professor();
-        p.setNome(termo + "%");
+        p.setNome("%"+termo + "%");
         List<Professor> professores = pdao.getConstula(p);        
         request.setAttribute("busca", professores);
         request.setAttribute("termo", termo);
