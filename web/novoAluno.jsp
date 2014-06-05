@@ -56,10 +56,10 @@
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
                         <li>
-                            <a href="#">Página Principal</a>
+                            <a href="paginaInicial.jsp">Página Principal</a>
                         </li>
                         <li>
-                            <a href="#">Professores</a>
+                            <a href="Professores.jsp">Professores</a>
                         </li>
                         <li class="active">
                             <a href="Alunos.jsp">Alunos</a>
