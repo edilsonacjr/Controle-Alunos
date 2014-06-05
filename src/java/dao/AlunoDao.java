@@ -210,5 +210,10 @@ public class AlunoDao {
         rs.close();
         return list;
     }
+    
+    public List<Aluno> getAlunosMateria(){
+        String sql = "select * from alunomateria";
+    }
+    
 }
 
