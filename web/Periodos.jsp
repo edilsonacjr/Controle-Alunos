@@ -30,7 +30,7 @@
             periodos = dao.listar();
             pageContext.setAttribute("periodos", periodos);
         }
-
+        pageContext.setAttribute("periodos", periodos);
         CursoDao daoC = new CursoDao();
         List<Curso> cursos = daoC.listar();
         pageContext.setAttribute("cursos", cursos);
