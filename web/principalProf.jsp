@@ -27,7 +27,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="paginaInicial.jsp">SisAlunos
+        <a class="navbar-brand" href="principalProf.jsp">SisAlunos
           <br>
         </a>
       </div>

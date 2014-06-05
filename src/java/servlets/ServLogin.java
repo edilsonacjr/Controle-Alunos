@@ -69,7 +69,8 @@ public class ServLogin extends HttpServlet {
         if (p != null) {
             HttpSession sessao = request.getSession(true);
             sessao.setMaxInactiveInterval(3000 * 60);
-            sessao.setAttribute("usr", "Prof-" + login);
+            sessao.setAttribute("", "Prof-" + login);
+            sessao.setAttribute("prof", p);
             response.sendRedirect("principalProf.jsp");
             return;
         }

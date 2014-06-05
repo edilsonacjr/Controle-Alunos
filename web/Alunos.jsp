@@ -25,13 +25,15 @@
     </head>
     <%
         List<Aluno> alunos = (List<Aluno>)request.getAttribute("busca");
+        System.out.println("TAMANHO:"+alunos.size());
         
         if (alunos == null) {
             AlunoDao dao = new AlunoDao();
             alunos = dao.listar();
             pageContext.setAttribute("alunos", alunos);
         }
-
+        pageContext.setAttribute("alunos", alunos);
+        
         CursoDao daoC = new CursoDao();
         List<Curso> cursos = daoC.listar();
         pageContext.setAttribute("cursos", cursos);
