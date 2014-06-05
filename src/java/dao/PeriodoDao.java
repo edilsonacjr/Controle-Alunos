@@ -61,6 +61,7 @@ public class PeriodoDao {
     public List<Periodo> listar() throws SQLException {
         List<Periodo> list = new ArrayList<>();
         Periodo p = null;
+        //Levanta difunto
         String sql = "select * from periodo p\n"
                 + "    inner join curso c on (p.idcurso = c.idcurso)";
         PreparedStatement stmt = conexao.prepareStatement(sql);
