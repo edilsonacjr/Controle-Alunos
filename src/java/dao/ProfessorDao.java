@@ -178,7 +178,7 @@ public class ProfessorDao {
     }
     
     public List<Materia> getMaterias(Professor p) throws SQLException{
-        String sql = "select * from where idprofessor = ?";
+        String sql = "select * from materia where idprofessor = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, p.getId());
         Materia m;
