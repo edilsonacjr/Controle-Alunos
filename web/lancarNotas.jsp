@@ -102,7 +102,7 @@
                             <tbody>
                                 <c:forEach items="${alunos}" var="aluno">
                                     <tr>
-                                <form method="post">
+                                <form method="post" action="ServLancarNota">
                                     <td>${aluno.id}</td>
                                     <td>${aluno.nome}</td>
                                     <td>

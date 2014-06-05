@@ -37,7 +37,6 @@
         List<Materia> materias = daoP.getMaterias(p);
         pageContext.setAttribute("materias", materias);
 
-
     %>
     <body>
 

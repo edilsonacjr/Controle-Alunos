@@ -37,7 +37,7 @@ public class ServInserirNota extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //doPost(request, response);
-        RequestDispatcher view = request.getRequestDispatcher("novoNota.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("lancarNotas.jsp");
         view.forward(request, response);
     }
 
@@ -69,9 +69,9 @@ public class ServInserirNota extends HttpServlet {
             throws ServletException, IOException {
         Nota n = new Nota();
         n.getAlunoMateria().setId(Integer.parseInt(request.getParameter("alunomateria")));
-        n.setN1(Double.parseDouble(request.getParameter("nota1")));
-        n.setN2(Double.parseDouble(request.getParameter("nota2")));
-        n.setN3(Double.parseDouble(request.getParameter("nota3")));
+        n.setN1(Double.parseDouble(request.getParameter("n1")));
+        n.setN2(Double.parseDouble(request.getParameter("n2")));
+        n.setN3(Double.parseDouble(request.getParameter("n3")));
         NotaDao notadao;
         try {
             notadao = new NotaDao();

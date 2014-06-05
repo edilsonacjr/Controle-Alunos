@@ -53,7 +53,9 @@ public class ServSeguirNota extends HttpServlet {
         AlunoDao dao = new AlunoDao();
         List<Aluno> alunos = dao.getAlunosCursoMateria(c, m);
         request.setAttribute("alunos", alunos);
-        System.out.println("TAMANHO"+alunos.size());
+        System.out.println("TAMANHO "+alunos.size());
+        System.out.println("numeros "+idcurso);
+        System.out.println("numeros "+idmateria);
         
         //request.setAttribute("termo", termo);
         RequestDispatcher view = request.getRequestDispatcher("lancarNotas.jsp");
