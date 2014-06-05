@@ -60,11 +60,11 @@
     <div class="row">
       <div class="col-sm-3 col-md-2 sidebar">
         <ul class="nav nav-sidebar">
-          <li class="active">
+          <li>
             <a href="principalAlunos.jsp" >Página Principal</a>
           </li>
-          <li>
-            <a href="Professores.jsp">Matérias</a>
+          <li class="active">
+            <a href="Materias.jsp">Matérias</a>
           </li>
         </ul>
 
