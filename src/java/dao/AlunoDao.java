@@ -184,23 +184,10 @@ public class AlunoDao {
         return list;
     }
     
-    public List<Aluno> getConsulta(String termo, Integer curso, Integer periodo, Integer materia) {
+    public List<Aluno> getConsulta(String termo, Integer curso, Integer periodo, Integer materia) throws SQLException {
         String sql = "select * from aluno a \n"
                 + "         inner join curso c on ()";
-        String concat = ""; 
-        if (curso != 0) {
-            concat = "and c.idcurso = ?";
-        }
+        return null;
         
-        if (periodo != 0 ) {
-            concat = "and p.idcurso = ?";
-        }
-        
-        if (materia != 0) {
-            concat = "and m.idmateria = ?";
-        }
-        
-        List<Aluno> list = new ArrayList();
-        return list;
     }
 }
