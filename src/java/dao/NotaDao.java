@@ -86,10 +86,10 @@ public class NotaDao {
         while (rs.next()) {
             n = new Nota();
             n.setId(rs.getInt("idnota"));
-            n.getAlunoMateria().setId(rs.getInt("idalunomateria"));
             n.setN1(rs.getDouble("n1"));
             n.setN2(rs.getDouble("n2"));
             n.setN3(rs.getDouble("n3"));
+            n.getAlunoMateria().setId(rs.getInt("idalunomateria"));
         }
         stmt.close();
         rs.close();

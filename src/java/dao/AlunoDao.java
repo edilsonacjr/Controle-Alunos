@@ -6,6 +6,8 @@
 package dao;
 
 import entidades.Aluno;
+import entidades.Materia;
+import entidades.MateriaNotaFalta;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -140,5 +142,47 @@ public class AlunoDao {
             a.setEmail(rs.getString("a.email"));
         }
         return a;
+    }
+
+    public List<MateriaNotaFalta> getMateriaNotaFalta(Aluno a) throws SQLException {
+        String sql = "select * from alunomateria am \n"
+                + "     inner join materia m on (am.idmateria = m.idmateria)\n"
+                + "     inner left nota n on (am.idalunomateria = n.idalunomateria)\n"
+                + "     inner left falta f on (am.dialunomateria = f.idalunomateria)\n"
+                + "     inner join aluno a on (am.idaluno = a.idaluno) "
+                + "   where idaluno = ?";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        stmt.setInt(1, a.getId());
+        MateriaNotaFalta mnf = null;
+        List<MateriaNotaFalta> list = new ArrayList();
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            mnf = new MateriaNotaFalta();
+            mnf.getAluno().setId(rs.getInt("a.idaluno"));
+            mnf.getAluno().getCurso().setId(rs.getInt("a.idcurso"));
+            mnf.getAluno().setDataAdmissao(rs.getDate("a.dataadmissao"));
+            mnf.getAluno().setNome(rs.getString("a.nome"));
+            mnf.getAluno().setCpf(rs.getString("a.cpf"));
+            mnf.getAluno().setDataNascimento(rs.getDate("a.datanascimento"));
+            mnf.getAluno().setLogin(rs.getString("a.login"));
+            mnf.getAluno().setSenha(rs.getString("a.senha"));
+            mnf.getAluno().setEmail(rs.getString("a.email"));
+            mnf.getMateria().setId(rs.getInt("m.idmateria"));
+            mnf.getMateria().setId(rs.getInt("m.idperiodo"));
+            mnf.getMateria().setNome(rs.getString("m.nome"));
+            mnf.getMateria().getProfessor().setId(rs.getInt("m.idprofessor"));
+            mnf.getNota().setId(rs.getInt("n.idnota"));
+            mnf.getNota().setN1(rs.getDouble("n.n1"));
+            mnf.getNota().setN2(rs.getDouble("n.n2"));
+            mnf.getNota().setN3(rs.getDouble("n.n3"));
+            mnf.getNota().getAlunoMateria().setId(rs.getInt("n.idalunomateria"));
+            mnf.getFalta().setId(rs.getInt("idfalta"));
+            mnf.getFalta().getAlunoMateria().setId(rs.getInt("idalunomateria"));
+            mnf.getFalta().setData(rs.getDate("data"));
+            list.add(mnf);
+        }
+        stmt.close();
+        rs.close();
+        return list;
     }
 }
