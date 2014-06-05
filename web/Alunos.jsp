@@ -117,7 +117,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="textinput">Termo de consulta:</label>
                                 <div class="col-md-5">
-                                    <input id="textinput" name="textinput" placeholder="termo" class="form-control input-md" type="text">
+                                    <input id="textinput" name="textinput" placeholder="Termos" class="form-control input-md" type="text">
 
                                 </div>
                             </div>
